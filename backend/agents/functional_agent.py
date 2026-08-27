@@ -16,6 +16,7 @@ Each generated test case is then executed with Playwright and the
 result (PASS/FAIL + evidence) is recorded.
 """
 from __future__ import annotations
+import asyncio
 import uuid
 from urllib.parse import urlparse
 
@@ -33,8 +34,9 @@ def generate_tests_for_page(page_record: dict) -> list[dict]:
     tests: list[dict] = []
     url = page_record["url"]
 
-    # Link reachability - only same-page-relevant links, capped for practicality
-    for link in page_record.get("links", [])[:15]:
+    # Link reachability - deduplicated and capped at 8 unique links per page for efficiency
+    unique_links = list(dict.fromkeys(page_record.get("links", [])))[:8]
+    for link in unique_links:
         tests.append(
             {
                 "id": _tc_id(),
@@ -89,25 +91,33 @@ def generate_tests_for_page(page_record: dict) -> list[dict]:
 
 
 async def _check_links(context, page_record: dict, tests: list[dict], results: list[dict]):
-    base_domain = urlparse(page_record["url"]).netloc
-    for t in [x for x in tests if x["category"] == "navigation"]:
-        link = t["target"]
-        page = await context.new_page()
-        try:
-            resp = await page.goto(link, timeout=12000, wait_until="domcontentloaded")
-            status = resp.status if resp else None
-            if status and status < 400:
-                results.append({**t, "status": "PASS", "actual": f"HTTP {status}", "evidence": link})
-            else:
-                results.append(
-                    {**t, "status": "FAIL", "actual": f"HTTP {status or 'no response'}", "evidence": link}
-                )
-        except PWTimeout:
-            results.append({**t, "status": "FAIL", "actual": "Timeout", "evidence": link})
-        except Exception as e:
-            results.append({**t, "status": "FAIL", "actual": str(e), "evidence": link})
-        finally:
-            await page.close()
+    nav_tests = [x for x in tests if x["category"] == "navigation"]
+    if not nav_tests:
+        return
+
+    sem = asyncio.Semaphore(4)
+
+    async def _test_one_link(t):
+        async with sem:
+            link = t["target"]
+            page = await context.new_page()
+            try:
+                resp = await page.goto(link, timeout=8000, wait_until="domcontentloaded")
+                status = resp.status if resp else None
+                if status and status < 400:
+                    results.append({**t, "status": "PASS", "actual": f"HTTP {status}", "evidence": link})
+                else:
+                    results.append(
+                        {**t, "status": "FAIL", "actual": f"HTTP {status or 'no response'}", "evidence": link}
+                    )
+            except PWTimeout:
+                results.append({**t, "status": "FAIL", "actual": "Timeout", "evidence": link})
+            except Exception as e:
+                results.append({**t, "status": "FAIL", "actual": str(e), "evidence": link})
+            finally:
+                await page.close()
+
+    await asyncio.gather(*[_test_one_link(t) for t in nav_tests])
 
 
 async def _check_images(page, page_record: dict, tests: list[dict], results: list[dict]):
@@ -191,6 +201,8 @@ async def run_functional_tests(state: ScanState) -> ScanState:
     async with async_playwright() as pw:
         browser = await pw.chromium.launch(headless=True)
         context = await browser.new_context(viewport=viewport, ignore_https_errors=True)
+        context.set_default_timeout(10000)
+        context.set_default_navigation_timeout(15000)
 
         for page_record in state.pages:
             page_tests = [t for t in all_tests if t["page"] == page_record["url"]]

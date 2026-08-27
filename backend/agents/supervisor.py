@@ -1,31 +1,24 @@
 """
-Supervisor Agent
-=================
-Central orchestrator. Owns the shared ScanState, decides which agents to
-run, in what order, and how to react when an agent fails - this is the
-piece that makes the system "agentic" rather than a fixed script:
+Supervisor Agent (LangGraph StateGraph Orchestration)
+======================================================
+Central orchestrator refactored into a formal LangGraph StateGraph.
+Explicit workflow nodes:
+  validate_url -> crawler -> functional -> accessibility -> specialized_analysis (Visual, Perf, Sec in parallel) -> bug_aggregator -> quality_score -> END
 
-  - It inspects results after each stage and DECIDES the next step
-    (e.g. skip the Accessibility Agent entirely if the crawl found 0 pages,
-    rather than blindly running every agent regardless of state).
-  - If an agent throws, it's caught, logged as FAILED, and the pipeline
-    continues with whatever agents can still produce value (self-healing /
-    graceful degradation, spec section 21) instead of the whole scan dying.
-
-Phase 1 pipeline:
-    Crawler -> Functional -> Accessibility -> Bug Intelligence -> Score
-
-Phase 2/3 will insert Visual / Performance / Security / Root Cause / RAG /
-Fix / Verification agents into this same run_scan() function, each guarded
-by the same try/except + conditional-skip pattern established here.
+Conditional edge after crawler node enforces PLAN -> ACT -> OBSERVE -> ANALYZE -> DECIDE pipeline decisions.
 """
 from __future__ import annotations
+import asyncio
 from urllib.parse import urlparse
+from langgraph.graph import StateGraph, END
 
 from .state import ScanState
 from .crawler_agent import crawl_website
 from .functional_agent import run_functional_tests
 from .accessibility_agent import run_accessibility_audit
+from .visual_agent import run_visual_audit
+from .performance_agent import run_performance_audit
+from .security_agent import run_security_audit
 from .bug_aggregator import aggregate_bugs, compute_quality_score
 
 
@@ -40,24 +33,26 @@ def validate_url(url: str) -> str | None:
     return None
 
 
-async def run_scan(state: ScanState) -> ScanState:
+async def node_validate(state: ScanState) -> ScanState:
     state.scan_status = "running"
     state.log("Supervisor", "Received scan request", "running", state.website_url)
-
-    error = validate_url(state.website_url)
-    if error:
+    err = validate_url(state.website_url)
+    if err:
         state.scan_status = "failed"
-        state.error = error
-        state.log("Supervisor", "URL validation failed", "failed", error)
+        state.error = err
+        state.log("Supervisor", "URL validation failed", "failed", err)
+    else:
+        state.log(
+            "Supervisor",
+            "LangGraph plan: Crawl -> Functional -> Accessibility -> Concurrent Specialized Analysis (Visual/Perf/Sec) -> Bug Intelligence -> Score",
+            "success",
+        )
+    return state
+
+
+async def node_crawl(state: ScanState) -> ScanState:
+    if state.scan_status == "failed":
         return state
-
-    state.log(
-        "Supervisor",
-        "Created scan plan: Crawl -> Functional Tests -> Accessibility Audit -> Bug Aggregation -> Score",
-        "success",
-    )
-
-    # --- Stage 1: Crawl ---
     try:
         state = await crawl_website(state)
     except Exception as e:
@@ -65,7 +60,6 @@ async def run_scan(state: ScanState) -> ScanState:
         state.scan_status = "failed"
         state.error = f"Crawl failed: {e}"
         return state
-
     if not state.pages:
         state.log(
             "Supervisor",
@@ -74,29 +68,75 @@ async def run_scan(state: ScanState) -> ScanState:
         )
         state.scan_status = "failed"
         state.error = "No reachable pages found at the target URL."
-        return state
+    return state
 
-    # --- Stage 2: Functional testing (conditional: only if pages have testable elements) ---
+
+async def node_functional(state: ScanState) -> ScanState:
+    if state.scan_status == "failed":
+        return state
     try:
         state = await run_functional_tests(state)
     except Exception as e:
         state.log("Supervisor", "Functional Agent failed - continuing without functional results", "warning", str(e))
+    return state
 
-    # --- Stage 3: Accessibility audit ---
+
+async def node_accessibility(state: ScanState) -> ScanState:
+    if state.scan_status == "failed":
+        return state
     try:
         state = await run_accessibility_audit(state)
     except Exception as e:
-        state.log(
-            "Supervisor", "Accessibility Agent failed - continuing without a11y results", "warning", str(e)
-        )
+        state.log("Supervisor", "Accessibility Agent failed - continuing without a11y results", "warning", str(e))
+    return state
 
-    # --- Stage 4: Bug Intelligence (merge + dedupe + severity) ---
+
+async def node_specialized_analysis(state: ScanState) -> ScanState:
+    if state.scan_status == "failed":
+        return state
+    state.log(
+        "Supervisor",
+        "Executing specialized analysis agents concurrently (Visual, Performance, Security)",
+        "running",
+    )
+    results = await asyncio.gather(
+        run_visual_audit(state),
+        run_performance_audit(state),
+        run_security_audit(state),
+        return_exceptions=True,
+    )
+    for res in results:
+        if isinstance(res, Exception):
+            state.log("Supervisor", "Specialized analysis agent encountered an issue", "warning", str(res))
+    return state
+
+
+from .root_cause_agent import run_root_cause_agent
+
+
+async def node_root_cause(state: ScanState) -> ScanState:
+    if state.scan_status == "failed":
+        return state
+    try:
+        state = await run_root_cause_agent(state)
+    except Exception as e:
+        state.log("Supervisor", "Root Cause Agent failed", "warning", str(e))
+    return state
+
+
+async def node_bug_aggregator(state: ScanState) -> ScanState:
+    if state.scan_status == "failed":
+        return state
     try:
         state = aggregate_bugs(state)
     except Exception as e:
         state.log("Supervisor", "Bug aggregation failed", "warning", str(e))
+    return state
 
-    # --- Stage 5: Quality score ---
+
+async def node_quality_score(state: ScanState) -> ScanState:
+    if state.scan_status == "failed":
+        return state
     try:
         state = compute_quality_score(state)
     except Exception as e:
@@ -104,13 +144,59 @@ async def run_scan(state: ScanState) -> ScanState:
 
     state.scan_status = "completed"
     from .state import now_iso
-
     state.finished_at = now_iso()
     state.log(
         "Supervisor",
         "Scan complete",
         "success",
-        f"{len(state.pages)} pages, {len(state.bugs)} bugs, "
-        f"score={state.quality_score['overall'] if state.quality_score else 'n/a'}",
+        f"{len(state.pages)} pages, {len(state.bugs)} bugs, score={state.quality_score['overall'] if state.quality_score else 'n/a'}",
     )
     return state
+
+
+def check_crawl_success(state: ScanState) -> str:
+    if state.scan_status == "failed" or not state.pages:
+        return "abort"
+    return "continue"
+
+
+# Build explicit LangGraph StateGraph
+workflow = StateGraph(ScanState)
+
+workflow.add_node("validate_url", node_validate)
+workflow.add_node("crawler", node_crawl)
+workflow.add_node("functional", node_functional)
+workflow.add_node("accessibility", node_accessibility)
+workflow.add_node("specialized_analysis", node_specialized_analysis)
+workflow.add_node("bug_aggregator", node_bug_aggregator)
+workflow.add_node("root_cause", node_root_cause)
+workflow.add_node("quality_score", node_quality_score)
+
+workflow.set_entry_point("validate_url")
+workflow.add_edge("validate_url", "crawler")
+workflow.add_conditional_edges(
+    "crawler",
+    check_crawl_success,
+    {
+        "abort": END,
+        "continue": "functional",
+    },
+)
+workflow.add_edge("functional", "accessibility")
+workflow.add_edge("accessibility", "specialized_analysis")
+workflow.add_edge("specialized_analysis", "bug_aggregator")
+workflow.add_edge("bug_aggregator", "root_cause")
+workflow.add_edge("root_cause", "quality_score")
+workflow.add_edge("quality_score", END)
+
+app_graph = workflow.compile()
+
+
+async def run_scan(state: ScanState) -> ScanState:
+    res = await app_graph.ainvoke(state)
+    if isinstance(res, dict):
+        for key, val in res.items():
+            if hasattr(state, key):
+                setattr(state, key, val)
+        return state
+    return res

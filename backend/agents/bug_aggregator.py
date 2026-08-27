@@ -77,6 +77,80 @@ def aggregate_bugs(state: ScanState) -> ScanState:
             }
         )
 
+    # --- from visual findings ---
+    for vf in state.visual_findings:
+        severity = vf.get("severity", "MEDIUM")
+        bugs.append(
+            {
+                "id": _bug_id(),
+                "title": f"Visual layout defect ({vf['type']}): {vf['selector']}",
+                "category": "visual",
+                "page": vf["page"],
+                "severity": severity,
+                "severity_rationale": vf["description"],
+                "evidence": [{"type": "visual_layout", "detail": vf["description"]}],
+                "source_agents": ["VisualAgent"],
+            }
+        )
+
+    # --- from performance metrics ---
+    for pm in state.performance_metrics:
+        if pm.get("ttfb_ms", 0) > 1000:
+            bugs.append(
+                {
+                    "id": _bug_id(),
+                    "title": f"High Time To First Byte (TTFB): {pm['ttfb_ms']}ms",
+                    "category": "performance",
+                    "page": pm["url"],
+                    "severity": "HIGH",
+                    "severity_rationale": f"TTFB of {pm['ttfb_ms']}ms exceeds recommended 1000ms threshold.",
+                    "evidence": [{"type": "performance_metric", "detail": f"TTFB={pm['ttfb_ms']}ms"}],
+                    "source_agents": ["PerformanceAgent"],
+                }
+            )
+        if pm.get("load_event_ms", 0) > 3000:
+            bugs.append(
+                {
+                    "id": _bug_id(),
+                    "title": f"Slow page load event: {pm['load_event_ms']}ms",
+                    "category": "performance",
+                    "page": pm["url"],
+                    "severity": "MEDIUM",
+                    "severity_rationale": f"Load event completed in {pm['load_event_ms']}ms (>3000ms threshold).",
+                    "evidence": [{"type": "performance_metric", "detail": f"Load={pm['load_event_ms']}ms"}],
+                    "source_agents": ["PerformanceAgent"],
+                }
+            )
+        for sr in pm.get("slow_resources", [])[:3]:
+            bugs.append(
+                {
+                    "id": _bug_id(),
+                    "title": f"Slow resource load: {sr['name'][:60]} ({sr['duration_ms']}ms)",
+                    "category": "performance",
+                    "page": pm["url"],
+                    "severity": "LOW",
+                    "severity_rationale": f"Resource took {sr['duration_ms']}ms to load (size={sr['size_bytes']}B).",
+                    "evidence": [{"type": "slow_resource", "detail": sr["name"]}],
+                    "source_agents": ["PerformanceAgent"],
+                }
+            )
+
+    # --- from security findings ---
+    for sf in state.security_findings:
+        severity = sf.get("severity", "MEDIUM")
+        bugs.append(
+            {
+                "id": _bug_id(),
+                "title": f"Security vulnerability ({sf['rule']}): {sf['description'][:100]}",
+                "category": "security",
+                "page": sf["page"],
+                "severity": severity,
+                "severity_rationale": sf["description"],
+                "evidence": [{"type": "security_finding", "detail": sf.get("evidence", "")}],
+                "source_agents": ["SecurityAgent"],
+            }
+        )
+
     # --- from raw console errors (dedup by message text) ---
     seen_console = set()
     for c in state.console_errors:
@@ -139,14 +213,36 @@ def compute_quality_score(state: ScanState) -> ScanState:
     )
     accessibility_score = max(0, 100 - a11y_penalty)
 
-    severity_weights = {"CRITICAL": 20, "HIGH": 10, "MEDIUM": 5, "LOW": 2, "INFO": 0}
-    overall_penalty = sum(severity_weights.get(b["severity"], 3) for b in state.bugs)
-    overall = max(0, round(100 - (overall_penalty * 0.6)))
+    visual_penalty = sum(
+        {"CRITICAL": 15, "HIGH": 10, "MEDIUM": 5, "LOW": 2}.get(vf.get("severity"), 3)
+        for vf in state.visual_findings
+    )
+    visual_score = max(0, 100 - visual_penalty)
+
+    perf_bugs = [b for b in state.bugs if b.get("category") == "performance"]
+    perf_penalty = sum(
+        {"CRITICAL": 15, "HIGH": 10, "MEDIUM": 5, "LOW": 2}.get(b.get("severity"), 3)
+        for b in perf_bugs
+    )
+    performance_score = max(0, 100 - perf_penalty)
+
+    sec_penalty = sum(
+        {"CRITICAL": 15, "HIGH": 10, "MEDIUM": 5, "LOW": 2}.get(sf.get("severity"), 3)
+        for sf in state.security_findings
+    )
+    security_score = max(0, 100 - sec_penalty)
+
+    # Average sub-scores so bug counts across multiple pages do not force overall score to 0
+    scores = [functional_score, accessibility_score, visual_score, performance_score, security_score]
+    overall = max(0, min(100, round(sum(scores) / len(scores))))
 
     state.quality_score = {
         "overall": overall,
         "functional": functional_score,
         "accessibility": accessibility_score,
+        "visual": visual_score,
+        "performance": performance_score,
+        "security": security_score,
         "pages_scanned": len(state.pages),
         "tests_generated": total_tests,
         "tests_passed": passed_tests,

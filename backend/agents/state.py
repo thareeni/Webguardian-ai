@@ -44,6 +44,9 @@ class ScanState:
 
     functional_tests: list[dict[str, Any]] = field(default_factory=list)
     accessibility_findings: list[dict[str, Any]] = field(default_factory=list)
+    visual_findings: list[dict[str, Any]] = field(default_factory=list)
+    performance_metrics: list[dict[str, Any]] = field(default_factory=list)
+    security_findings: list[dict[str, Any]] = field(default_factory=list)
 
     bugs: list[dict[str, Any]] = field(default_factory=list)
     quality_score: dict[str, Any] | None = None
@@ -57,6 +60,14 @@ class ScanState:
         entry = AgentLogEntry(agent=agent, task=task, status=status, detail=detail)
         self.agent_log.append(entry.__dict__)
         self.current_agent = agent
+        status_tags = {"running": "[RUNNING]", "success": "[SUCCESS]", "warning": "[WARNING]", "failed": "[FAILED]"}
+        tag = status_tags.get(status, f"[{status.upper()}]")
+        detail_str = f" - {detail}" if detail else ""
+        msg = f"[{entry.timestamp}] {tag} [{agent}] {task}{detail_str}"
+        try:
+            print(msg, flush=True)
+        except Exception:
+            print(msg.encode("ascii", "replace").decode("ascii"), flush=True)
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -74,6 +85,9 @@ class ScanState:
             "network_errors": self.network_errors,
             "functional_tests": self.functional_tests,
             "accessibility_findings": self.accessibility_findings,
+            "visual_findings": self.visual_findings,
+            "performance_metrics": self.performance_metrics,
+            "security_findings": self.security_findings,
             "bugs": self.bugs,
             "quality_score": self.quality_score,
             "agent_log": self.agent_log,

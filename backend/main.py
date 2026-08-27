@@ -63,9 +63,9 @@ async def health():
     return {
         "backend": "running",
         "browser_available": playwright_ok,
-        "database": "in-memory (phase 1)",
-        "llm_configured": bool(os.environ.get("ANTHROPIC_API_KEY") or os.environ.get("OPENAI_API_KEY")),
-        "rag_available": False,  # arrives in phase 2
+        "database": "in-memory",
+        "llm_configured": bool(os.environ.get("ANTHROPIC_API_KEY")),
+        "rag_available": True,
     }
 
 
@@ -80,14 +80,19 @@ async def start_scan(req: ScanRequest, background_tasks: BackgroundTasks):
     SCANS[state.scan_id] = state
 
     async def _run():
+        dynamic_timeout = min(300, max(60, 60 + req.max_pages * 30))
         try:
-            await run_scan(state)
+            await asyncio.wait_for(run_scan(state), timeout=dynamic_timeout)
+        except asyncio.TimeoutError:
+            state.scan_status = "failed"
+            state.error = f"Scan overall timeout exceeded ({dynamic_timeout}s limit)"
+            state.log("Supervisor", "Scan timed out", "failed", f"Exceeded {dynamic_timeout}s overall timeout")
         except Exception as e:  # last-resort safety net so the task never silently dies
             state.scan_status = "failed"
             state.error = str(e)
             state.log("Supervisor", "Unhandled exception during scan", "failed", str(e))
 
-    background_tasks.add_task(lambda: asyncio.create_task(_run()))
+    background_tasks.add_task(_run)
     return ScanResponse(scan_id=state.scan_id, scan_status=state.scan_status)
 
 
@@ -100,7 +105,10 @@ def _get_scan(scan_id: str) -> ScanState:
 
 @app.get("/api/scan/{scan_id}")
 async def get_scan(scan_id: str):
-    return _get_scan(scan_id).to_dict()
+    data = _get_scan(scan_id).to_dict()
+    data["rag_enabled"] = True
+    data["llm_configured"] = bool(os.environ.get("ANTHROPIC_API_KEY"))
+    return data
 
 
 @app.get("/api/scan/{scan_id}/status")

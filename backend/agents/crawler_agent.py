@@ -106,7 +106,14 @@ async def crawl_website(state: ScanState) -> ScanState:
             await asyncio.sleep(1)
             browser = await pw.chromium.launch(headless=True)
 
-        context = await browser.new_context(viewport=viewport, ignore_https_errors=True)
+        context = await browser.new_context(
+            viewport=viewport,
+            ignore_https_errors=True,
+            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36",
+            extra_http_headers={"Accept-Language": "en-US,en;q=0.9"},
+        )
+        context.set_default_timeout(10000)
+        context.set_default_navigation_timeout(15000)
 
         while queue and len(visited) < state.max_pages:
             url, depth = queue.pop(0)
@@ -127,17 +134,26 @@ async def crawl_website(state: ScanState) -> ScanState:
             page.on(
                 "requestfailed",
                 lambda req: page_network_errors.append(
-                    {"url": req.url, "failure": req.failure["errorText"] if req.failure else "unknown"}
+                    {
+                        "url": req.url,
+                        "failure": (
+                            req.failure.get("errorText")
+                            if isinstance(req.failure, dict)
+                            else str(req.failure)
+                        )
+                        if req.failure
+                        else "unknown",
+                    }
                 ),
             )
 
             start = time.monotonic()
             try:
-                response = await page.goto(url, wait_until="networkidle", timeout=20000)
+                response = await page.goto(url, wait_until="domcontentloaded", timeout=15000)
             except PWTimeout:
-                # Self-healing: retry once with a longer timeout / less strict wait condition
+                # Self-healing: retry once with load event
                 try:
-                    response = await page.goto(url, wait_until="domcontentloaded", timeout=30000)
+                    response = await page.goto(url, wait_until="load", timeout=15000)
                 except Exception as e:
                     state.log("CrawlerAgent", f"Skipping unreachable page: {url}", "warning", str(e))
                     await page.close()
@@ -147,6 +163,13 @@ async def crawl_website(state: ScanState) -> ScanState:
                 await page.close()
                 continue
 
+            # Bounded extra wait for JS-heavy SPAs (e.g. React/Vue/Next.js) to render navigation links
+            try:
+                await page.wait_for_selector("a[href]", timeout=2500)
+            except Exception:
+                pass
+            await asyncio.sleep(0.5)
+
             load_time_ms = round((time.monotonic() - start) * 1000, 1)
             status_code = response.status if response else None
 
@@ -155,7 +178,7 @@ async def crawl_website(state: ScanState) -> ScanState:
             screenshot_name = f"{state.scan_id}_{len(visited)}.png"
             screenshot_path = os.path.join(SCREENSHOT_DIR, screenshot_name)
             try:
-                await page.screenshot(path=screenshot_path, full_page=True)
+                await page.screenshot(path=screenshot_path, full_page=True, timeout=8000)
                 state.screenshots.append({"url": url, "path": screenshot_path, "device": state.device})
             except Exception as e:
                 state.log("CrawlerAgent", f"Screenshot failed for {url}", "warning", str(e))
