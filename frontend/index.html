@@ -150,7 +150,7 @@
   <div id="scoreboard" class="panel" style="display:none">
     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
       <h2 style="margin:0;">Quality Scoreboard</h2>
-      <button id="exportBtn" onclick="exportReport()" style="background:#0d1218; border:1px solid var(--accent); color:var(--accent); display:none; padding:8px 14px; font-size:12px;">📥 Export Report (JSON & HTML)</button>
+      <button id="exportBtn" onclick="exportReport()" style="background:#0d1218; border:1px solid var(--accent); color:var(--accent); display:none; padding:8px 14px; font-size:12px;">📥 Export HTML Report</button>
     </div>
     <div class="score-row" id="scoreRow"></div>
   </div>
@@ -200,7 +200,7 @@ async function exportReport(){
   if(!currentScanId) return;
   const btn = document.getElementById("exportBtn");
   btn.disabled = true;
-  btn.textContent = "⟳ Exporting Report…";
+  btn.textContent = "⟳ Exporting HTML Report…";
 
   try {
     const res = await fetch(`${API}/api/scan/${currentScanId}/export`);
@@ -216,25 +216,19 @@ async function exportReport(){
       document.getElementById("scoreboard").appendChild(linkDiv);
     }
     linkDiv.innerHTML = `
-      🎉 <strong>Report Exported Successfully!</strong> Saved locally in <code>reports/</code> folder.<br>
+      🎉 <strong>HTML Report Exported Successfully!</strong> Saved locally in <code>reports/</code> folder.<br>
       <div style="margin-top:6px;">
-        📥 Downloads: 
-        <a href="${API}${data.json_url}" target="_blank" download style="color:var(--accent); font-weight:bold; margin-right:16px;">📄 JSON Report (${data.json_file})</a> 
-        <a href="${API}${data.html_url}" target="_blank" style="color:var(--accent); font-weight:bold;">🌐 HTML Summary (${data.html_file})</a>
+        🌐 Download / View: 
+        <a href="${API}${data.html_url}" target="_blank" style="color:var(--accent); font-weight:bold; font-size:13px;">📄 Open HTML Summary Report (${data.html_file})</a>
       </div>
     `;
 
-    // Trigger browser download of JSON file
-    const a = document.createElement("a");
-    a.href = `${API}${data.json_url}`;
-    a.download = data.json_file;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
+    // Open HTML report in a new tab
+    window.open(`${API}${data.html_url}`, "_blank");
 
   } catch(e) {
     btn.disabled = false;
-    btn.textContent = "📥 Export Report (JSON & HTML)";
+    btn.textContent = "📥 Export HTML Report";
     alert("Could not export report: " + e.message);
   }
 }

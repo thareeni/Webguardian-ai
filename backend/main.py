@@ -174,13 +174,7 @@ async def export_scan_report(scan_id: str):
     report_data["rag_enabled"] = True
     report_data["llm_configured"] = bool(os.environ.get("ANTHROPIC_API_KEY"))
 
-    # Save JSON report file
-    json_filename = f"report_{scan_id}.json"
-    json_filepath = os.path.join(REPORTS_DIR, json_filename)
-    with open(json_filepath, "w", encoding="utf-8") as f:
-        json.dump(report_data, f, indent=2)
-
-    # Save HTML summary report file
+    # Save HTML summary report file only
     html_filename = f"report_{scan_id}.html"
     html_filepath = os.path.join(REPORTS_DIR, html_filename)
     html_content = _generate_html_report(report_data)
@@ -190,9 +184,7 @@ async def export_scan_report(scan_id: str):
     return {
         "status": "success",
         "scan_id": scan_id,
-        "json_file": json_filename,
         "html_file": html_filename,
-        "json_url": f"/reports/{json_filename}",
         "html_url": f"/reports/{html_filename}",
         "report_data": report_data,
     }
