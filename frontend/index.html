@@ -148,9 +148,12 @@
   </div>
 
   <div id="scoreboard" class="panel" style="display:none">
-    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; flex-wrap:wrap; gap:10px;">
       <h2 style="margin:0;">Quality Scoreboard</h2>
-      <button id="exportBtn" onclick="exportReport()" style="background:#0d1218; border:1px solid var(--accent); color:var(--accent); display:none; padding:8px 14px; font-size:12px;">📥 Export HTML Report</button>
+      <div>
+        <button id="autoFixBtn" onclick="triggerAutoFix()" style="background:#2dd4bf; color:#090d12; border:none; display:none; padding:8px 14px; font-size:12px; font-weight:bold; cursor:pointer; border-radius:6px; margin-right:8px;">⚡ Auto-Fix & Re-Scan (Demo Site Only)</button>
+        <button id="exportBtn" onclick="exportReport()" style="background:#0d1218; border:1px solid var(--accent); color:var(--accent); display:none; padding:8px 14px; font-size:12px; cursor:pointer; border-radius:6px;">📥 Export HTML Report</button>
+      </div>
     </div>
     <div class="score-row" id="scoreRow"></div>
   </div>
@@ -181,6 +184,12 @@
 const API = "http://localhost:8000";
 let pollTimer = null;
 let currentScanId = null;
+let previousScanData = null;
+
+function isLocalUrl(url){
+  if(!url) return false;
+  return url.includes("localhost") || url.includes("127.0.0.1") || url.includes("5500") || url.includes("demo-site");
+}
 
 async function checkHealth(){
   const healthEl = document.getElementById("health");
@@ -223,7 +232,6 @@ async function exportReport(){
       </div>
     `;
 
-    // Open HTML report in a new tab
     window.open(`${API}${data.html_url}`, "_blank");
 
   } catch(e) {
@@ -231,6 +239,87 @@ async function exportReport(){
     btn.textContent = "📥 Export HTML Report";
     alert("Could not export report: " + e.message);
   }
+}
+
+async function triggerAutoFix(){
+  if(!currentScanId) return;
+  const btn = document.getElementById("autoFixBtn");
+  btn.disabled = true;
+  btn.textContent = "⟳ Applying Auto-Patches & Re-Scanning…";
+
+  try {
+    const beforeRes = await fetch(`${API}/api/scan/${currentScanId}`);
+    previousScanData = await beforeRes.json();
+
+    const res = await fetch(`${API}/api/scan/${currentScanId}/auto-fix`, { method: "POST" });
+    if(!res.ok){
+      const err = await res.json();
+      btn.disabled = false;
+      btn.textContent = "⚡ Auto-Fix & Re-Scan (Demo Site Only)";
+      alert("Auto-fix error: " + (err.detail || "Server rejected request"));
+      return;
+    }
+    const data = await res.json();
+    currentScanId = data.new_scan_id;
+    pollScan(data.new_scan_id);
+
+  } catch(e) {
+    btn.disabled = false;
+    btn.textContent = "⚡ Auto-Fix & Re-Scan (Demo Site Only)";
+    alert("Could not trigger auto-fix: " + e.message);
+  }
+}
+
+function renderComparisonCard(before, after){
+  let compDiv = document.getElementById("comparisonCard");
+  if(!compDiv){
+    compDiv = document.createElement("div");
+    compDiv.id = "comparisonCard";
+    compDiv.style.cssText = "margin-top:16px; padding:16px; background:#0d1218; border:1px solid #2dd4bf; border-radius:8px; font-size:13px;";
+    document.getElementById("scoreboard").appendChild(compDiv);
+  }
+
+  const bScore = before.quality_score || {};
+  const aScore = after.quality_score || {};
+  const scoreDiff = (aScore.overall || 0) - (bScore.overall || 0);
+  const scoreDiffStr = scoreDiff >= 0 ? `+${scoreDiff}` : `${scoreDiff}`;
+  
+  const bBugs = before.bugs ? before.bugs.length : 0;
+  const aBugs = after.bugs ? after.bugs.length : 0;
+  const bugDiff = bBugs - aBugs;
+  const bugDiffStr = bugDiff >= 0 ? `-${bugDiff}` : `+${Math.abs(bugDiff)}`;
+
+  compDiv.innerHTML = `
+    <div style="display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid #1e2632; padding-bottom:10px; margin-bottom:12px;">
+      <h3 style="margin:0; color:#2dd4bf; font-size:15px;">⚡ Auto-Fix Demo Results: BEFORE vs AFTER</h3>
+      <span style="background:rgba(45,212,191,0.15); color:#2dd4bf; padding:3px 10px; border-radius:20px; font-weight:bold; font-size:11px;">AUTO-PATCHED & RE-SCANNED</span>
+    </div>
+    
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:12px; margin-bottom:14px;">
+      <div style="background:#121820; border:1px solid #1e2632; padding:12px; border-radius:6px;">
+        <div style="color:#8a99ad; font-size:11px; text-transform:uppercase;">Overall Score</div>
+        <div style="font-size:22px; font-weight:bold; margin-top:4px;">
+          <span style="color:#f85149; text-decoration:line-through; font-size:16px;">${bScore.overall || '-'}</span> 
+          → <span style="color:#3fb950;">${aScore.overall || '-'}</span> 
+          <span style="font-size:13px; color:#2dd4bf; margin-left:6px;">(${scoreDiffStr} pts)</span>
+        </div>
+      </div>
+
+      <div style="background:#121820; border:1px solid #1e2632; padding:12px; border-radius:6px;">
+        <div style="color:#8a99ad; font-size:11px; text-transform:uppercase;">Bugs Detected</div>
+        <div style="font-size:22px; font-weight:bold; margin-top:4px;">
+          <span style="color:#f85149; text-decoration:line-through; font-size:16px;">${bBugs}</span> 
+          → <span style="color:#3fb950;">${aBugs}</span> 
+          <span style="font-size:13px; color:#2dd4bf; margin-left:6px;">(${bugDiffStr} bugs)</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="font-size:12px; color:#8a99ad;">
+      📁 <strong>Original Files Preserved:</strong> Backed up to <code>demo-site_backup/</code> before patching.<br>
+      ✅ <strong>Resolved Issues:</strong> Fixed 404 links, added missing alt attributes, updated CSS contrast ratios, resolved viewport overflow, fixed broken JS click handlers, and injected CSP security policies.
+    </div>
+  `;
 }
 
 async function startScan(){
@@ -242,8 +331,11 @@ async function startScan(){
   btn.textContent = "⟳ Scan in Progress…";
   document.getElementById("scoreboard").style.display = "none";
   document.getElementById("bugsPanel").style.display = "none";
+  previousScanData = null;
   const existingLinks = document.getElementById("exportLinks");
   if(existingLinks) existingLinks.remove();
+  const existingComp = document.getElementById("comparisonCard");
+  if(existingComp) existingComp.remove();
 
   const body = {
     url: url,
@@ -296,6 +388,19 @@ function pollScan(scanId){
           renderScore(state.quality_score);
           renderBugs(state.bugs);
           document.getElementById("exportBtn").style.display = "inline-block";
+          
+          if(isLocalUrl(state.website_url)){
+            const afBtn = document.getElementById("autoFixBtn");
+            afBtn.style.display = "inline-block";
+            afBtn.disabled = false;
+            afBtn.textContent = "⚡ Auto-Fix & Re-Scan (Demo Site Only)";
+          } else {
+            document.getElementById("autoFixBtn").style.display = "none";
+          }
+
+          if(previousScanData){
+            renderComparisonCard(previousScanData, state);
+          }
         } else {
           alert("Scan failed: " + (state.error || "Unknown scan error"));
         }

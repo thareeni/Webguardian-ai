@@ -6,14 +6,12 @@
 <style>
   body{font-family:Arial, sans-serif; margin:0; padding:0;}
   nav{background:#222; padding:16px; }
-  nav a{color:#ffffff; margin-right:16px; text-decoration:none; font-weight:bold;} /* low contrast: intentional */
+  nav a{color:#ccc; margin-right:16px; text-decoration:none;} /* low contrast: intentional */
   .container{max-width:1200px; margin:0 auto; padding:24px;}
-  .overflow-box{max-width:100%; box-sizing:border-box; overflow:hidden; background:#edf2f7; padding:10px; border-radius:4px;} /* mobile overflow: intentional */
+  .overflow-box{width:1600px; background:#eee; padding:10px;} /* mobile overflow: intentional */
   button{padding:10px 16px;}
-  .low-contrast{color:#1a202c; background:#edf2f7; padding:8px; border-radius:4px;} /* contrast issue: intentional */
+  .low-contrast{color:#aaa; background:#fff;} /* contrast issue: intentional */
 </style>
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' data:;">
-  <meta http-equiv="X-Content-Type-Options" content="nosniff">
 </head>
 <body>
 <nav>
@@ -23,24 +21,24 @@
   <a href="/broken-link-does-not-exist.html">Support</a> <!-- broken link: intentional -->
 </nav>
 
-<main class="container">
+<div class="container">
   <h1>Welcome to the Demo Storefront</h1>
-  <img src="/images/hero.png" alt="Demo Storefront Hero Image" width="600"> <!-- missing alt + broken src: intentional -->
+  <img src="/images/hero.png" width="600"> <!-- missing alt + broken src: intentional -->
 
   <p class="low-contrast">This text is intentionally hard to read for accessibility testing.</p>
 
   <div class="overflow-box">This box is wider than the viewport on mobile devices.</div>
 
   <h2>Sign up</h2>
-  <form id="signup-form" method="POST" action="#">
+  <form id="signup-form">
     <input type="email" name="email" required placeholder="Email">
     <input type="password" name="password" required placeholder="Password">
     <button type="submit">Create account</button>
   </form>
 
   <h2>Broken Button</h2>
-  <button id="broken-btn" onclick="console.log('Button click handled safely')">Click me</button> <!-- console error: intentional -->
-</main>
+  <button id="broken-btn" onclick="thisFunctionDoesNotExist()">Click me</button> <!-- console error: intentional -->
+</div>
 
 <script>
   console.log("Demo site loaded");

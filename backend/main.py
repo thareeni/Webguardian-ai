@@ -190,6 +190,52 @@ async def export_scan_report(scan_id: str):
     }
 
 
+from backend.agents.auto_patch_agent import is_local_target, apply_auto_patches
+
+@app.post("/api/scan/{scan_id}/auto-fix")
+async def auto_fix_scan(scan_id: str, background_tasks: BackgroundTasks):
+    state = _get_scan(scan_id)
+    url = state.website_url
+    
+    # Strictly enforce local target server-side
+    if not is_local_target(url):
+        raise HTTPException(
+            status_code=400,
+            detail="Auto-fix is strictly restricted to local demo-site targets only. External URLs cannot be auto-patched."
+        )
+
+    # Locate demo-site directory
+    workspace_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+    demo_site_dir = os.path.join(workspace_root, "demo-site")
+
+    # Apply auto-patches
+    try:
+        patches = apply_auto_patches(demo_site_dir)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Auto-patch failed: {str(e)}")
+
+    # Spawn fresh scan for the patched demo-site
+    import uuid
+    new_scan_id = str(uuid.uuid4())
+    new_state = ScanState(
+        scan_id=new_scan_id,
+        website_url=url,
+        max_pages=state.max_pages,
+        max_depth=state.max_depth,
+        device=state.device,
+    )
+    SCANS[new_scan_id] = new_state
+    background_tasks.add_task(run_scan, new_state)
+
+    return {
+        "status": "success",
+        "original_scan_id": scan_id,
+        "new_scan_id": new_scan_id,
+        "patched_count": len(patches),
+        "patches": patches,
+    }
+
+
 class ScanRequest(BaseModel):
     url: str
     max_pages: int = Field(default=10, ge=1, le=50)
@@ -221,6 +267,19 @@ async def health():
 
 @app.post("/api/scan", response_model=ScanResponse)
 async def start_scan(req: ScanRequest, background_tasks: BackgroundTasks):
+    # If target is local demo-site and backup exists, restore demo-site to original broken state for fresh scan
+    if is_local_target(req.url):
+        workspace_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
+        demo_dir = os.path.join(workspace_root, "demo-site")
+        backup_dir = os.path.join(workspace_root, "demo-site_backup")
+        if os.path.exists(backup_dir):
+            import shutil
+            try:
+                shutil.rmtree(demo_dir)
+                shutil.copytree(backup_dir, demo_dir)
+            except Exception as e:
+                print(f"Warning: Could not reset demo-site: {e}")
+
     state = ScanState(
         website_url=req.url,
         max_pages=req.max_pages,
