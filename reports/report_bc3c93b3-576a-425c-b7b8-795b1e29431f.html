@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>WebGuardian AI Scan Report - http://localhost:5500</title>
+<style>
+    body { background: #090d12; color: #e2e8f0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 24px; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .header { border-bottom: 1px solid #1e2632; padding-bottom: 16px; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center; }
+    h1 { font-size: 22px; color: #2dd4bf; margin: 0; }
+    .meta { font-size: 12px; color: #8a99ad; margin-top: 4px; }
+    .panel { background: #121820; border: 1px solid #1e2632; border-radius: 10px; padding: 20px; margin-bottom: 24px; }
+    .panel h2 { font-size: 14px; text-transform: uppercase; letter-spacing: 1px; color: #8a99ad; margin-top: 0; margin-bottom: 16px; }
+    .grid { display: flex; gap: 12px; flex-wrap: wrap; }
+    .card { flex: 1; min-width: 120px; background: #0d1218; border: 1px solid #1e2632; border-radius: 8px; padding: 14px; text-align: center; }
+    .card .num { font-size: 26px; font-weight: bold; color: #2dd4bf; }
+    .card .lbl { font-size: 10px; color: #8a99ad; text-transform: uppercase; margin-top: 4px; }
+    table { width: 100%; border-collapse: collapse; font-size: 12px; }
+    th { text-align: left; color: #8a99ad; text-transform: uppercase; font-size: 10px; padding: 10px; border-bottom: 1px solid #1e2632; }
+    .notice { background: rgba(210, 153, 34, 0.15); border: 1px solid rgba(210, 153, 34, 0.4); color: #e3b341; padding: 10px 16px; border-radius: 6px; font-size: 12px; margin-bottom: 16px; font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <div>
+            <h1>WebGuardian AI — Autonomous Scan Report</h1>
+            <div class="meta">Target: <strong>http://localhost:5500</strong> | Scan ID: <code>bc3c93b3-576a-425c-b7b8-795b1e29431f</code> | Completed: 2026-08-27T03:50:13.825665+00:00</div>
+        </div>
+    </div>
+
+    <div class="panel">
+        <h2>Quality Scoreboard</h2>
+        <div class="grid">
+            <div class="card"><div class="num">59</div><div class="lbl">Overall Score</div></div>
+            <div class="card"><div class="num">43</div><div class="lbl">Functional</div></div>
+            <div class="card"><div class="num">22</div><div class="lbl">Accessibility</div></div>
+            <div class="card"><div class="num">90</div><div class="lbl">Visual</div></div>
+            <div class="card"><div class="num">100</div><div class="lbl">Performance</div></div>
+            <div class="card"><div class="num">38</div><div class="lbl">Security</div></div>
+            <div class="card"><div class="num">36</div><div class="lbl">Bugs Found</div></div>
+        </div>
+    </div>
+
+    <div class="panel">
+        <h2>Bug Intelligence Explorer</h2>
+        <div class="notice">⚠️ AI-Recommended Fix (Not Auto-Applied) — Fixes are generated recommendations for developer remediation.</div>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width:130px">Severity & Status</th>
+                    <th style="width:220px">Title / Category</th>
+                    <th style="width:180px">Page URL</th>
+                    <th>Root Cause & Actionable Fix Recommendation</th>
+                </tr>
+            </thead>
+            <tbody>
+                
+        <tr>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <span style="padding:2px 8px; border-radius:20px; font-size:10px; font-weight:bold; background:rgba(45,212,191,0.1); color:#2dd4bf;">HIGH</span>
+                <div style="margin-top:6px;"><span style="color:#f85149; background:rgba(248,81,73,.15); padding:2px 6px; border-radius:4px; font-size:10px; font-weight:700;">Still Present</span></div>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <strong style="color:#e2e8f0; display:block;">Link reachable: http://localhost:5500/about.html</strong>
+                <span style="display:inline-block; padding:2px 6px; border-radius:4px; font-size:10px; background:#0d1218; border:1px solid #1e2632; color:#8a99ad; margin-top:4px;">functional</span>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632; font-family:monospace; font-size:11px; color:#2dd4bf; word-break:break-all;">
+                http://localhost:5500
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <div style="background:#0d1218; border-left:3px solid #2dd4bf; padding:8px 12px; border-radius:0 4px 4px 0; font-size:12px;"><strong>Root Cause:</strong> [HIGH Severity - Functional] Structural issue detected on page &#x27;http://localhost:5500&#x27;: Link reachable: http://localhost:5500/about.html. Knowledge reference: 1. Broken Links &amp; Unreachable Navigation (HTTP 404 / 500).</div>
+                
+            <div style="background:#0d1218; border-left:3px solid #3fb950; padding:8px 12px; margin-top:6px; border-radius:0 4px 4px 0;">
+                <div style="color:#3fb950; font-weight:bold;">💡 Recommended Fix: Upgrade form action endpoint or header configuration to HTTPS</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">📍 <strong>Where:</strong> Form action / HTTP headers on `http://localhost:5500`</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">🎯 <strong>Expected Impact:</strong> Mitigates OWASP security risk, preventing cleartext credential/data exposure.</div>
+            </div>
+            
+            </td>
+        </tr>
+        
+        <tr>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <span style="padding:2px 8px; border-radius:20px; font-size:10px; font-weight:bold; background:rgba(45,212,191,0.1); color:#2dd4bf;">HIGH</span>
+                <div style="margin-top:6px;"><span style="color:#f85149; background:rgba(248,81,73,.15); padding:2px 6px; border-radius:4px; font-size:10px; font-weight:700;">Still Present</span></div>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <strong style="color:#e2e8f0; display:block;">Link reachable: http://localhost:5500/contact.html</strong>
+                <span style="display:inline-block; padding:2px 6px; border-radius:4px; font-size:10px; background:#0d1218; border:1px solid #1e2632; color:#8a99ad; margin-top:4px;">functional</span>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632; font-family:monospace; font-size:11px; color:#2dd4bf; word-break:break-all;">
+                http://localhost:5500
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <div style="background:#0d1218; border-left:3px solid #2dd4bf; padding:8px 12px; border-radius:0 4px 4px 0; font-size:12px;"><strong>Root Cause:</strong> [HIGH Severity - Functional] Structural issue detected on page &#x27;http://localhost:5500&#x27;: Link reachable: http://localhost:5500/contact.html. Knowledge reference: 1. Broken Links &amp; Unreachable Navigation (HTTP 404 / 500).</div>
+                
+            <div style="background:#0d1218; border-left:3px solid #3fb950; padding:8px 12px; margin-top:6px; border-radius:0 4px 4px 0;">
+                <div style="color:#3fb950; font-weight:bold;">💡 Recommended Fix: Upgrade form action endpoint or header configuration to HTTPS</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">📍 <strong>Where:</strong> Form action / HTTP headers on `http://localhost:5500`</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">🎯 <strong>Expected Impact:</strong> Mitigates OWASP security risk, preventing cleartext credential/data exposure.</div>
+            </div>
+            
+            </td>
+        </tr>
+        
+        <tr>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <span style="padding:2px 8px; border-radius:20px; font-size:10px; font-weight:bold; background:rgba(45,212,191,0.1); color:#2dd4bf;">HIGH</span>
+                <div style="margin-top:6px;"><span style="color:#f85149; background:rgba(248,81,73,.15); padding:2px 6px; border-radius:4px; font-size:10px; font-weight:700;">Still Present</span></div>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <strong style="color:#e2e8f0; display:block;">Link reachable: http://localhost:5500/broken-link-does-not-exist.html</strong>
+                <span style="display:inline-block; padding:2px 6px; border-radius:4px; font-size:10px; background:#0d1218; border:1px solid #1e2632; color:#8a99ad; margin-top:4px;">functional</span>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632; font-family:monospace; font-size:11px; color:#2dd4bf; word-break:break-all;">
+                http://localhost:5500
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <div style="background:#0d1218; border-left:3px solid #2dd4bf; padding:8px 12px; border-radius:0 4px 4px 0; font-size:12px;"><strong>Root Cause:</strong> [HIGH Severity - Functional] Structural issue detected on page &#x27;http://localhost:5500&#x27;: Link reachable: http://localhost:5500/broken-link-does-not-exist.html. Knowledge reference: 1. Broken Links &amp; Unreachable Navigation (HTTP 404 / 500).</div>
+                
+            <div style="background:#0d1218; border-left:3px solid #3fb950; padding:8px 12px; margin-top:6px; border-radius:0 4px 4px 0;">
+                <div style="color:#3fb950; font-weight:bold;">💡 Recommended Fix: Upgrade form action endpoint or header configuration to HTTPS</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">📍 <strong>Where:</strong> Form action / HTTP headers on `http://localhost:5500`</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">🎯 <strong>Expected Impact:</strong> Mitigates OWASP security risk, preventing cleartext credential/data exposure.</div>
+            </div>
+            
+            </td>
+        </tr>
+        
+        <tr>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <span style="padding:2px 8px; border-radius:20px; font-size:10px; font-weight:bold; background:rgba(45,212,191,0.1); color:#2dd4bf;">LOW</span>
+                <div style="margin-top:6px;"><span style="color:#f85149; background:rgba(248,81,73,.15); padding:2px 6px; border-radius:4px; font-size:10px; font-weight:700;">Still Present</span></div>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <strong style="color:#e2e8f0; display:block;">Image loads correctly: http://localhost:5500/images/hero.png</strong>
+                <span style="display:inline-block; padding:2px 6px; border-radius:4px; font-size:10px; background:#0d1218; border:1px solid #1e2632; color:#8a99ad; margin-top:4px;">functional</span>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632; font-family:monospace; font-size:11px; color:#2dd4bf; word-break:break-all;">
+                http://localhost:5500
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <div style="background:#0d1218; border-left:3px solid #2dd4bf; padding:8px 12px; border-radius:0 4px 4px 0; font-size:12px;"><strong>Root Cause:</strong> [LOW Severity - Functional] Structural issue detected on page &#x27;http://localhost:5500&#x27;: Image loads correctly: http://localhost:5500/images/hero.png. Knowledge reference: 1. Image Text Alternatives (WCAG 1.1.1).</div>
+                
+            <div style="background:#0d1218; border-left:3px solid #3fb950; padding:8px 12px; margin-top:6px; border-radius:0 4px 4px 0;">
+                <div style="color:#3fb950; font-weight:bold;">💡 Recommended Fix: Upgrade form action endpoint or header configuration to HTTPS</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">📍 <strong>Where:</strong> Form action / HTTP headers on `http://localhost:5500`</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">🎯 <strong>Expected Impact:</strong> Mitigates OWASP security risk, preventing cleartext credential/data exposure.</div>
+            </div>
+            
+            </td>
+        </tr>
+        
+        <tr>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <span style="padding:2px 8px; border-radius:20px; font-size:10px; font-weight:bold; background:rgba(45,212,191,0.1); color:#2dd4bf;">HIGH</span>
+                <div style="margin-top:6px;"><span style="color:#f85149; background:rgba(248,81,73,.15); padding:2px 6px; border-radius:4px; font-size:10px; font-weight:700;">Still Present</span></div>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <strong style="color:#e2e8f0; display:block;">Link reachable: http://localhost:5500/about.html</strong>
+                <span style="display:inline-block; padding:2px 6px; border-radius:4px; font-size:10px; background:#0d1218; border:1px solid #1e2632; color:#8a99ad; margin-top:4px;">functional</span>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632; font-family:monospace; font-size:11px; color:#2dd4bf; word-break:break-all;">
+                http://localhost:5500/
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <div style="background:#0d1218; border-left:3px solid #2dd4bf; padding:8px 12px; border-radius:0 4px 4px 0; font-size:12px;"><strong>Root Cause:</strong> [HIGH Severity - Functional] Structural issue detected on page &#x27;http://localhost:5500/&#x27;: Link reachable: http://localhost:5500/about.html. Knowledge reference: 1. Broken Links &amp; Unreachable Navigation (HTTP 404 / 500).</div>
+                
+            <div style="background:#0d1218; border-left:3px solid #3fb950; padding:8px 12px; margin-top:6px; border-radius:0 4px 4px 0;">
+                <div style="color:#3fb950; font-weight:bold;">💡 Recommended Fix: Upgrade form action endpoint or header configuration to HTTPS</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">📍 <strong>Where:</strong> Form action / HTTP headers on `http://localhost:5500/`</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">🎯 <strong>Expected Impact:</strong> Mitigates OWASP security risk, preventing cleartext credential/data exposure.</div>
+            </div>
+            
+            </td>
+        </tr>
+        
+        <tr>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <span style="padding:2px 8px; border-radius:20px; font-size:10px; font-weight:bold; background:rgba(45,212,191,0.1); color:#2dd4bf;">HIGH</span>
+                <div style="margin-top:6px;"><span style="color:#f85149; background:rgba(248,81,73,.15); padding:2px 6px; border-radius:4px; font-size:10px; font-weight:700;">Still Present</span></div>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <strong style="color:#e2e8f0; display:block;">Link reachable: http://localhost:5500/contact.html</strong>
+                <span style="display:inline-block; padding:2px 6px; border-radius:4px; font-size:10px; background:#0d1218; border:1px solid #1e2632; color:#8a99ad; margin-top:4px;">functional</span>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632; font-family:monospace; font-size:11px; color:#2dd4bf; word-break:break-all;">
+                http://localhost:5500/
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <div style="background:#0d1218; border-left:3px solid #2dd4bf; padding:8px 12px; border-radius:0 4px 4px 0; font-size:12px;"><strong>Root Cause:</strong> [HIGH Severity - Functional] Structural issue detected on page &#x27;http://localhost:5500/&#x27;: Link reachable: http://localhost:5500/contact.html. Knowledge reference: 1. Broken Links &amp; Unreachable Navigation (HTTP 404 / 500).</div>
+                
+            <div style="background:#0d1218; border-left:3px solid #3fb950; padding:8px 12px; margin-top:6px; border-radius:0 4px 4px 0;">
+                <div style="color:#3fb950; font-weight:bold;">💡 Recommended Fix: Upgrade form action endpoint or header configuration to HTTPS</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">📍 <strong>Where:</strong> Form action / HTTP headers on `http://localhost:5500/`</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">🎯 <strong>Expected Impact:</strong> Mitigates OWASP security risk, preventing cleartext credential/data exposure.</div>
+            </div>
+            
+            </td>
+        </tr>
+        
+        <tr>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <span style="padding:2px 8px; border-radius:20px; font-size:10px; font-weight:bold; background:rgba(45,212,191,0.1); color:#2dd4bf;">HIGH</span>
+                <div style="margin-top:6px;"><span style="color:#f85149; background:rgba(248,81,73,.15); padding:2px 6px; border-radius:4px; font-size:10px; font-weight:700;">Still Present</span></div>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <strong style="color:#e2e8f0; display:block;">Link reachable: http://localhost:5500/broken-link-does-not-exist.html</strong>
+                <span style="display:inline-block; padding:2px 6px; border-radius:4px; font-size:10px; background:#0d1218; border:1px solid #1e2632; color:#8a99ad; margin-top:4px;">functional</span>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632; font-family:monospace; font-size:11px; color:#2dd4bf; word-break:break-all;">
+                http://localhost:5500/
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <div style="background:#0d1218; border-left:3px solid #2dd4bf; padding:8px 12px; border-radius:0 4px 4px 0; font-size:12px;"><strong>Root Cause:</strong> [HIGH Severity - Functional] Structural issue detected on page &#x27;http://localhost:5500/&#x27;: Link reachable: http://localhost:5500/broken-link-does-not-exist.html. Knowledge reference: 1. Broken Links &amp; Unreachable Navigation (HTTP 404 / 500).</div>
+                
+            <div style="background:#0d1218; border-left:3px solid #3fb950; padding:8px 12px; margin-top:6px; border-radius:0 4px 4px 0;">
+                <div style="color:#3fb950; font-weight:bold;">💡 Recommended Fix: Upgrade form action endpoint or header configuration to HTTPS</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">📍 <strong>Where:</strong> Form action / HTTP headers on `http://localhost:5500/`</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">🎯 <strong>Expected Impact:</strong> Mitigates OWASP security risk, preventing cleartext credential/data exposure.</div>
+            </div>
+            
+            </td>
+        </tr>
+        
+        <tr>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <span style="padding:2px 8px; border-radius:20px; font-size:10px; font-weight:bold; background:rgba(45,212,191,0.1); color:#2dd4bf;">LOW</span>
+                <div style="margin-top:6px;"><span style="color:#f85149; background:rgba(248,81,73,.15); padding:2px 6px; border-radius:4px; font-size:10px; font-weight:700;">Still Present</span></div>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <strong style="color:#e2e8f0; display:block;">Image loads correctly: http://localhost:5500/images/hero.png</strong>
+                <span style="display:inline-block; padding:2px 6px; border-radius:4px; font-size:10px; background:#0d1218; border:1px solid #1e2632; color:#8a99ad; margin-top:4px;">functional</span>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632; font-family:monospace; font-size:11px; color:#2dd4bf; word-break:break-all;">
+                http://localhost:5500/
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <div style="background:#0d1218; border-left:3px solid #2dd4bf; padding:8px 12px; border-radius:0 4px 4px 0; font-size:12px;"><strong>Root Cause:</strong> [LOW Severity - Functional] Structural issue detected on page &#x27;http://localhost:5500/&#x27;: Image loads correctly: http://localhost:5500/images/hero.png. Knowledge reference: 1. Image Text Alternatives (WCAG 1.1.1).</div>
+                
+            <div style="background:#0d1218; border-left:3px solid #3fb950; padding:8px 12px; margin-top:6px; border-radius:0 4px 4px 0;">
+                <div style="color:#3fb950; font-weight:bold;">💡 Recommended Fix: Upgrade form action endpoint or header configuration to HTTPS</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">📍 <strong>Where:</strong> Form action / HTTP headers on `http://localhost:5500/`</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">🎯 <strong>Expected Impact:</strong> Mitigates OWASP security risk, preventing cleartext credential/data exposure.</div>
+            </div>
+            
+            </td>
+        </tr>
+        
+        <tr>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <span style="padding:2px 8px; border-radius:20px; font-size:10px; font-weight:bold; background:rgba(45,212,191,0.1); color:#2dd4bf;">HIGH</span>
+                <div style="margin-top:6px;"><span style="color:#f85149; background:rgba(248,81,73,.15); padding:2px 6px; border-radius:4px; font-size:10px; font-weight:700;">Still Present</span></div>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <strong style="color:#e2e8f0; display:block;">Elements must meet minimum color contrast ratio thresholds (color-contrast)</strong>
+                <span style="display:inline-block; padding:2px 6px; border-radius:4px; font-size:10px; background:#0d1218; border:1px solid #1e2632; color:#8a99ad; margin-top:4px;">accessibility</span>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632; font-family:monospace; font-size:11px; color:#2dd4bf; word-break:break-all;">
+                http://localhost:5500
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <div style="background:#0d1218; border-left:3px solid #2dd4bf; padding:8px 12px; border-radius:0 4px 4px 0; font-size:12px;"><strong>Root Cause:</strong> [HIGH Severity - Accessibility] Structural issue detected on page &#x27;http://localhost:5500&#x27;: Elements must meet minimum color contrast ratio thresholds (color-contrast). Knowledge reference: 4. Minimum Color Contrast (WCAG 1.4.3).</div>
+                
+            <div style="background:#0d1218; border-left:3px solid #3fb950; padding:8px 12px; margin-top:6px; border-radius:0 4px 4px 0;">
+                <div style="color:#3fb950; font-weight:bold;">💡 Recommended Fix: Add descriptive `alt` attribute or `aria-label` to element</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">📍 <strong>Where:</strong> Target element on page `http://localhost:5500` (Elements must meet minimum color contrast ratio thresholds (color-contrast))</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">🎯 <strong>Expected Impact:</strong> Resolves WCAG 1.1.1 accessibility violation and improves screen reader compatibility.</div>
+            </div>
+            
+            </td>
+        </tr>
+        
+        <tr>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <span style="padding:2px 8px; border-radius:20px; font-size:10px; font-weight:bold; background:rgba(45,212,191,0.1); color:#2dd4bf;">CRITICAL</span>
+                <div style="margin-top:6px;"><span style="color:#f85149; background:rgba(248,81,73,.15); padding:2px 6px; border-radius:4px; font-size:10px; font-weight:700;">Still Present</span></div>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <strong style="color:#e2e8f0; display:block;">Images must have alternate text (image-alt)</strong>
+                <span style="display:inline-block; padding:2px 6px; border-radius:4px; font-size:10px; background:#0d1218; border:1px solid #1e2632; color:#8a99ad; margin-top:4px;">accessibility</span>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632; font-family:monospace; font-size:11px; color:#2dd4bf; word-break:break-all;">
+                http://localhost:5500
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <div style="background:#0d1218; border-left:3px solid #2dd4bf; padding:8px 12px; border-radius:0 4px 4px 0; font-size:12px;"><strong>Root Cause:</strong> [CRITICAL Severity - Accessibility] Structural issue detected on page &#x27;http://localhost:5500&#x27;: Images must have alternate text (image-alt). Knowledge reference: 1. Image Text Alternatives (WCAG 1.1.1).</div>
+                
+            <div style="background:#0d1218; border-left:3px solid #3fb950; padding:8px 12px; margin-top:6px; border-radius:0 4px 4px 0;">
+                <div style="color:#3fb950; font-weight:bold;">💡 Recommended Fix: Add descriptive `alt` attribute or `aria-label` to element</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">📍 <strong>Where:</strong> Target element on page `http://localhost:5500` (Images must have alternate text (image-alt))</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">🎯 <strong>Expected Impact:</strong> Resolves WCAG 1.1.1 accessibility violation and improves screen reader compatibility.</div>
+            </div>
+            
+            </td>
+        </tr>
+        
+        <tr>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <span style="padding:2px 8px; border-radius:20px; font-size:10px; font-weight:bold; background:rgba(45,212,191,0.1); color:#2dd4bf;">MEDIUM</span>
+                <div style="margin-top:6px;"><span style="color:#f85149; background:rgba(248,81,73,.15); padding:2px 6px; border-radius:4px; font-size:10px; font-weight:700;">Still Present</span></div>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <strong style="color:#e2e8f0; display:block;">Document should have one main landmark (landmark-one-main)</strong>
+                <span style="display:inline-block; padding:2px 6px; border-radius:4px; font-size:10px; background:#0d1218; border:1px solid #1e2632; color:#8a99ad; margin-top:4px;">accessibility</span>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632; font-family:monospace; font-size:11px; color:#2dd4bf; word-break:break-all;">
+                http://localhost:5500
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <div style="background:#0d1218; border-left:3px solid #2dd4bf; padding:8px 12px; border-radius:0 4px 4px 0; font-size:12px;"><strong>Root Cause:</strong> [MEDIUM Severity - Accessibility] Structural issue detected on page &#x27;http://localhost:5500&#x27;: Document should have one main landmark (landmark-one-main). Knowledge reference: WCAG 2.1 Accessibility Best Practices &amp; Fixes.</div>
+                
+            <div style="background:#0d1218; border-left:3px solid #3fb950; padding:8px 12px; margin-top:6px; border-radius:0 4px 4px 0;">
+                <div style="color:#3fb950; font-weight:bold;">💡 Recommended Fix: Add descriptive `alt` attribute or `aria-label` to element</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">📍 <strong>Where:</strong> Target element on page `http://localhost:5500` (Document should have one main landmark (landmark-one-main))</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">🎯 <strong>Expected Impact:</strong> Resolves WCAG 1.1.1 accessibility violation and improves screen reader compatibility.</div>
+            </div>
+            
+            </td>
+        </tr>
+        
+        <tr>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <span style="padding:2px 8px; border-radius:20px; font-size:10px; font-weight:bold; background:rgba(45,212,191,0.1); color:#2dd4bf;">MEDIUM</span>
+                <div style="margin-top:6px;"><span style="color:#f85149; background:rgba(248,81,73,.15); padding:2px 6px; border-radius:4px; font-size:10px; font-weight:700;">Still Present</span></div>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <strong style="color:#e2e8f0; display:block;">All page content should be contained by landmarks (region)</strong>
+                <span style="display:inline-block; padding:2px 6px; border-radius:4px; font-size:10px; background:#0d1218; border:1px solid #1e2632; color:#8a99ad; margin-top:4px;">accessibility</span>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632; font-family:monospace; font-size:11px; color:#2dd4bf; word-break:break-all;">
+                http://localhost:5500
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <div style="background:#0d1218; border-left:3px solid #2dd4bf; padding:8px 12px; border-radius:0 4px 4px 0; font-size:12px;"><strong>Root Cause:</strong> [MEDIUM Severity - Accessibility] Structural issue detected on page &#x27;http://localhost:5500&#x27;: All page content should be contained by landmarks (region). Knowledge reference: WCAG 2.1 Accessibility Best Practices &amp; Fixes.</div>
+                
+            <div style="background:#0d1218; border-left:3px solid #3fb950; padding:8px 12px; margin-top:6px; border-radius:0 4px 4px 0;">
+                <div style="color:#3fb950; font-weight:bold;">💡 Recommended Fix: Add descriptive `alt` attribute or `aria-label` to element</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">📍 <strong>Where:</strong> Target element on page `http://localhost:5500` (All page content should be contained by landmarks (region))</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">🎯 <strong>Expected Impact:</strong> Resolves WCAG 1.1.1 accessibility violation and improves screen reader compatibility.</div>
+            </div>
+            
+            </td>
+        </tr>
+        
+        <tr>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <span style="padding:2px 8px; border-radius:20px; font-size:10px; font-weight:bold; background:rgba(45,212,191,0.1); color:#2dd4bf;">HIGH</span>
+                <div style="margin-top:6px;"><span style="color:#f85149; background:rgba(248,81,73,.15); padding:2px 6px; border-radius:4px; font-size:10px; font-weight:700;">Still Present</span></div>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <strong style="color:#e2e8f0; display:block;">Elements must meet minimum color contrast ratio thresholds (color-contrast)</strong>
+                <span style="display:inline-block; padding:2px 6px; border-radius:4px; font-size:10px; background:#0d1218; border:1px solid #1e2632; color:#8a99ad; margin-top:4px;">accessibility</span>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632; font-family:monospace; font-size:11px; color:#2dd4bf; word-break:break-all;">
+                http://localhost:5500/
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <div style="background:#0d1218; border-left:3px solid #2dd4bf; padding:8px 12px; border-radius:0 4px 4px 0; font-size:12px;"><strong>Root Cause:</strong> [HIGH Severity - Accessibility] Structural issue detected on page &#x27;http://localhost:5500/&#x27;: Elements must meet minimum color contrast ratio thresholds (color-contrast). Knowledge reference: 4. Minimum Color Contrast (WCAG 1.4.3).</div>
+                
+            <div style="background:#0d1218; border-left:3px solid #3fb950; padding:8px 12px; margin-top:6px; border-radius:0 4px 4px 0;">
+                <div style="color:#3fb950; font-weight:bold;">💡 Recommended Fix: Add descriptive `alt` attribute or `aria-label` to element</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">📍 <strong>Where:</strong> Target element on page `http://localhost:5500/` (Elements must meet minimum color contrast ratio thresholds (color-contrast))</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">🎯 <strong>Expected Impact:</strong> Resolves WCAG 1.1.1 accessibility violation and improves screen reader compatibility.</div>
+            </div>
+            
+            </td>
+        </tr>
+        
+        <tr>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <span style="padding:2px 8px; border-radius:20px; font-size:10px; font-weight:bold; background:rgba(45,212,191,0.1); color:#2dd4bf;">CRITICAL</span>
+                <div style="margin-top:6px;"><span style="color:#f85149; background:rgba(248,81,73,.15); padding:2px 6px; border-radius:4px; font-size:10px; font-weight:700;">Still Present</span></div>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <strong style="color:#e2e8f0; display:block;">Images must have alternate text (image-alt)</strong>
+                <span style="display:inline-block; padding:2px 6px; border-radius:4px; font-size:10px; background:#0d1218; border:1px solid #1e2632; color:#8a99ad; margin-top:4px;">accessibility</span>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632; font-family:monospace; font-size:11px; color:#2dd4bf; word-break:break-all;">
+                http://localhost:5500/
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <div style="background:#0d1218; border-left:3px solid #2dd4bf; padding:8px 12px; border-radius:0 4px 4px 0; font-size:12px;"><strong>Root Cause:</strong> [CRITICAL Severity - Accessibility] Structural issue detected on page &#x27;http://localhost:5500/&#x27;: Images must have alternate text (image-alt). Knowledge reference: 1. Image Text Alternatives (WCAG 1.1.1).</div>
+                
+            <div style="background:#0d1218; border-left:3px solid #3fb950; padding:8px 12px; margin-top:6px; border-radius:0 4px 4px 0;">
+                <div style="color:#3fb950; font-weight:bold;">💡 Recommended Fix: Add descriptive `alt` attribute or `aria-label` to element</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">📍 <strong>Where:</strong> Target element on page `http://localhost:5500/` (Images must have alternate text (image-alt))</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">🎯 <strong>Expected Impact:</strong> Resolves WCAG 1.1.1 accessibility violation and improves screen reader compatibility.</div>
+            </div>
+            
+            </td>
+        </tr>
+        
+        <tr>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <span style="padding:2px 8px; border-radius:20px; font-size:10px; font-weight:bold; background:rgba(45,212,191,0.1); color:#2dd4bf;">MEDIUM</span>
+                <div style="margin-top:6px;"><span style="color:#f85149; background:rgba(248,81,73,.15); padding:2px 6px; border-radius:4px; font-size:10px; font-weight:700;">Still Present</span></div>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <strong style="color:#e2e8f0; display:block;">Document should have one main landmark (landmark-one-main)</strong>
+                <span style="display:inline-block; padding:2px 6px; border-radius:4px; font-size:10px; background:#0d1218; border:1px solid #1e2632; color:#8a99ad; margin-top:4px;">accessibility</span>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632; font-family:monospace; font-size:11px; color:#2dd4bf; word-break:break-all;">
+                http://localhost:5500/
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <div style="background:#0d1218; border-left:3px solid #2dd4bf; padding:8px 12px; border-radius:0 4px 4px 0; font-size:12px;"><strong>Root Cause:</strong> [MEDIUM Severity - Accessibility] Structural issue detected on page &#x27;http://localhost:5500/&#x27;: Document should have one main landmark (landmark-one-main). Knowledge reference: WCAG 2.1 Accessibility Best Practices &amp; Fixes.</div>
+                
+            <div style="background:#0d1218; border-left:3px solid #3fb950; padding:8px 12px; margin-top:6px; border-radius:0 4px 4px 0;">
+                <div style="color:#3fb950; font-weight:bold;">💡 Recommended Fix: Add descriptive `alt` attribute or `aria-label` to element</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">📍 <strong>Where:</strong> Target element on page `http://localhost:5500/` (Document should have one main landmark (landmark-one-main))</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">🎯 <strong>Expected Impact:</strong> Resolves WCAG 1.1.1 accessibility violation and improves screen reader compatibility.</div>
+            </div>
+            
+            </td>
+        </tr>
+        
+        <tr>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <span style="padding:2px 8px; border-radius:20px; font-size:10px; font-weight:bold; background:rgba(45,212,191,0.1); color:#2dd4bf;">MEDIUM</span>
+                <div style="margin-top:6px;"><span style="color:#f85149; background:rgba(248,81,73,.15); padding:2px 6px; border-radius:4px; font-size:10px; font-weight:700;">Still Present</span></div>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <strong style="color:#e2e8f0; display:block;">All page content should be contained by landmarks (region)</strong>
+                <span style="display:inline-block; padding:2px 6px; border-radius:4px; font-size:10px; background:#0d1218; border:1px solid #1e2632; color:#8a99ad; margin-top:4px;">accessibility</span>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632; font-family:monospace; font-size:11px; color:#2dd4bf; word-break:break-all;">
+                http://localhost:5500/
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <div style="background:#0d1218; border-left:3px solid #2dd4bf; padding:8px 12px; border-radius:0 4px 4px 0; font-size:12px;"><strong>Root Cause:</strong> [MEDIUM Severity - Accessibility] Structural issue detected on page &#x27;http://localhost:5500/&#x27;: All page content should be contained by landmarks (region). Knowledge reference: WCAG 2.1 Accessibility Best Practices &amp; Fixes.</div>
+                
+            <div style="background:#0d1218; border-left:3px solid #3fb950; padding:8px 12px; margin-top:6px; border-radius:0 4px 4px 0;">
+                <div style="color:#3fb950; font-weight:bold;">💡 Recommended Fix: Add descriptive `alt` attribute or `aria-label` to element</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">📍 <strong>Where:</strong> Target element on page `http://localhost:5500/` (All page content should be contained by landmarks (region))</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">🎯 <strong>Expected Impact:</strong> Resolves WCAG 1.1.1 accessibility violation and improves screen reader compatibility.</div>
+            </div>
+            
+            </td>
+        </tr>
+        
+        <tr>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <span style="padding:2px 8px; border-radius:20px; font-size:10px; font-weight:bold; background:rgba(45,212,191,0.1); color:#2dd4bf;">HIGH</span>
+                <div style="margin-top:6px;"><span style="color:#f85149; background:rgba(248,81,73,.15); padding:2px 6px; border-radius:4px; font-size:10px; font-weight:700;">Still Present</span></div>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <strong style="color:#e2e8f0; display:block;">&lt;html&gt; element must have a lang attribute (html-has-lang)</strong>
+                <span style="display:inline-block; padding:2px 6px; border-radius:4px; font-size:10px; background:#0d1218; border:1px solid #1e2632; color:#8a99ad; margin-top:4px;">accessibility</span>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632; font-family:monospace; font-size:11px; color:#2dd4bf; word-break:break-all;">
+                http://localhost:5500/about.html
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <div style="background:#0d1218; border-left:3px solid #2dd4bf; padding:8px 12px; border-radius:0 4px 4px 0; font-size:12px;"><strong>Root Cause:</strong> [HIGH Severity - Accessibility] Structural issue detected on page &#x27;http://localhost:5500/about.html&#x27;: &lt;html&gt; element must have a lang attribute (html-has-lang). Knowledge reference: 2. Accessible Form Controls (WCAG 1.3.1 / 4.1.2).</div>
+                
+            <div style="background:#0d1218; border-left:3px solid #3fb950; padding:8px 12px; margin-top:6px; border-radius:0 4px 4px 0;">
+                <div style="color:#3fb950; font-weight:bold;">💡 Recommended Fix: Add descriptive `alt` attribute or `aria-label` to element</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">📍 <strong>Where:</strong> Target element on page `http://localhost:5500/about.html` (&lt;html&gt; element must have a lang attribute (html-has-lang))</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">🎯 <strong>Expected Impact:</strong> Resolves WCAG 1.1.1 accessibility violation and improves screen reader compatibility.</div>
+            </div>
+            
+            </td>
+        </tr>
+        
+        <tr>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <span style="padding:2px 8px; border-radius:20px; font-size:10px; font-weight:bold; background:rgba(45,212,191,0.1); color:#2dd4bf;">MEDIUM</span>
+                <div style="margin-top:6px;"><span style="color:#f85149; background:rgba(248,81,73,.15); padding:2px 6px; border-radius:4px; font-size:10px; font-weight:700;">Still Present</span></div>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <strong style="color:#e2e8f0; display:block;">Document should have one main landmark (landmark-one-main)</strong>
+                <span style="display:inline-block; padding:2px 6px; border-radius:4px; font-size:10px; background:#0d1218; border:1px solid #1e2632; color:#8a99ad; margin-top:4px;">accessibility</span>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632; font-family:monospace; font-size:11px; color:#2dd4bf; word-break:break-all;">
+                http://localhost:5500/about.html
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <div style="background:#0d1218; border-left:3px solid #2dd4bf; padding:8px 12px; border-radius:0 4px 4px 0; font-size:12px;"><strong>Root Cause:</strong> [MEDIUM Severity - Accessibility] Structural issue detected on page &#x27;http://localhost:5500/about.html&#x27;: Document should have one main landmark (landmark-one-main). Knowledge reference: WCAG 2.1 Accessibility Best Practices &amp; Fixes.</div>
+                
+            <div style="background:#0d1218; border-left:3px solid #3fb950; padding:8px 12px; margin-top:6px; border-radius:0 4px 4px 0;">
+                <div style="color:#3fb950; font-weight:bold;">💡 Recommended Fix: Add descriptive `alt` attribute or `aria-label` to element</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">📍 <strong>Where:</strong> Target element on page `http://localhost:5500/about.html` (Document should have one main landmark (landmark-one-main))</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">🎯 <strong>Expected Impact:</strong> Resolves WCAG 1.1.1 accessibility violation and improves screen reader compatibility.</div>
+            </div>
+            
+            </td>
+        </tr>
+        
+        <tr>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <span style="padding:2px 8px; border-radius:20px; font-size:10px; font-weight:bold; background:rgba(45,212,191,0.1); color:#2dd4bf;">MEDIUM</span>
+                <div style="margin-top:6px;"><span style="color:#f85149; background:rgba(248,81,73,.15); padding:2px 6px; border-radius:4px; font-size:10px; font-weight:700;">Still Present</span></div>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <strong style="color:#e2e8f0; display:block;">All page content should be contained by landmarks (region)</strong>
+                <span style="display:inline-block; padding:2px 6px; border-radius:4px; font-size:10px; background:#0d1218; border:1px solid #1e2632; color:#8a99ad; margin-top:4px;">accessibility</span>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632; font-family:monospace; font-size:11px; color:#2dd4bf; word-break:break-all;">
+                http://localhost:5500/about.html
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <div style="background:#0d1218; border-left:3px solid #2dd4bf; padding:8px 12px; border-radius:0 4px 4px 0; font-size:12px;"><strong>Root Cause:</strong> [MEDIUM Severity - Accessibility] Structural issue detected on page &#x27;http://localhost:5500/about.html&#x27;: All page content should be contained by landmarks (region). Knowledge reference: WCAG 2.1 Accessibility Best Practices &amp; Fixes.</div>
+                
+            <div style="background:#0d1218; border-left:3px solid #3fb950; padding:8px 12px; margin-top:6px; border-radius:0 4px 4px 0;">
+                <div style="color:#3fb950; font-weight:bold;">💡 Recommended Fix: Add descriptive `alt` attribute or `aria-label` to element</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">📍 <strong>Where:</strong> Target element on page `http://localhost:5500/about.html` (All page content should be contained by landmarks (region))</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">🎯 <strong>Expected Impact:</strong> Resolves WCAG 1.1.1 accessibility violation and improves screen reader compatibility.</div>
+            </div>
+            
+            </td>
+        </tr>
+        
+        <tr>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <span style="padding:2px 8px; border-radius:20px; font-size:10px; font-weight:bold; background:rgba(45,212,191,0.1); color:#2dd4bf;">MEDIUM</span>
+                <div style="margin-top:6px;"><span style="color:#f85149; background:rgba(248,81,73,.15); padding:2px 6px; border-radius:4px; font-size:10px; font-weight:700;">Still Present</span></div>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <strong style="color:#e2e8f0; display:block;">Visual layout defect (overflow): div.container</strong>
+                <span style="display:inline-block; padding:2px 6px; border-radius:4px; font-size:10px; background:#0d1218; border:1px solid #1e2632; color:#8a99ad; margin-top:4px;">visual</span>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632; font-family:monospace; font-size:11px; color:#2dd4bf; word-break:break-all;">
+                http://localhost:5500
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <div style="background:#0d1218; border-left:3px solid #2dd4bf; padding:8px 12px; border-radius:0 4px 4px 0; font-size:12px;"><strong>Root Cause:</strong> [MEDIUM Severity - Visual] Structural issue detected on page &#x27;http://localhost:5500&#x27;: Visual layout defect (overflow): div.container. Knowledge reference: 4. Horizontal Viewport Overflow.</div>
+                
+            <div style="background:#0d1218; border-left:3px solid #3fb950; padding:8px 12px; margin-top:6px; border-radius:0 4px 4px 0;">
+                <div style="color:#3fb950; font-weight:bold;">💡 Recommended Fix: Adjust `z-index` or container `padding`/`margin` bounding box</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">📍 <strong>Where:</strong> CSS rules targeting element on page `http://localhost:5500`</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">🎯 <strong>Expected Impact:</strong> Fixes component collision and restores clickable interactive area.</div>
+            </div>
+            
+            </td>
+        </tr>
+        
+        <tr>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <span style="padding:2px 8px; border-radius:20px; font-size:10px; font-weight:bold; background:rgba(45,212,191,0.1); color:#2dd4bf;">MEDIUM</span>
+                <div style="margin-top:6px;"><span style="color:#f85149; background:rgba(248,81,73,.15); padding:2px 6px; border-radius:4px; font-size:10px; font-weight:700;">Still Present</span></div>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <strong style="color:#e2e8f0; display:block;">Visual layout defect (overflow): div.container</strong>
+                <span style="display:inline-block; padding:2px 6px; border-radius:4px; font-size:10px; background:#0d1218; border:1px solid #1e2632; color:#8a99ad; margin-top:4px;">visual</span>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632; font-family:monospace; font-size:11px; color:#2dd4bf; word-break:break-all;">
+                http://localhost:5500/
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <div style="background:#0d1218; border-left:3px solid #2dd4bf; padding:8px 12px; border-radius:0 4px 4px 0; font-size:12px;"><strong>Root Cause:</strong> [MEDIUM Severity - Visual] Structural issue detected on page &#x27;http://localhost:5500/&#x27;: Visual layout defect (overflow): div.container. Knowledge reference: 4. Horizontal Viewport Overflow.</div>
+                
+            <div style="background:#0d1218; border-left:3px solid #3fb950; padding:8px 12px; margin-top:6px; border-radius:0 4px 4px 0;">
+                <div style="color:#3fb950; font-weight:bold;">💡 Recommended Fix: Adjust `z-index` or container `padding`/`margin` bounding box</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">📍 <strong>Where:</strong> CSS rules targeting element on page `http://localhost:5500/`</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">🎯 <strong>Expected Impact:</strong> Fixes component collision and restores clickable interactive area.</div>
+            </div>
+            
+            </td>
+        </tr>
+        
+        <tr>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <span style="padding:2px 8px; border-radius:20px; font-size:10px; font-weight:bold; background:rgba(45,212,191,0.1); color:#2dd4bf;">MEDIUM</span>
+                <div style="margin-top:6px;"><span style="color:#f85149; background:rgba(248,81,73,.15); padding:2px 6px; border-radius:4px; font-size:10px; font-weight:700;">Still Present</span></div>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <strong style="color:#e2e8f0; display:block;">Security vulnerability (missing_header_content-security-policy): Missing security header: Content-Security-Policy. Prevents XSS and unauthorized script injection.</strong>
+                <span style="display:inline-block; padding:2px 6px; border-radius:4px; font-size:10px; background:#0d1218; border:1px solid #1e2632; color:#8a99ad; margin-top:4px;">security</span>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632; font-family:monospace; font-size:11px; color:#2dd4bf; word-break:break-all;">
+                http://localhost:5500
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <div style="background:#0d1218; border-left:3px solid #2dd4bf; padding:8px 12px; border-radius:0 4px 4px 0; font-size:12px;"><strong>Root Cause:</strong> [MEDIUM Severity - Security] Structural issue detected on page &#x27;http://localhost:5500&#x27;: Security vulnerability (missing_header_content-security-policy): Missing security header: Content-Security-Policy. Prevents XSS and unauthorized script injection.. Knowledge reference: 1. Missing HTTP Security Headers.</div>
+                
+            <div style="background:#0d1218; border-left:3px solid #3fb950; padding:8px 12px; margin-top:6px; border-radius:0 4px 4px 0;">
+                <div style="color:#3fb950; font-weight:bold;">💡 Recommended Fix: Upgrade form action endpoint or header configuration to HTTPS</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">📍 <strong>Where:</strong> Form action / HTTP headers on `http://localhost:5500`</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">🎯 <strong>Expected Impact:</strong> Mitigates OWASP security risk, preventing cleartext credential/data exposure.</div>
+            </div>
+            
+            </td>
+        </tr>
+        
+        <tr>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <span style="padding:2px 8px; border-radius:20px; font-size:10px; font-weight:bold; background:rgba(45,212,191,0.1); color:#2dd4bf;">MEDIUM</span>
+                <div style="margin-top:6px;"><span style="color:#f85149; background:rgba(248,81,73,.15); padding:2px 6px; border-radius:4px; font-size:10px; font-weight:700;">Still Present</span></div>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <strong style="color:#e2e8f0; display:block;">Security vulnerability (missing_header_x-frame-options): Missing security header: X-Frame-Options. Prevents Clickjacking attacks.</strong>
+                <span style="display:inline-block; padding:2px 6px; border-radius:4px; font-size:10px; background:#0d1218; border:1px solid #1e2632; color:#8a99ad; margin-top:4px;">security</span>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632; font-family:monospace; font-size:11px; color:#2dd4bf; word-break:break-all;">
+                http://localhost:5500
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <div style="background:#0d1218; border-left:3px solid #2dd4bf; padding:8px 12px; border-radius:0 4px 4px 0; font-size:12px;"><strong>Root Cause:</strong> [MEDIUM Severity - Security] Structural issue detected on page &#x27;http://localhost:5500&#x27;: Security vulnerability (missing_header_x-frame-options): Missing security header: X-Frame-Options. Prevents Clickjacking attacks.. Knowledge reference: 1. Missing HTTP Security Headers.</div>
+                
+            <div style="background:#0d1218; border-left:3px solid #3fb950; padding:8px 12px; margin-top:6px; border-radius:0 4px 4px 0;">
+                <div style="color:#3fb950; font-weight:bold;">💡 Recommended Fix: Upgrade form action endpoint or header configuration to HTTPS</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">📍 <strong>Where:</strong> Form action / HTTP headers on `http://localhost:5500`</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">🎯 <strong>Expected Impact:</strong> Mitigates OWASP security risk, preventing cleartext credential/data exposure.</div>
+            </div>
+            
+            </td>
+        </tr>
+        
+        <tr>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <span style="padding:2px 8px; border-radius:20px; font-size:10px; font-weight:bold; background:rgba(45,212,191,0.1); color:#2dd4bf;">LOW</span>
+                <div style="margin-top:6px;"><span style="color:#f85149; background:rgba(248,81,73,.15); padding:2px 6px; border-radius:4px; font-size:10px; font-weight:700;">Still Present</span></div>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <strong style="color:#e2e8f0; display:block;">Security vulnerability (missing_header_x-content-type-options): Missing security header: X-Content-Type-Options. Prevents MIME-sniffing vulnerabilities.</strong>
+                <span style="display:inline-block; padding:2px 6px; border-radius:4px; font-size:10px; background:#0d1218; border:1px solid #1e2632; color:#8a99ad; margin-top:4px;">security</span>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632; font-family:monospace; font-size:11px; color:#2dd4bf; word-break:break-all;">
+                http://localhost:5500
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <div style="background:#0d1218; border-left:3px solid #2dd4bf; padding:8px 12px; border-radius:0 4px 4px 0; font-size:12px;"><strong>Root Cause:</strong> [LOW Severity - Security] Structural issue detected on page &#x27;http://localhost:5500&#x27;: Security vulnerability (missing_header_x-content-type-options): Missing security header: X-Content-Type-Options. Prevents MIME-sniffing vulnerabilities.. Knowledge reference: 1. Missing HTTP Security Headers.</div>
+                
+            <div style="background:#0d1218; border-left:3px solid #3fb950; padding:8px 12px; margin-top:6px; border-radius:0 4px 4px 0;">
+                <div style="color:#3fb950; font-weight:bold;">💡 Recommended Fix: Upgrade form action endpoint or header configuration to HTTPS</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">📍 <strong>Where:</strong> Form action / HTTP headers on `http://localhost:5500`</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">🎯 <strong>Expected Impact:</strong> Mitigates OWASP security risk, preventing cleartext credential/data exposure.</div>
+            </div>
+            
+            </td>
+        </tr>
+        
+        <tr>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <span style="padding:2px 8px; border-radius:20px; font-size:10px; font-weight:bold; background:rgba(45,212,191,0.1); color:#2dd4bf;">LOW</span>
+                <div style="margin-top:6px;"><span style="color:#f85149; background:rgba(248,81,73,.15); padding:2px 6px; border-radius:4px; font-size:10px; font-weight:700;">Still Present</span></div>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <strong style="color:#e2e8f0; display:block;">Security vulnerability (missing_header_referrer-policy): Missing security header: Referrer-Policy. Controls referrer information leakage.</strong>
+                <span style="display:inline-block; padding:2px 6px; border-radius:4px; font-size:10px; background:#0d1218; border:1px solid #1e2632; color:#8a99ad; margin-top:4px;">security</span>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632; font-family:monospace; font-size:11px; color:#2dd4bf; word-break:break-all;">
+                http://localhost:5500
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <div style="background:#0d1218; border-left:3px solid #2dd4bf; padding:8px 12px; border-radius:0 4px 4px 0; font-size:12px;"><strong>Root Cause:</strong> [LOW Severity - Security] Structural issue detected on page &#x27;http://localhost:5500&#x27;: Security vulnerability (missing_header_referrer-policy): Missing security header: Referrer-Policy. Controls referrer information leakage.. Knowledge reference: 1. Missing HTTP Security Headers.</div>
+                
+            <div style="background:#0d1218; border-left:3px solid #3fb950; padding:8px 12px; margin-top:6px; border-radius:0 4px 4px 0;">
+                <div style="color:#3fb950; font-weight:bold;">💡 Recommended Fix: Upgrade form action endpoint or header configuration to HTTPS</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">📍 <strong>Where:</strong> Form action / HTTP headers on `http://localhost:5500`</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">🎯 <strong>Expected Impact:</strong> Mitigates OWASP security risk, preventing cleartext credential/data exposure.</div>
+            </div>
+            
+            </td>
+        </tr>
+        
+        <tr>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <span style="padding:2px 8px; border-radius:20px; font-size:10px; font-weight:bold; background:rgba(45,212,191,0.1); color:#2dd4bf;">HIGH</span>
+                <div style="margin-top:6px;"><span style="color:#f85149; background:rgba(248,81,73,.15); padding:2px 6px; border-radius:4px; font-size:10px; font-weight:700;">Still Present</span></div>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <strong style="color:#e2e8f0; display:block;">Security vulnerability (insecure_form_action): Form action submits over unencrypted HTTP: http://localhost:5500/</strong>
+                <span style="display:inline-block; padding:2px 6px; border-radius:4px; font-size:10px; background:#0d1218; border:1px solid #1e2632; color:#8a99ad; margin-top:4px;">security</span>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632; font-family:monospace; font-size:11px; color:#2dd4bf; word-break:break-all;">
+                http://localhost:5500
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <div style="background:#0d1218; border-left:3px solid #2dd4bf; padding:8px 12px; border-radius:0 4px 4px 0; font-size:12px;"><strong>Root Cause:</strong> [HIGH Severity - Security] Structural issue detected on page &#x27;http://localhost:5500&#x27;: Security vulnerability (insecure_form_action): Form action submits over unencrypted HTTP: http://localhost:5500/. Knowledge reference: 2. Insecure Form Submissions over HTTP.</div>
+                
+            <div style="background:#0d1218; border-left:3px solid #3fb950; padding:8px 12px; margin-top:6px; border-radius:0 4px 4px 0;">
+                <div style="color:#3fb950; font-weight:bold;">💡 Recommended Fix: Upgrade form action endpoint or header configuration to HTTPS</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">📍 <strong>Where:</strong> Form action / HTTP headers on `http://localhost:5500`</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">🎯 <strong>Expected Impact:</strong> Mitigates OWASP security risk, preventing cleartext credential/data exposure.</div>
+            </div>
+            
+            </td>
+        </tr>
+        
+        <tr>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <span style="padding:2px 8px; border-radius:20px; font-size:10px; font-weight:bold; background:rgba(45,212,191,0.1); color:#2dd4bf;">MEDIUM</span>
+                <div style="margin-top:6px;"><span style="color:#f85149; background:rgba(248,81,73,.15); padding:2px 6px; border-radius:4px; font-size:10px; font-weight:700;">Still Present</span></div>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <strong style="color:#e2e8f0; display:block;">Security vulnerability (missing_header_content-security-policy): Missing security header: Content-Security-Policy. Prevents XSS and unauthorized script injection.</strong>
+                <span style="display:inline-block; padding:2px 6px; border-radius:4px; font-size:10px; background:#0d1218; border:1px solid #1e2632; color:#8a99ad; margin-top:4px;">security</span>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632; font-family:monospace; font-size:11px; color:#2dd4bf; word-break:break-all;">
+                http://localhost:5500/
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <div style="background:#0d1218; border-left:3px solid #2dd4bf; padding:8px 12px; border-radius:0 4px 4px 0; font-size:12px;"><strong>Root Cause:</strong> [MEDIUM Severity - Security] Structural issue detected on page &#x27;http://localhost:5500/&#x27;: Security vulnerability (missing_header_content-security-policy): Missing security header: Content-Security-Policy. Prevents XSS and unauthorized script injection.. Knowledge reference: 1. Missing HTTP Security Headers.</div>
+                
+            <div style="background:#0d1218; border-left:3px solid #3fb950; padding:8px 12px; margin-top:6px; border-radius:0 4px 4px 0;">
+                <div style="color:#3fb950; font-weight:bold;">💡 Recommended Fix: Upgrade form action endpoint or header configuration to HTTPS</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">📍 <strong>Where:</strong> Form action / HTTP headers on `http://localhost:5500/`</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">🎯 <strong>Expected Impact:</strong> Mitigates OWASP security risk, preventing cleartext credential/data exposure.</div>
+            </div>
+            
+            </td>
+        </tr>
+        
+        <tr>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <span style="padding:2px 8px; border-radius:20px; font-size:10px; font-weight:bold; background:rgba(45,212,191,0.1); color:#2dd4bf;">MEDIUM</span>
+                <div style="margin-top:6px;"><span style="color:#f85149; background:rgba(248,81,73,.15); padding:2px 6px; border-radius:4px; font-size:10px; font-weight:700;">Still Present</span></div>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <strong style="color:#e2e8f0; display:block;">Security vulnerability (missing_header_x-frame-options): Missing security header: X-Frame-Options. Prevents Clickjacking attacks.</strong>
+                <span style="display:inline-block; padding:2px 6px; border-radius:4px; font-size:10px; background:#0d1218; border:1px solid #1e2632; color:#8a99ad; margin-top:4px;">security</span>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632; font-family:monospace; font-size:11px; color:#2dd4bf; word-break:break-all;">
+                http://localhost:5500/
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <div style="background:#0d1218; border-left:3px solid #2dd4bf; padding:8px 12px; border-radius:0 4px 4px 0; font-size:12px;"><strong>Root Cause:</strong> [MEDIUM Severity - Security] Structural issue detected on page &#x27;http://localhost:5500/&#x27;: Security vulnerability (missing_header_x-frame-options): Missing security header: X-Frame-Options. Prevents Clickjacking attacks.. Knowledge reference: 1. Missing HTTP Security Headers.</div>
+                
+            <div style="background:#0d1218; border-left:3px solid #3fb950; padding:8px 12px; margin-top:6px; border-radius:0 4px 4px 0;">
+                <div style="color:#3fb950; font-weight:bold;">💡 Recommended Fix: Upgrade form action endpoint or header configuration to HTTPS</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">📍 <strong>Where:</strong> Form action / HTTP headers on `http://localhost:5500/`</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">🎯 <strong>Expected Impact:</strong> Mitigates OWASP security risk, preventing cleartext credential/data exposure.</div>
+            </div>
+            
+            </td>
+        </tr>
+        
+        <tr>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <span style="padding:2px 8px; border-radius:20px; font-size:10px; font-weight:bold; background:rgba(45,212,191,0.1); color:#2dd4bf;">LOW</span>
+                <div style="margin-top:6px;"><span style="color:#f85149; background:rgba(248,81,73,.15); padding:2px 6px; border-radius:4px; font-size:10px; font-weight:700;">Still Present</span></div>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <strong style="color:#e2e8f0; display:block;">Security vulnerability (missing_header_x-content-type-options): Missing security header: X-Content-Type-Options. Prevents MIME-sniffing vulnerabilities.</strong>
+                <span style="display:inline-block; padding:2px 6px; border-radius:4px; font-size:10px; background:#0d1218; border:1px solid #1e2632; color:#8a99ad; margin-top:4px;">security</span>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632; font-family:monospace; font-size:11px; color:#2dd4bf; word-break:break-all;">
+                http://localhost:5500/
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <div style="background:#0d1218; border-left:3px solid #2dd4bf; padding:8px 12px; border-radius:0 4px 4px 0; font-size:12px;"><strong>Root Cause:</strong> [LOW Severity - Security] Structural issue detected on page &#x27;http://localhost:5500/&#x27;: Security vulnerability (missing_header_x-content-type-options): Missing security header: X-Content-Type-Options. Prevents MIME-sniffing vulnerabilities.. Knowledge reference: 1. Missing HTTP Security Headers.</div>
+                
+            <div style="background:#0d1218; border-left:3px solid #3fb950; padding:8px 12px; margin-top:6px; border-radius:0 4px 4px 0;">
+                <div style="color:#3fb950; font-weight:bold;">💡 Recommended Fix: Upgrade form action endpoint or header configuration to HTTPS</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">📍 <strong>Where:</strong> Form action / HTTP headers on `http://localhost:5500/`</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">🎯 <strong>Expected Impact:</strong> Mitigates OWASP security risk, preventing cleartext credential/data exposure.</div>
+            </div>
+            
+            </td>
+        </tr>
+        
+        <tr>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <span style="padding:2px 8px; border-radius:20px; font-size:10px; font-weight:bold; background:rgba(45,212,191,0.1); color:#2dd4bf;">LOW</span>
+                <div style="margin-top:6px;"><span style="color:#f85149; background:rgba(248,81,73,.15); padding:2px 6px; border-radius:4px; font-size:10px; font-weight:700;">Still Present</span></div>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <strong style="color:#e2e8f0; display:block;">Security vulnerability (missing_header_referrer-policy): Missing security header: Referrer-Policy. Controls referrer information leakage.</strong>
+                <span style="display:inline-block; padding:2px 6px; border-radius:4px; font-size:10px; background:#0d1218; border:1px solid #1e2632; color:#8a99ad; margin-top:4px;">security</span>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632; font-family:monospace; font-size:11px; color:#2dd4bf; word-break:break-all;">
+                http://localhost:5500/
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <div style="background:#0d1218; border-left:3px solid #2dd4bf; padding:8px 12px; border-radius:0 4px 4px 0; font-size:12px;"><strong>Root Cause:</strong> [LOW Severity - Security] Structural issue detected on page &#x27;http://localhost:5500/&#x27;: Security vulnerability (missing_header_referrer-policy): Missing security header: Referrer-Policy. Controls referrer information leakage.. Knowledge reference: 1. Missing HTTP Security Headers.</div>
+                
+            <div style="background:#0d1218; border-left:3px solid #3fb950; padding:8px 12px; margin-top:6px; border-radius:0 4px 4px 0;">
+                <div style="color:#3fb950; font-weight:bold;">💡 Recommended Fix: Upgrade form action endpoint or header configuration to HTTPS</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">📍 <strong>Where:</strong> Form action / HTTP headers on `http://localhost:5500/`</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">🎯 <strong>Expected Impact:</strong> Mitigates OWASP security risk, preventing cleartext credential/data exposure.</div>
+            </div>
+            
+            </td>
+        </tr>
+        
+        <tr>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <span style="padding:2px 8px; border-radius:20px; font-size:10px; font-weight:bold; background:rgba(45,212,191,0.1); color:#2dd4bf;">HIGH</span>
+                <div style="margin-top:6px;"><span style="color:#f85149; background:rgba(248,81,73,.15); padding:2px 6px; border-radius:4px; font-size:10px; font-weight:700;">Still Present</span></div>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <strong style="color:#e2e8f0; display:block;">Security vulnerability (insecure_form_action): Form action submits over unencrypted HTTP: http://localhost:5500/</strong>
+                <span style="display:inline-block; padding:2px 6px; border-radius:4px; font-size:10px; background:#0d1218; border:1px solid #1e2632; color:#8a99ad; margin-top:4px;">security</span>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632; font-family:monospace; font-size:11px; color:#2dd4bf; word-break:break-all;">
+                http://localhost:5500/
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <div style="background:#0d1218; border-left:3px solid #2dd4bf; padding:8px 12px; border-radius:0 4px 4px 0; font-size:12px;"><strong>Root Cause:</strong> [HIGH Severity - Security] Structural issue detected on page &#x27;http://localhost:5500/&#x27;: Security vulnerability (insecure_form_action): Form action submits over unencrypted HTTP: http://localhost:5500/. Knowledge reference: 2. Insecure Form Submissions over HTTP.</div>
+                
+            <div style="background:#0d1218; border-left:3px solid #3fb950; padding:8px 12px; margin-top:6px; border-radius:0 4px 4px 0;">
+                <div style="color:#3fb950; font-weight:bold;">💡 Recommended Fix: Upgrade form action endpoint or header configuration to HTTPS</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">📍 <strong>Where:</strong> Form action / HTTP headers on `http://localhost:5500/`</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">🎯 <strong>Expected Impact:</strong> Mitigates OWASP security risk, preventing cleartext credential/data exposure.</div>
+            </div>
+            
+            </td>
+        </tr>
+        
+        <tr>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <span style="padding:2px 8px; border-radius:20px; font-size:10px; font-weight:bold; background:rgba(45,212,191,0.1); color:#2dd4bf;">MEDIUM</span>
+                <div style="margin-top:6px;"><span style="color:#f85149; background:rgba(248,81,73,.15); padding:2px 6px; border-radius:4px; font-size:10px; font-weight:700;">Still Present</span></div>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <strong style="color:#e2e8f0; display:block;">Security vulnerability (missing_header_content-security-policy): Missing security header: Content-Security-Policy. Prevents XSS and unauthorized script injection.</strong>
+                <span style="display:inline-block; padding:2px 6px; border-radius:4px; font-size:10px; background:#0d1218; border:1px solid #1e2632; color:#8a99ad; margin-top:4px;">security</span>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632; font-family:monospace; font-size:11px; color:#2dd4bf; word-break:break-all;">
+                http://localhost:5500/about.html
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <div style="background:#0d1218; border-left:3px solid #2dd4bf; padding:8px 12px; border-radius:0 4px 4px 0; font-size:12px;"><strong>Root Cause:</strong> [MEDIUM Severity - Security] Structural issue detected on page &#x27;http://localhost:5500/about.html&#x27;: Security vulnerability (missing_header_content-security-policy): Missing security header: Content-Security-Policy. Prevents XSS and unauthorized script injection.. Knowledge reference: 1. Missing HTTP Security Headers.</div>
+                
+            <div style="background:#0d1218; border-left:3px solid #3fb950; padding:8px 12px; margin-top:6px; border-radius:0 4px 4px 0;">
+                <div style="color:#3fb950; font-weight:bold;">💡 Recommended Fix: Upgrade form action endpoint or header configuration to HTTPS</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">📍 <strong>Where:</strong> Form action / HTTP headers on `http://localhost:5500/about.html`</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">🎯 <strong>Expected Impact:</strong> Mitigates OWASP security risk, preventing cleartext credential/data exposure.</div>
+            </div>
+            
+            </td>
+        </tr>
+        
+        <tr>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <span style="padding:2px 8px; border-radius:20px; font-size:10px; font-weight:bold; background:rgba(45,212,191,0.1); color:#2dd4bf;">MEDIUM</span>
+                <div style="margin-top:6px;"><span style="color:#f85149; background:rgba(248,81,73,.15); padding:2px 6px; border-radius:4px; font-size:10px; font-weight:700;">Still Present</span></div>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <strong style="color:#e2e8f0; display:block;">Security vulnerability (missing_header_x-frame-options): Missing security header: X-Frame-Options. Prevents Clickjacking attacks.</strong>
+                <span style="display:inline-block; padding:2px 6px; border-radius:4px; font-size:10px; background:#0d1218; border:1px solid #1e2632; color:#8a99ad; margin-top:4px;">security</span>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632; font-family:monospace; font-size:11px; color:#2dd4bf; word-break:break-all;">
+                http://localhost:5500/about.html
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <div style="background:#0d1218; border-left:3px solid #2dd4bf; padding:8px 12px; border-radius:0 4px 4px 0; font-size:12px;"><strong>Root Cause:</strong> [MEDIUM Severity - Security] Structural issue detected on page &#x27;http://localhost:5500/about.html&#x27;: Security vulnerability (missing_header_x-frame-options): Missing security header: X-Frame-Options. Prevents Clickjacking attacks.. Knowledge reference: 1. Missing HTTP Security Headers.</div>
+                
+            <div style="background:#0d1218; border-left:3px solid #3fb950; padding:8px 12px; margin-top:6px; border-radius:0 4px 4px 0;">
+                <div style="color:#3fb950; font-weight:bold;">💡 Recommended Fix: Upgrade form action endpoint or header configuration to HTTPS</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">📍 <strong>Where:</strong> Form action / HTTP headers on `http://localhost:5500/about.html`</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">🎯 <strong>Expected Impact:</strong> Mitigates OWASP security risk, preventing cleartext credential/data exposure.</div>
+            </div>
+            
+            </td>
+        </tr>
+        
+        <tr>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <span style="padding:2px 8px; border-radius:20px; font-size:10px; font-weight:bold; background:rgba(45,212,191,0.1); color:#2dd4bf;">LOW</span>
+                <div style="margin-top:6px;"><span style="color:#f85149; background:rgba(248,81,73,.15); padding:2px 6px; border-radius:4px; font-size:10px; font-weight:700;">Still Present</span></div>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <strong style="color:#e2e8f0; display:block;">Security vulnerability (missing_header_x-content-type-options): Missing security header: X-Content-Type-Options. Prevents MIME-sniffing vulnerabilities.</strong>
+                <span style="display:inline-block; padding:2px 6px; border-radius:4px; font-size:10px; background:#0d1218; border:1px solid #1e2632; color:#8a99ad; margin-top:4px;">security</span>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632; font-family:monospace; font-size:11px; color:#2dd4bf; word-break:break-all;">
+                http://localhost:5500/about.html
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <div style="background:#0d1218; border-left:3px solid #2dd4bf; padding:8px 12px; border-radius:0 4px 4px 0; font-size:12px;"><strong>Root Cause:</strong> [LOW Severity - Security] Structural issue detected on page &#x27;http://localhost:5500/about.html&#x27;: Security vulnerability (missing_header_x-content-type-options): Missing security header: X-Content-Type-Options. Prevents MIME-sniffing vulnerabilities.. Knowledge reference: 1. Missing HTTP Security Headers.</div>
+                
+            <div style="background:#0d1218; border-left:3px solid #3fb950; padding:8px 12px; margin-top:6px; border-radius:0 4px 4px 0;">
+                <div style="color:#3fb950; font-weight:bold;">💡 Recommended Fix: Upgrade form action endpoint or header configuration to HTTPS</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">📍 <strong>Where:</strong> Form action / HTTP headers on `http://localhost:5500/about.html`</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">🎯 <strong>Expected Impact:</strong> Mitigates OWASP security risk, preventing cleartext credential/data exposure.</div>
+            </div>
+            
+            </td>
+        </tr>
+        
+        <tr>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <span style="padding:2px 8px; border-radius:20px; font-size:10px; font-weight:bold; background:rgba(45,212,191,0.1); color:#2dd4bf;">LOW</span>
+                <div style="margin-top:6px;"><span style="color:#f85149; background:rgba(248,81,73,.15); padding:2px 6px; border-radius:4px; font-size:10px; font-weight:700;">Still Present</span></div>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <strong style="color:#e2e8f0; display:block;">Security vulnerability (missing_header_referrer-policy): Missing security header: Referrer-Policy. Controls referrer information leakage.</strong>
+                <span style="display:inline-block; padding:2px 6px; border-radius:4px; font-size:10px; background:#0d1218; border:1px solid #1e2632; color:#8a99ad; margin-top:4px;">security</span>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632; font-family:monospace; font-size:11px; color:#2dd4bf; word-break:break-all;">
+                http://localhost:5500/about.html
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <div style="background:#0d1218; border-left:3px solid #2dd4bf; padding:8px 12px; border-radius:0 4px 4px 0; font-size:12px;"><strong>Root Cause:</strong> [LOW Severity - Security] Structural issue detected on page &#x27;http://localhost:5500/about.html&#x27;: Security vulnerability (missing_header_referrer-policy): Missing security header: Referrer-Policy. Controls referrer information leakage.. Knowledge reference: 1. Missing HTTP Security Headers.</div>
+                
+            <div style="background:#0d1218; border-left:3px solid #3fb950; padding:8px 12px; margin-top:6px; border-radius:0 4px 4px 0;">
+                <div style="color:#3fb950; font-weight:bold;">💡 Recommended Fix: Upgrade form action endpoint or header configuration to HTTPS</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">📍 <strong>Where:</strong> Form action / HTTP headers on `http://localhost:5500/about.html`</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">🎯 <strong>Expected Impact:</strong> Mitigates OWASP security risk, preventing cleartext credential/data exposure.</div>
+            </div>
+            
+            </td>
+        </tr>
+        
+        <tr>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <span style="padding:2px 8px; border-radius:20px; font-size:10px; font-weight:bold; background:rgba(45,212,191,0.1); color:#2dd4bf;">MEDIUM</span>
+                <div style="margin-top:6px;"><span style="color:#f85149; background:rgba(248,81,73,.15); padding:2px 6px; border-radius:4px; font-size:10px; font-weight:700;">Still Present</span></div>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <strong style="color:#e2e8f0; display:block;">JavaScript console error: Failed to load resource: the server responded with a status of 404 (File not found)</strong>
+                <span style="display:inline-block; padding:2px 6px; border-radius:4px; font-size:10px; background:#0d1218; border:1px solid #1e2632; color:#8a99ad; margin-top:4px;">functional</span>
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632; font-family:monospace; font-size:11px; color:#2dd4bf; word-break:break-all;">
+                http://localhost:5500
+            </td>
+            <td style="padding:12px; border-bottom:1px solid #1e2632;">
+                <div style="background:#0d1218; border-left:3px solid #2dd4bf; padding:8px 12px; border-radius:0 4px 4px 0; font-size:12px;"><strong>Root Cause:</strong> [MEDIUM Severity - Functional] Structural issue detected on page &#x27;http://localhost:5500&#x27;: JavaScript console error: Failed to load resource: the server responded with a status of 404 (File not found). Knowledge reference: 2. Unhandled JavaScript Console &amp; Network Exceptions.</div>
+                
+            <div style="background:#0d1218; border-left:3px solid #3fb950; padding:8px 12px; margin-top:6px; border-radius:0 4px 4px 0;">
+                <div style="color:#3fb950; font-weight:bold;">💡 Recommended Fix: Fix broken link target URL or restore missing destination route</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">📍 <strong>Where:</strong> Anchor tag `&lt;a href&gt;` pointing from page `http://localhost:5500`</div>
+                <div style="font-size:11px; color:#8a99ad; margin-top:2px;">🎯 <strong>Expected Impact:</strong> Eliminates 404 navigation error and improves user experience.</div>
+            </div>
+            
+            </td>
+        </tr>
+        
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

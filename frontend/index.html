@@ -96,8 +96,11 @@
   .sev-LOW{background:rgba(107,155,209,.15); color:var(--low);}
   .badge-ai { background: rgba(56, 189, 248, 0.2); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4); padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: 700; margin-left: 6px; }
   .badge-rag { background: rgba(168, 85, 247, 0.2); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.4); padding: 2px 6px; border-radius: 4px; font-size: 10px; font-weight: 700; margin-left: 4px; }
+  .vbadge { font-size:10px; font-weight:700; padding:2px 6px; border-radius:4px; display:inline-block; letter-spacing:.3px; }
+  .vbadge-present { background:rgba(248,81,73,.15); color:var(--crit); border:1px solid rgba(248,81,73,.3); }
+  .vbadge-fixed { background:rgba(63,185,80,.15); color:var(--ok); border:1px solid rgba(63,185,80,.3); }
   .rc-box { background: #0d1218; border-left: 3px solid var(--accent); padding: 8px 12px; margin-top: 6px; font-size: 12px; color: var(--text); border-radius: 0 4px 4px 0; }
-  .fix-box { background: #0d1218; border-left: 3px solid var(--ok); padding: 8px 12px; margin-top: 6px; font-size: 12px; color: var(--text); border-radius: 0 4px 4px 0; white-space: pre-wrap; }
+  .fix-box { background: #0d1218; border-left: 3px solid var(--ok); padding: 10px 12px; margin-top: 6px; font-size: 12px; color: var(--text); border-radius: 0 4px 4px 0; }
   .empty{color:var(--text-dim); font-style:italic; padding:12px 0;}
   .pill{display:inline-block; padding:3px 10px; border-radius:4px; font-size:11px; background:#0d1218; border:1px solid var(--panel-line); color:var(--text-dim);}
 </style>
@@ -109,7 +112,7 @@
     <div class="dot"></div>
     <div>
       <h1>WebGuardian AI</h1>
-      <div class="tag">Autonomous Website QA & Bug Intelligence — Phase 3 (RAG Grounded)</div>
+      <div class="tag">Autonomous Website QA & Bug Intelligence — Phase 4 (Fix & Verification)</div>
     </div>
   </div>
   <div id="health" class="pill">checking backend…</div>
@@ -145,7 +148,10 @@
   </div>
 
   <div id="scoreboard" class="panel" style="display:none">
-    <h2>Quality Scoreboard</h2>
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+      <h2 style="margin:0;">Quality Scoreboard</h2>
+      <button id="exportBtn" onclick="exportReport()" style="background:#0d1218; border:1px solid var(--accent); color:var(--accent); display:none; padding:8px 14px; font-size:12px;">📥 Export Report (JSON & HTML)</button>
+    </div>
     <div class="score-row" id="scoreRow"></div>
   </div>
 
@@ -155,14 +161,14 @@
   </div>
 
   <div id="bugsPanel" class="panel" style="display:none">
-    <h2>Bug Intelligence Explorer</h2>
+    <h2>Bug Intelligence Explorer <span class="pill" style="color:var(--warn); border-color:rgba(210,153,34,0.4); margin-left:12px; font-weight:600;">AI-Recommended Fix (Not Auto-Applied)</span></h2>
     <table>
       <thead>
         <tr>
-          <th style="width:110px">Severity</th>
+          <th style="width:130px">Severity & Status</th>
           <th style="width:200px">Title / Category</th>
-          <th style="width:180px">Page URL</th>
-          <th>Root Cause & Actionable Remediation</th>
+          <th style="width:170px">Page URL</th>
+          <th>Root Cause & Actionable Fix Recommendation</th>
         </tr>
       </thead>
       <tbody id="bugsBody"></tbody>
@@ -174,6 +180,7 @@
 <script>
 const API = "http://localhost:8000";
 let pollTimer = null;
+let currentScanId = null;
 
 async function checkHealth(){
   const healthEl = document.getElementById("health");
@@ -189,6 +196,49 @@ async function checkHealth(){
 checkHealth();
 setInterval(checkHealth, 10000);
 
+async function exportReport(){
+  if(!currentScanId) return;
+  const btn = document.getElementById("exportBtn");
+  btn.disabled = true;
+  btn.textContent = "⟳ Exporting Report…";
+
+  try {
+    const res = await fetch(`${API}/api/scan/${currentScanId}/export`);
+    const data = await res.json();
+    btn.disabled = false;
+    btn.textContent = "✓ Report Exported";
+
+    let linkDiv = document.getElementById("exportLinks");
+    if(!linkDiv){
+      linkDiv = document.createElement("div");
+      linkDiv.id = "exportLinks";
+      linkDiv.style.cssText = "margin-top:14px; padding:12px 16px; background:#0d1218; border:1px solid var(--ok); border-radius:6px; font-size:12.5px; color:var(--text);";
+      document.getElementById("scoreboard").appendChild(linkDiv);
+    }
+    linkDiv.innerHTML = `
+      🎉 <strong>Report Exported Successfully!</strong> Saved locally in <code>reports/</code> folder.<br>
+      <div style="margin-top:6px;">
+        📥 Downloads: 
+        <a href="${API}${data.json_url}" target="_blank" download style="color:var(--accent); font-weight:bold; margin-right:16px;">📄 JSON Report (${data.json_file})</a> 
+        <a href="${API}${data.html_url}" target="_blank" style="color:var(--accent); font-weight:bold;">🌐 HTML Summary (${data.html_file})</a>
+      </div>
+    `;
+
+    // Trigger browser download of JSON file
+    const a = document.createElement("a");
+    a.href = `${API}${data.json_url}`;
+    a.download = data.json_file;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+
+  } catch(e) {
+    btn.disabled = false;
+    btn.textContent = "📥 Export Report (JSON & HTML)";
+    alert("Could not export report: " + e.message);
+  }
+}
+
 async function startScan(){
   const btn = document.getElementById("startBtn");
   const url = document.getElementById("url").value.trim();
@@ -198,6 +248,8 @@ async function startScan(){
   btn.textContent = "⟳ Scan in Progress…";
   document.getElementById("scoreboard").style.display = "none";
   document.getElementById("bugsPanel").style.display = "none";
+  const existingLinks = document.getElementById("exportLinks");
+  if(existingLinks) existingLinks.remove();
 
   const body = {
     url: url,
@@ -213,6 +265,7 @@ async function startScan(){
       body: JSON.stringify(body),
     });
     const data = await res.json();
+    currentScanId = data.scan_id;
     pollScan(data.scan_id);
   }catch(e){
     alert("Could not reach backend at " + API + ". Is uvicorn running?");
@@ -221,6 +274,7 @@ async function startScan(){
 }
 
 function pollScan(scanId){
+  currentScanId = scanId;
   if(pollTimer) clearInterval(pollTimer);
   let pollCount = 0;
   const maxPolls = 150;
@@ -247,6 +301,7 @@ function pollScan(scanId){
         if(state.scan_status === "completed"){
           renderScore(state.quality_score);
           renderBugs(state.bugs);
+          document.getElementById("exportBtn").style.display = "inline-block";
         } else {
           alert("Scan failed: " + (state.error || "Unknown scan error"));
         }
@@ -335,24 +390,43 @@ function renderBugs(bugs){
     const isAi = b.ai_generated ? `<span class="badge-ai">Claude AI</span>` : "";
     const isRag = b.rag_grounded ? `<span class="badge-rag">RAG Grounded</span>` : "";
     const rootCause = b.root_cause || b.severity_rationale || "Root cause under evaluation.";
-    const fix = b.suggested_fix || "Remediate according to web QA guidelines.";
+    const vStatus = b.verification_status || "still_present";
+    const vBadge = vStatus === "not_reproducible"
+      ? `<span class="vbadge vbadge-fixed">Verification: Not Reproducible</span>`
+      : `<span class="vbadge vbadge-present">Verification: Still Present</span>`;
+
+    let fixHtml = "";
+    if(b.fix_recommendation && typeof b.fix_recommendation === "object"){
+      const f = b.fix_recommendation;
+      fixHtml = `
+        <div class="fix-box">
+          <div style="font-weight:700; color:var(--ok); margin-bottom:4px;">💡 Recommended Fix: ${escapeHtml(f.what || b.suggested_fix || "")}</div>
+          <div style="font-size:11.5px; color:var(--text-dim);">📍 <strong>Where:</strong> ${escapeHtml(f.where || b.page_url || "")}</div>
+          <div style="font-size:11.5px; color:var(--text-dim); margin-top:2px;">🎯 <strong>Expected Impact:</strong> ${escapeHtml(f.expected_impact || "")}</div>
+        </div>
+      `;
+    } else {
+      const fix = b.suggested_fix || "Remediate according to web QA guidelines.";
+      fixHtml = `<div class="fix-box"><strong>Suggested Fix:</strong> ${escapeHtml(fix)}</div>`;
+    }
 
     return `
       <tr>
         <td>
           <span class="sev sev-${sev}">${sev}</span>
           ${isAi}
+          <div style="margin-top:6px;">${vBadge}</div>
         </td>
         <td>
           <strong style="color:var(--text); display:block;">${escapeHtml(b.title || "Untitled Bug")}</strong>
           <span class="pill" style="margin-top:4px;">${escapeHtml(b.category || "general")}</span>${isRag}
         </td>
-        <td style="max-width:180px; word-break:break-all; font-family:monospace; font-size:11.5px; color:var(--accent);">
+        <td style="max-width:170px; word-break:break-all; font-family:monospace; font-size:11.5px; color:var(--accent);">
           ${escapeHtml(b.page_url || b.page || "")}
         </td>
         <td>
           <div class="rc-box"><strong>Root Cause:</strong> ${escapeHtml(rootCause)}</div>
-          <div class="fix-box"><strong>Suggested Fix:</strong> ${escapeHtml(fix)}</div>
+          ${fixHtml}
         </td>
       </tr>
     `;

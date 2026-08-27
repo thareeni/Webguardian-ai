@@ -1,0 +1,1966 @@
+{
+  "scan_id": "669fe706-b944-4cbd-8fe9-328186ff9015",
+  "website_url": "http://localhost:5500",
+  "max_pages": 3,
+  "max_depth": 1,
+  "device": "desktop",
+  "scan_status": "completed",
+  "current_agent": "Supervisor",
+  "error": null,
+  "pages": [
+    {
+      "url": "http://localhost:5500",
+      "depth": 0,
+      "title": "Demo Storefront",
+      "status_code": 200,
+      "load_time_ms": 609.0,
+      "forms": [
+        {
+          "index": 0,
+          "action": "http://localhost:5500/",
+          "method": "GET",
+          "inputs": [
+            {
+              "name": "email",
+              "type": "email",
+              "required": true,
+              "id": null
+            },
+            {
+              "name": "password",
+              "type": "password",
+              "required": true,
+              "id": null
+            }
+          ]
+        }
+      ],
+      "buttons": [
+        "Create account",
+        "Click me"
+      ],
+      "links": [
+        "http://localhost:5500/",
+        "http://localhost:5500/about.html",
+        "http://localhost:5500/contact.html",
+        "http://localhost:5500/broken-link-does-not-exist.html"
+      ],
+      "images": [
+        {
+          "src": "http://localhost:5500/images/hero.png",
+          "alt": ""
+        }
+      ]
+    },
+    {
+      "url": "http://localhost:5500/",
+      "depth": 1,
+      "title": "Demo Storefront",
+      "status_code": 200,
+      "load_time_ms": 531.0,
+      "forms": [
+        {
+          "index": 0,
+          "action": "http://localhost:5500/",
+          "method": "GET",
+          "inputs": [
+            {
+              "name": "email",
+              "type": "email",
+              "required": true,
+              "id": null
+            },
+            {
+              "name": "password",
+              "type": "password",
+              "required": true,
+              "id": null
+            }
+          ]
+        }
+      ],
+      "buttons": [
+        "Create account",
+        "Click me"
+      ],
+      "links": [
+        "http://localhost:5500/",
+        "http://localhost:5500/about.html",
+        "http://localhost:5500/contact.html",
+        "http://localhost:5500/broken-link-does-not-exist.html"
+      ],
+      "images": [
+        {
+          "src": "http://localhost:5500/images/hero.png",
+          "alt": ""
+        }
+      ]
+    },
+    {
+      "url": "http://localhost:5500/about.html",
+      "depth": 1,
+      "title": "Error response",
+      "status_code": 404,
+      "load_time_ms": 3047.0,
+      "forms": [],
+      "buttons": [],
+      "links": [],
+      "images": []
+    }
+  ],
+  "screenshots": [
+    {
+      "url": "http://localhost:5500",
+      "path": "C:\\Users\\ajite\\Downloads\\webguardian-ai-phase1\\webguardian-ai\\backend\\agents\\..\\..\\storage\\screenshots\\669fe706-b944-4cbd-8fe9-328186ff9015_1.png",
+      "device": "desktop"
+    },
+    {
+      "url": "http://localhost:5500/",
+      "path": "C:\\Users\\ajite\\Downloads\\webguardian-ai-phase1\\webguardian-ai\\backend\\agents\\..\\..\\storage\\screenshots\\669fe706-b944-4cbd-8fe9-328186ff9015_2.png",
+      "device": "desktop"
+    },
+    {
+      "url": "http://localhost:5500/about.html",
+      "path": "C:\\Users\\ajite\\Downloads\\webguardian-ai-phase1\\webguardian-ai\\backend\\agents\\..\\..\\storage\\screenshots\\669fe706-b944-4cbd-8fe9-328186ff9015_3.png",
+      "device": "desktop"
+    }
+  ],
+  "console_errors": [
+    {
+      "url": "http://localhost:5500",
+      "type": "error",
+      "text": "Failed to load resource: the server responded with a status of 404 (File not found)"
+    },
+    {
+      "url": "http://localhost:5500/",
+      "type": "error",
+      "text": "Failed to load resource: the server responded with a status of 404 (File not found)"
+    },
+    {
+      "url": "http://localhost:5500/about.html",
+      "type": "error",
+      "text": "Failed to load resource: the server responded with a status of 404 (File not found)"
+    }
+  ],
+  "network_errors": [],
+  "functional_tests": [
+    {
+      "id": "TC-8cadb9e7",
+      "page": "http://localhost:5500",
+      "category": "navigation",
+      "name": "Link reachable: http://localhost:5500/",
+      "target": "http://localhost:5500/",
+      "expected": "HTTP status < 400, no network failure",
+      "status": "PASS",
+      "actual": "HTTP 200",
+      "evidence": "http://localhost:5500/"
+    },
+    {
+      "id": "TC-a6f6594a",
+      "page": "http://localhost:5500",
+      "category": "navigation",
+      "name": "Link reachable: http://localhost:5500/about.html",
+      "target": "http://localhost:5500/about.html",
+      "expected": "HTTP status < 400, no network failure",
+      "status": "FAIL",
+      "actual": "HTTP 404",
+      "evidence": "http://localhost:5500/about.html"
+    },
+    {
+      "id": "TC-10610143",
+      "page": "http://localhost:5500",
+      "category": "navigation",
+      "name": "Link reachable: http://localhost:5500/contact.html",
+      "target": "http://localhost:5500/contact.html",
+      "expected": "HTTP status < 400, no network failure",
+      "status": "FAIL",
+      "actual": "HTTP 404",
+      "evidence": "http://localhost:5500/contact.html"
+    },
+    {
+      "id": "TC-85167961",
+      "page": "http://localhost:5500",
+      "category": "navigation",
+      "name": "Link reachable: http://localhost:5500/broken-link-does-not-exist.html",
+      "target": "http://localhost:5500/broken-link-does-not-exist.html",
+      "expected": "HTTP status < 400, no network failure",
+      "status": "FAIL",
+      "actual": "HTTP 404",
+      "evidence": "http://localhost:5500/broken-link-does-not-exist.html"
+    },
+    {
+      "id": "TC-4c2a181c",
+      "page": "http://localhost:5500",
+      "category": "media",
+      "name": "Image loads correctly: http://localhost:5500/images/hero.png",
+      "target": {
+        "src": "http://localhost:5500/images/hero.png",
+        "alt": ""
+      },
+      "expected": "Image naturalWidth > 0 (not broken)",
+      "status": "FAIL",
+      "actual": "naturalWidth = 0 (broken)",
+      "evidence": "http://localhost:5500/images/hero.png"
+    },
+    {
+      "id": "TC-e19235fa",
+      "page": "http://localhost:5500",
+      "category": "form",
+      "name": "Form #0 empty submission handling",
+      "target": {
+        "index": 0,
+        "action": "http://localhost:5500/",
+        "method": "GET",
+        "inputs": [
+          {
+            "name": "email",
+            "type": "email",
+            "required": true,
+            "id": null
+          },
+          {
+            "name": "password",
+            "type": "password",
+            "required": true,
+            "id": null
+          }
+        ]
+      },
+      "expected": "Required-field validation blocks submission, or safe redirect occurs",
+      "status": "PASS",
+      "actual": "Submission handled / validation held",
+      "evidence": "http://localhost:5500/"
+    },
+    {
+      "id": "TC-d7a1b2d8",
+      "page": "http://localhost:5500",
+      "category": "form",
+      "name": "Form #0 required-field enforcement (2 required fields)",
+      "target": {
+        "index": 0,
+        "action": "http://localhost:5500/",
+        "method": "GET",
+        "inputs": [
+          {
+            "name": "email",
+            "type": "email",
+            "required": true,
+            "id": null
+          },
+          {
+            "name": "password",
+            "type": "password",
+            "required": true,
+            "id": null
+          }
+        ]
+      },
+      "expected": "Browser/DOM blocks submission when required fields are empty",
+      "status": "PASS",
+      "actual": "Submission handled / validation held",
+      "evidence": "http://localhost:5500/"
+    },
+    {
+      "id": "TC-0b3ab03f",
+      "page": "http://localhost:5500/",
+      "category": "navigation",
+      "name": "Link reachable: http://localhost:5500/broken-link-does-not-exist.html",
+      "target": "http://localhost:5500/broken-link-does-not-exist.html",
+      "expected": "HTTP status < 400, no network failure",
+      "status": "FAIL",
+      "actual": "HTTP 404",
+      "evidence": "http://localhost:5500/broken-link-does-not-exist.html"
+    },
+    {
+      "id": "TC-0c5cdcee",
+      "page": "http://localhost:5500/",
+      "category": "navigation",
+      "name": "Link reachable: http://localhost:5500/about.html",
+      "target": "http://localhost:5500/about.html",
+      "expected": "HTTP status < 400, no network failure",
+      "status": "FAIL",
+      "actual": "HTTP 404",
+      "evidence": "http://localhost:5500/about.html"
+    },
+    {
+      "id": "TC-de0ebe5c",
+      "page": "http://localhost:5500/",
+      "category": "navigation",
+      "name": "Link reachable: http://localhost:5500/contact.html",
+      "target": "http://localhost:5500/contact.html",
+      "expected": "HTTP status < 400, no network failure",
+      "status": "FAIL",
+      "actual": "HTTP 404",
+      "evidence": "http://localhost:5500/contact.html"
+    },
+    {
+      "id": "TC-53bcf886",
+      "page": "http://localhost:5500/",
+      "category": "navigation",
+      "name": "Link reachable: http://localhost:5500/",
+      "target": "http://localhost:5500/",
+      "expected": "HTTP status < 400, no network failure",
+      "status": "PASS",
+      "actual": "HTTP 200",
+      "evidence": "http://localhost:5500/"
+    },
+    {
+      "id": "TC-6fc877b2",
+      "page": "http://localhost:5500/",
+      "category": "media",
+      "name": "Image loads correctly: http://localhost:5500/images/hero.png",
+      "target": {
+        "src": "http://localhost:5500/images/hero.png",
+        "alt": ""
+      },
+      "expected": "Image naturalWidth > 0 (not broken)",
+      "status": "FAIL",
+      "actual": "naturalWidth = 0 (broken)",
+      "evidence": "http://localhost:5500/images/hero.png"
+    },
+    {
+      "id": "TC-199f423f",
+      "page": "http://localhost:5500/",
+      "category": "form",
+      "name": "Form #0 empty submission handling",
+      "target": {
+        "index": 0,
+        "action": "http://localhost:5500/",
+        "method": "GET",
+        "inputs": [
+          {
+            "name": "email",
+            "type": "email",
+            "required": true,
+            "id": null
+          },
+          {
+            "name": "password",
+            "type": "password",
+            "required": true,
+            "id": null
+          }
+        ]
+      },
+      "expected": "Required-field validation blocks submission, or safe redirect occurs",
+      "status": "PASS",
+      "actual": "Submission handled / validation held",
+      "evidence": "http://localhost:5500/"
+    },
+    {
+      "id": "TC-a01928a5",
+      "page": "http://localhost:5500/",
+      "category": "form",
+      "name": "Form #0 required-field enforcement (2 required fields)",
+      "target": {
+        "index": 0,
+        "action": "http://localhost:5500/",
+        "method": "GET",
+        "inputs": [
+          {
+            "name": "email",
+            "type": "email",
+            "required": true,
+            "id": null
+          },
+          {
+            "name": "password",
+            "type": "password",
+            "required": true,
+            "id": null
+          }
+        ]
+      },
+      "expected": "Browser/DOM blocks submission when required fields are empty",
+      "status": "PASS",
+      "actual": "Submission handled / validation held",
+      "evidence": "http://localhost:5500/"
+    }
+  ],
+  "accessibility_findings": [
+    {
+      "page": "http://localhost:5500",
+      "rule_id": "color-contrast",
+      "impact": "serious",
+      "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.9/color-contrast?application=axeAPI",
+      "nodes_affected": 1,
+      "example_selector": "p"
+    },
+    {
+      "page": "http://localhost:5500",
+      "rule_id": "image-alt",
+      "impact": "critical",
+      "description": "Ensures <img> elements have alternate text or a role of none or presentation",
+      "help": "Images must have alternate text",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.9/image-alt?application=axeAPI",
+      "nodes_affected": 1,
+      "example_selector": "img"
+    },
+    {
+      "page": "http://localhost:5500",
+      "rule_id": "landmark-one-main",
+      "impact": "moderate",
+      "description": "Ensures the document has a main landmark",
+      "help": "Document should have one main landmark",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.9/landmark-one-main?application=axeAPI",
+      "nodes_affected": 1,
+      "example_selector": "html"
+    },
+    {
+      "page": "http://localhost:5500",
+      "rule_id": "region",
+      "impact": "moderate",
+      "description": "Ensures all page content is contained by landmarks",
+      "help": "All page content should be contained by landmarks",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.9/region?application=axeAPI",
+      "nodes_affected": 8,
+      "example_selector": "h1"
+    },
+    {
+      "page": "http://localhost:5500/",
+      "rule_id": "color-contrast",
+      "impact": "serious",
+      "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds",
+      "help": "Elements must meet minimum color contrast ratio thresholds",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.9/color-contrast?application=axeAPI",
+      "nodes_affected": 1,
+      "example_selector": "p"
+    },
+    {
+      "page": "http://localhost:5500/",
+      "rule_id": "image-alt",
+      "impact": "critical",
+      "description": "Ensures <img> elements have alternate text or a role of none or presentation",
+      "help": "Images must have alternate text",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.9/image-alt?application=axeAPI",
+      "nodes_affected": 1,
+      "example_selector": "img"
+    },
+    {
+      "page": "http://localhost:5500/",
+      "rule_id": "landmark-one-main",
+      "impact": "moderate",
+      "description": "Ensures the document has a main landmark",
+      "help": "Document should have one main landmark",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.9/landmark-one-main?application=axeAPI",
+      "nodes_affected": 1,
+      "example_selector": "html"
+    },
+    {
+      "page": "http://localhost:5500/",
+      "rule_id": "region",
+      "impact": "moderate",
+      "description": "Ensures all page content is contained by landmarks",
+      "help": "All page content should be contained by landmarks",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.9/region?application=axeAPI",
+      "nodes_affected": 8,
+      "example_selector": "h1"
+    },
+    {
+      "page": "http://localhost:5500/about.html",
+      "rule_id": "html-has-lang",
+      "impact": "serious",
+      "description": "Ensures every HTML document has a lang attribute",
+      "help": "<html> element must have a lang attribute",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.9/html-has-lang?application=axeAPI",
+      "nodes_affected": 1,
+      "example_selector": "html"
+    },
+    {
+      "page": "http://localhost:5500/about.html",
+      "rule_id": "landmark-one-main",
+      "impact": "moderate",
+      "description": "Ensures the document has a main landmark",
+      "help": "Document should have one main landmark",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.9/landmark-one-main?application=axeAPI",
+      "nodes_affected": 1,
+      "example_selector": "html"
+    },
+    {
+      "page": "http://localhost:5500/about.html",
+      "rule_id": "region",
+      "impact": "moderate",
+      "description": "Ensures all page content is contained by landmarks",
+      "help": "All page content should be contained by landmarks",
+      "help_url": "https://dequeuniversity.com/rules/axe/4.9/region?application=axeAPI",
+      "nodes_affected": 4,
+      "example_selector": "h1"
+    }
+  ],
+  "visual_findings": [
+    {
+      "page": "http://localhost:5500",
+      "category": "visual",
+      "type": "overflow",
+      "severity": "MEDIUM",
+      "description": "Element <div.container> extends beyond viewport boundary (element width=1248px, right=1344px, viewport width=1440px)",
+      "selector": "div.container"
+    },
+    {
+      "page": "http://localhost:5500/",
+      "category": "visual",
+      "type": "overflow",
+      "severity": "MEDIUM",
+      "description": "Element <div.container> extends beyond viewport boundary (element width=1248px, right=1344px, viewport width=1440px)",
+      "selector": "div.container"
+    }
+  ],
+  "performance_metrics": [
+    {
+      "ttfb_ms": 2,
+      "dom_content_loaded_ms": 46,
+      "load_event_ms": 56,
+      "dns_lookup_ms": 0,
+      "total_requests": 2,
+      "total_bytes": 769,
+      "slow_resources": [],
+      "url": "http://localhost:5500"
+    },
+    {
+      "ttfb_ms": 0,
+      "dom_content_loaded_ms": 35,
+      "load_event_ms": 124,
+      "dns_lookup_ms": 0,
+      "total_requests": 2,
+      "total_bytes": 769,
+      "slow_resources": [],
+      "url": "http://localhost:5500/"
+    },
+    {
+      "ttfb_ms": 2,
+      "dom_content_loaded_ms": 26,
+      "load_event_ms": 27,
+      "dns_lookup_ms": 0,
+      "total_requests": 1,
+      "total_bytes": 0,
+      "slow_resources": [],
+      "url": "http://localhost:5500/about.html"
+    }
+  ],
+  "security_findings": [
+    {
+      "page": "http://localhost:5500",
+      "category": "security",
+      "rule": "missing_header_content-security-policy",
+      "severity": "MEDIUM",
+      "description": "Missing security header: Content-Security-Policy. Prevents XSS and unauthorized script injection.",
+      "evidence": "Header Content-Security-Policy not present in response"
+    },
+    {
+      "page": "http://localhost:5500",
+      "category": "security",
+      "rule": "missing_header_x-frame-options",
+      "severity": "MEDIUM",
+      "description": "Missing security header: X-Frame-Options. Prevents Clickjacking attacks.",
+      "evidence": "Header X-Frame-Options not present in response"
+    },
+    {
+      "page": "http://localhost:5500",
+      "category": "security",
+      "rule": "missing_header_x-content-type-options",
+      "severity": "LOW",
+      "description": "Missing security header: X-Content-Type-Options. Prevents MIME-sniffing vulnerabilities.",
+      "evidence": "Header X-Content-Type-Options not present in response"
+    },
+    {
+      "page": "http://localhost:5500",
+      "category": "security",
+      "rule": "missing_header_referrer-policy",
+      "severity": "LOW",
+      "description": "Missing security header: Referrer-Policy. Controls referrer information leakage.",
+      "evidence": "Header Referrer-Policy not present in response"
+    },
+    {
+      "page": "http://localhost:5500",
+      "category": "security",
+      "rule": "insecure_form_action",
+      "severity": "HIGH",
+      "description": "Form action submits over unencrypted HTTP: http://localhost:5500/",
+      "evidence": "http://localhost:5500/"
+    },
+    {
+      "page": "http://localhost:5500/",
+      "category": "security",
+      "rule": "missing_header_content-security-policy",
+      "severity": "MEDIUM",
+      "description": "Missing security header: Content-Security-Policy. Prevents XSS and unauthorized script injection.",
+      "evidence": "Header Content-Security-Policy not present in response"
+    },
+    {
+      "page": "http://localhost:5500/",
+      "category": "security",
+      "rule": "missing_header_x-frame-options",
+      "severity": "MEDIUM",
+      "description": "Missing security header: X-Frame-Options. Prevents Clickjacking attacks.",
+      "evidence": "Header X-Frame-Options not present in response"
+    },
+    {
+      "page": "http://localhost:5500/",
+      "category": "security",
+      "rule": "missing_header_x-content-type-options",
+      "severity": "LOW",
+      "description": "Missing security header: X-Content-Type-Options. Prevents MIME-sniffing vulnerabilities.",
+      "evidence": "Header X-Content-Type-Options not present in response"
+    },
+    {
+      "page": "http://localhost:5500/",
+      "category": "security",
+      "rule": "missing_header_referrer-policy",
+      "severity": "LOW",
+      "description": "Missing security header: Referrer-Policy. Controls referrer information leakage.",
+      "evidence": "Header Referrer-Policy not present in response"
+    },
+    {
+      "page": "http://localhost:5500/",
+      "category": "security",
+      "rule": "insecure_form_action",
+      "severity": "HIGH",
+      "description": "Form action submits over unencrypted HTTP: http://localhost:5500/",
+      "evidence": "http://localhost:5500/"
+    },
+    {
+      "page": "http://localhost:5500/about.html",
+      "category": "security",
+      "rule": "missing_header_content-security-policy",
+      "severity": "MEDIUM",
+      "description": "Missing security header: Content-Security-Policy. Prevents XSS and unauthorized script injection.",
+      "evidence": "Header Content-Security-Policy not present in response"
+    },
+    {
+      "page": "http://localhost:5500/about.html",
+      "category": "security",
+      "rule": "missing_header_x-frame-options",
+      "severity": "MEDIUM",
+      "description": "Missing security header: X-Frame-Options. Prevents Clickjacking attacks.",
+      "evidence": "Header X-Frame-Options not present in response"
+    },
+    {
+      "page": "http://localhost:5500/about.html",
+      "category": "security",
+      "rule": "missing_header_x-content-type-options",
+      "severity": "LOW",
+      "description": "Missing security header: X-Content-Type-Options. Prevents MIME-sniffing vulnerabilities.",
+      "evidence": "Header X-Content-Type-Options not present in response"
+    },
+    {
+      "page": "http://localhost:5500/about.html",
+      "category": "security",
+      "rule": "missing_header_referrer-policy",
+      "severity": "LOW",
+      "description": "Missing security header: Referrer-Policy. Controls referrer information leakage.",
+      "evidence": "Header Referrer-Policy not present in response"
+    }
+  ],
+  "bugs": [
+    {
+      "id": "BUG-679B0B",
+      "title": "Link reachable: http://localhost:5500/about.html",
+      "category": "functional",
+      "page": "http://localhost:5500",
+      "severity": "HIGH",
+      "severity_rationale": "Broken/unreachable link directly blocks user navigation.",
+      "evidence": [
+        {
+          "type": "functional_test",
+          "detail": "http://localhost:5500/about.html"
+        }
+      ],
+      "source_agents": [
+        "FunctionalAgent"
+      ],
+      "page_url": "http://localhost:5500",
+      "description": "Link reachable: http://localhost:5500/about.html",
+      "root_cause": "[HIGH Severity - Functional] Structural issue detected on page 'http://localhost:5500': Link reachable: http://localhost:5500/about.html. Knowledge reference: 1. Broken Links & Unreachable Navigation (HTTP 404 / 500).",
+      "suggested_fix": "Actionable Remediations:\n\u2022 Violation**: Hyperlinks (`<a>` tags) leading to missing pages (HTTP 404 Not Found) or internal server failures (HTTP 500).\n\u2022 Root Cause**: Typos in `href` attributes, deleted or moved pages without 301 redirects, or unhandled server exceptions.\n\u2022 Fix**: Update or remove dead links. Implement 301 permanent redirects for moved URLs, and add automated automated link verification in CI/CD.",
+      "fix_recommendation": {
+        "what": "Upgrade form action endpoint or header configuration to HTTPS",
+        "where": "Form action / HTTP headers on `http://localhost:5500`",
+        "expected_impact": "Mitigates OWASP security risk, preventing cleartext credential/data exposure."
+      },
+      "verification_status": "still_present",
+      "ai_generated": false,
+      "rag_grounded": true,
+      "rag_context": "## 1. Broken Links & Unreachable Navigation (HTTP 404 / 500)\n- **Violation**: Hyperlinks (`<a>` tags) leading to missing pages (HTTP 404 Not Found) or internal server failures (HTTP 500).\n- **Root Cause**: Typos in `href` attributes, deleted or moved pages without 301 redirects, or unhandled server exceptions.\n- **Fix**: Update or remove dead links. Implement 301 permanent redirects for moved URLs, and add automated automated link verification in CI/CD.\n\n---\n\n## 1. Missing HTTP Security Headers\n- **Violation**: Web server responses lack critical HTTP security headers: `Content-Security-Policy`, `Strict-Transport-Security`, `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`.\n- **Root Cause**: Default web server configurations (Nginx, Apache, FastAPI, Cloudflare) do not include security headers automatically.\n- **Fix**: Configure application middleware or web server headers:\n  - `Content-Security-Policy`: Define trusted sources for scripts, styles, and frames (e.g., `default-src 'self'`).\n  - `Strict-Transport-Security` (HSTS): Enforce HTTPS connections (e.g., `max-age=31536000; includeSubDomains`).\n  - `X-Content-Type-Options`: Prevent MIME-type sniffing (`nosniff`).\n  - `X-Frame-Options`: Prevent Clickjacking attacks (`DENY` or `SAMEORIGIN`).\n  - `Referrer-Policy`: Protect sensitive URL query parameters (`strict-origin-when-cross-origin`)."
+    },
+    {
+      "id": "BUG-31B2AF",
+      "title": "Link reachable: http://localhost:5500/contact.html",
+      "category": "functional",
+      "page": "http://localhost:5500",
+      "severity": "HIGH",
+      "severity_rationale": "Broken/unreachable link directly blocks user navigation.",
+      "evidence": [
+        {
+          "type": "functional_test",
+          "detail": "http://localhost:5500/contact.html"
+        }
+      ],
+      "source_agents": [
+        "FunctionalAgent"
+      ],
+      "page_url": "http://localhost:5500",
+      "description": "Link reachable: http://localhost:5500/contact.html",
+      "root_cause": "[HIGH Severity - Functional] Structural issue detected on page 'http://localhost:5500': Link reachable: http://localhost:5500/contact.html. Knowledge reference: 1. Broken Links & Unreachable Navigation (HTTP 404 / 500).",
+      "suggested_fix": "Actionable Remediations:\n\u2022 Violation**: Hyperlinks (`<a>` tags) leading to missing pages (HTTP 404 Not Found) or internal server failures (HTTP 500).\n\u2022 Root Cause**: Typos in `href` attributes, deleted or moved pages without 301 redirects, or unhandled server exceptions.\n\u2022 Fix**: Update or remove dead links. Implement 301 permanent redirects for moved URLs, and add automated automated link verification in CI/CD.",
+      "fix_recommendation": {
+        "what": "Upgrade form action endpoint or header configuration to HTTPS",
+        "where": "Form action / HTTP headers on `http://localhost:5500`",
+        "expected_impact": "Mitigates OWASP security risk, preventing cleartext credential/data exposure."
+      },
+      "verification_status": "still_present",
+      "ai_generated": false,
+      "rag_grounded": true,
+      "rag_context": "## 1. Broken Links & Unreachable Navigation (HTTP 404 / 500)\n- **Violation**: Hyperlinks (`<a>` tags) leading to missing pages (HTTP 404 Not Found) or internal server failures (HTTP 500).\n- **Root Cause**: Typos in `href` attributes, deleted or moved pages without 301 redirects, or unhandled server exceptions.\n- **Fix**: Update or remove dead links. Implement 301 permanent redirects for moved URLs, and add automated automated link verification in CI/CD.\n\n---\n\n## 1. Missing HTTP Security Headers\n- **Violation**: Web server responses lack critical HTTP security headers: `Content-Security-Policy`, `Strict-Transport-Security`, `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`.\n- **Root Cause**: Default web server configurations (Nginx, Apache, FastAPI, Cloudflare) do not include security headers automatically.\n- **Fix**: Configure application middleware or web server headers:\n  - `Content-Security-Policy`: Define trusted sources for scripts, styles, and frames (e.g., `default-src 'self'`).\n  - `Strict-Transport-Security` (HSTS): Enforce HTTPS connections (e.g., `max-age=31536000; includeSubDomains`).\n  - `X-Content-Type-Options`: Prevent MIME-type sniffing (`nosniff`).\n  - `X-Frame-Options`: Prevent Clickjacking attacks (`DENY` or `SAMEORIGIN`).\n  - `Referrer-Policy`: Protect sensitive URL query parameters (`strict-origin-when-cross-origin`)."
+    },
+    {
+      "id": "BUG-122A11",
+      "title": "Link reachable: http://localhost:5500/broken-link-does-not-exist.html",
+      "category": "functional",
+      "page": "http://localhost:5500",
+      "severity": "HIGH",
+      "severity_rationale": "Broken/unreachable link directly blocks user navigation.",
+      "evidence": [
+        {
+          "type": "functional_test",
+          "detail": "http://localhost:5500/broken-link-does-not-exist.html"
+        }
+      ],
+      "source_agents": [
+        "FunctionalAgent"
+      ],
+      "page_url": "http://localhost:5500",
+      "description": "Link reachable: http://localhost:5500/broken-link-does-not-exist.html",
+      "root_cause": "[HIGH Severity - Functional] Structural issue detected on page 'http://localhost:5500': Link reachable: http://localhost:5500/broken-link-does-not-exist.html. Knowledge reference: 1. Broken Links & Unreachable Navigation (HTTP 404 / 500).",
+      "suggested_fix": "Actionable Remediations:\n\u2022 Violation**: Hyperlinks (`<a>` tags) leading to missing pages (HTTP 404 Not Found) or internal server failures (HTTP 500).\n\u2022 Root Cause**: Typos in `href` attributes, deleted or moved pages without 301 redirects, or unhandled server exceptions.\n\u2022 Fix**: Update or remove dead links. Implement 301 permanent redirects for moved URLs, and add automated automated link verification in CI/CD.",
+      "fix_recommendation": {
+        "what": "Upgrade form action endpoint or header configuration to HTTPS",
+        "where": "Form action / HTTP headers on `http://localhost:5500`",
+        "expected_impact": "Mitigates OWASP security risk, preventing cleartext credential/data exposure."
+      },
+      "verification_status": "still_present",
+      "ai_generated": false,
+      "rag_grounded": true,
+      "rag_context": "## 1. Broken Links & Unreachable Navigation (HTTP 404 / 500)\n- **Violation**: Hyperlinks (`<a>` tags) leading to missing pages (HTTP 404 Not Found) or internal server failures (HTTP 500).\n- **Root Cause**: Typos in `href` attributes, deleted or moved pages without 301 redirects, or unhandled server exceptions.\n- **Fix**: Update or remove dead links. Implement 301 permanent redirects for moved URLs, and add automated automated link verification in CI/CD.\n\n---\n\n## 1. Missing HTTP Security Headers\n- **Violation**: Web server responses lack critical HTTP security headers: `Content-Security-Policy`, `Strict-Transport-Security`, `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`.\n- **Root Cause**: Default web server configurations (Nginx, Apache, FastAPI, Cloudflare) do not include security headers automatically.\n- **Fix**: Configure application middleware or web server headers:\n  - `Content-Security-Policy`: Define trusted sources for scripts, styles, and frames (e.g., `default-src 'self'`).\n  - `Strict-Transport-Security` (HSTS): Enforce HTTPS connections (e.g., `max-age=31536000; includeSubDomains`).\n  - `X-Content-Type-Options`: Prevent MIME-type sniffing (`nosniff`).\n  - `X-Frame-Options`: Prevent Clickjacking attacks (`DENY` or `SAMEORIGIN`).\n  - `Referrer-Policy`: Protect sensitive URL query parameters (`strict-origin-when-cross-origin`)."
+    },
+    {
+      "id": "BUG-9A655E",
+      "title": "Image loads correctly: http://localhost:5500/images/hero.png",
+      "category": "functional",
+      "page": "http://localhost:5500",
+      "severity": "LOW",
+      "severity_rationale": "Broken image degrades visual quality but does not block functionality.",
+      "evidence": [
+        {
+          "type": "functional_test",
+          "detail": "http://localhost:5500/images/hero.png"
+        }
+      ],
+      "source_agents": [
+        "FunctionalAgent"
+      ],
+      "page_url": "http://localhost:5500",
+      "description": "Image loads correctly: http://localhost:5500/images/hero.png",
+      "root_cause": "[LOW Severity - Functional] Structural issue detected on page 'http://localhost:5500': Image loads correctly: http://localhost:5500/images/hero.png. Knowledge reference: 1. Image Text Alternatives (WCAG 1.1.1).",
+      "suggested_fix": "Actionable Remediations:\n\u2022 Violation**: `<img>` elements missing an `alt` attribute or possessing an empty `alt` tag on informative visual content.\n\u2022 Root Cause**: Developers often omit `alt` attributes when embedding images or rely on CSS background images for content.\n\u2022 Fix**: Add a descriptive `alt` attribute describing the content and function of the image (e.g., `alt=\"Company Logo\"`). For purely decorative images, explicitly specify `alt=\"\"` and `aria-hidden=\"true\"`.",
+      "fix_recommendation": {
+        "what": "Upgrade form action endpoint or header configuration to HTTPS",
+        "where": "Form action / HTTP headers on `http://localhost:5500`",
+        "expected_impact": "Mitigates OWASP security risk, preventing cleartext credential/data exposure."
+      },
+      "verification_status": "still_present",
+      "ai_generated": false,
+      "rag_grounded": true,
+      "rag_context": "## 1. Image Text Alternatives (WCAG 1.1.1)\n- **Violation**: `<img>` elements missing an `alt` attribute or possessing an empty `alt` tag on informative visual content.\n- **Root Cause**: Developers often omit `alt` attributes when embedding images or rely on CSS background images for content.\n- **Fix**: Add a descriptive `alt` attribute describing the content and function of the image (e.g., `alt=\"Company Logo\"`). For purely decorative images, explicitly specify `alt=\"\"` and `aria-hidden=\"true\"`.\n\n---\n\n## 3. Mixed Content Security Vulnerability\n- **Violation**: A secure page (`https://`) loads external assets (images, scripts, stylesheets, audio, video) over insecure HTTP (`http://`).\n- **Root Cause**: Absolute legacy HTTP asset URLs hardcoded in HTML markup or script bundles.\n- **Fix**: Change asset URLs from `http://` to relative paths or secure `https://` schemes. Enable `upgrade-insecure-requests` directive in CSP."
+    },
+    {
+      "id": "BUG-EFA380",
+      "title": "Link reachable: http://localhost:5500/broken-link-does-not-exist.html",
+      "category": "functional",
+      "page": "http://localhost:5500/",
+      "severity": "HIGH",
+      "severity_rationale": "Broken/unreachable link directly blocks user navigation.",
+      "evidence": [
+        {
+          "type": "functional_test",
+          "detail": "http://localhost:5500/broken-link-does-not-exist.html"
+        }
+      ],
+      "source_agents": [
+        "FunctionalAgent"
+      ],
+      "page_url": "http://localhost:5500/",
+      "description": "Link reachable: http://localhost:5500/broken-link-does-not-exist.html",
+      "root_cause": "[HIGH Severity - Functional] Structural issue detected on page 'http://localhost:5500/': Link reachable: http://localhost:5500/broken-link-does-not-exist.html. Knowledge reference: 1. Broken Links & Unreachable Navigation (HTTP 404 / 500).",
+      "suggested_fix": "Actionable Remediations:\n\u2022 Violation**: Hyperlinks (`<a>` tags) leading to missing pages (HTTP 404 Not Found) or internal server failures (HTTP 500).\n\u2022 Root Cause**: Typos in `href` attributes, deleted or moved pages without 301 redirects, or unhandled server exceptions.\n\u2022 Fix**: Update or remove dead links. Implement 301 permanent redirects for moved URLs, and add automated automated link verification in CI/CD.",
+      "fix_recommendation": {
+        "what": "Upgrade form action endpoint or header configuration to HTTPS",
+        "where": "Form action / HTTP headers on `http://localhost:5500/`",
+        "expected_impact": "Mitigates OWASP security risk, preventing cleartext credential/data exposure."
+      },
+      "verification_status": "still_present",
+      "ai_generated": false,
+      "rag_grounded": true,
+      "rag_context": "## 1. Broken Links & Unreachable Navigation (HTTP 404 / 500)\n- **Violation**: Hyperlinks (`<a>` tags) leading to missing pages (HTTP 404 Not Found) or internal server failures (HTTP 500).\n- **Root Cause**: Typos in `href` attributes, deleted or moved pages without 301 redirects, or unhandled server exceptions.\n- **Fix**: Update or remove dead links. Implement 301 permanent redirects for moved URLs, and add automated automated link verification in CI/CD.\n\n---\n\n## 1. Missing HTTP Security Headers\n- **Violation**: Web server responses lack critical HTTP security headers: `Content-Security-Policy`, `Strict-Transport-Security`, `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`.\n- **Root Cause**: Default web server configurations (Nginx, Apache, FastAPI, Cloudflare) do not include security headers automatically.\n- **Fix**: Configure application middleware or web server headers:\n  - `Content-Security-Policy`: Define trusted sources for scripts, styles, and frames (e.g., `default-src 'self'`).\n  - `Strict-Transport-Security` (HSTS): Enforce HTTPS connections (e.g., `max-age=31536000; includeSubDomains`).\n  - `X-Content-Type-Options`: Prevent MIME-type sniffing (`nosniff`).\n  - `X-Frame-Options`: Prevent Clickjacking attacks (`DENY` or `SAMEORIGIN`).\n  - `Referrer-Policy`: Protect sensitive URL query parameters (`strict-origin-when-cross-origin`)."
+    },
+    {
+      "id": "BUG-43FE63",
+      "title": "Link reachable: http://localhost:5500/about.html",
+      "category": "functional",
+      "page": "http://localhost:5500/",
+      "severity": "HIGH",
+      "severity_rationale": "Broken/unreachable link directly blocks user navigation.",
+      "evidence": [
+        {
+          "type": "functional_test",
+          "detail": "http://localhost:5500/about.html"
+        }
+      ],
+      "source_agents": [
+        "FunctionalAgent"
+      ],
+      "page_url": "http://localhost:5500/",
+      "description": "Link reachable: http://localhost:5500/about.html",
+      "root_cause": "[HIGH Severity - Functional] Structural issue detected on page 'http://localhost:5500/': Link reachable: http://localhost:5500/about.html. Knowledge reference: 1. Broken Links & Unreachable Navigation (HTTP 404 / 500).",
+      "suggested_fix": "Actionable Remediations:\n\u2022 Violation**: Hyperlinks (`<a>` tags) leading to missing pages (HTTP 404 Not Found) or internal server failures (HTTP 500).\n\u2022 Root Cause**: Typos in `href` attributes, deleted or moved pages without 301 redirects, or unhandled server exceptions.\n\u2022 Fix**: Update or remove dead links. Implement 301 permanent redirects for moved URLs, and add automated automated link verification in CI/CD.",
+      "fix_recommendation": {
+        "what": "Upgrade form action endpoint or header configuration to HTTPS",
+        "where": "Form action / HTTP headers on `http://localhost:5500/`",
+        "expected_impact": "Mitigates OWASP security risk, preventing cleartext credential/data exposure."
+      },
+      "verification_status": "still_present",
+      "ai_generated": false,
+      "rag_grounded": true,
+      "rag_context": "## 1. Broken Links & Unreachable Navigation (HTTP 404 / 500)\n- **Violation**: Hyperlinks (`<a>` tags) leading to missing pages (HTTP 404 Not Found) or internal server failures (HTTP 500).\n- **Root Cause**: Typos in `href` attributes, deleted or moved pages without 301 redirects, or unhandled server exceptions.\n- **Fix**: Update or remove dead links. Implement 301 permanent redirects for moved URLs, and add automated automated link verification in CI/CD.\n\n---\n\n## 1. Missing HTTP Security Headers\n- **Violation**: Web server responses lack critical HTTP security headers: `Content-Security-Policy`, `Strict-Transport-Security`, `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`.\n- **Root Cause**: Default web server configurations (Nginx, Apache, FastAPI, Cloudflare) do not include security headers automatically.\n- **Fix**: Configure application middleware or web server headers:\n  - `Content-Security-Policy`: Define trusted sources for scripts, styles, and frames (e.g., `default-src 'self'`).\n  - `Strict-Transport-Security` (HSTS): Enforce HTTPS connections (e.g., `max-age=31536000; includeSubDomains`).\n  - `X-Content-Type-Options`: Prevent MIME-type sniffing (`nosniff`).\n  - `X-Frame-Options`: Prevent Clickjacking attacks (`DENY` or `SAMEORIGIN`).\n  - `Referrer-Policy`: Protect sensitive URL query parameters (`strict-origin-when-cross-origin`)."
+    },
+    {
+      "id": "BUG-CCD9C5",
+      "title": "Link reachable: http://localhost:5500/contact.html",
+      "category": "functional",
+      "page": "http://localhost:5500/",
+      "severity": "HIGH",
+      "severity_rationale": "Broken/unreachable link directly blocks user navigation.",
+      "evidence": [
+        {
+          "type": "functional_test",
+          "detail": "http://localhost:5500/contact.html"
+        }
+      ],
+      "source_agents": [
+        "FunctionalAgent"
+      ],
+      "page_url": "http://localhost:5500/",
+      "description": "Link reachable: http://localhost:5500/contact.html",
+      "root_cause": "[HIGH Severity - Functional] Structural issue detected on page 'http://localhost:5500/': Link reachable: http://localhost:5500/contact.html. Knowledge reference: 1. Broken Links & Unreachable Navigation (HTTP 404 / 500).",
+      "suggested_fix": "Actionable Remediations:\n\u2022 Violation**: Hyperlinks (`<a>` tags) leading to missing pages (HTTP 404 Not Found) or internal server failures (HTTP 500).\n\u2022 Root Cause**: Typos in `href` attributes, deleted or moved pages without 301 redirects, or unhandled server exceptions.\n\u2022 Fix**: Update or remove dead links. Implement 301 permanent redirects for moved URLs, and add automated automated link verification in CI/CD.",
+      "fix_recommendation": {
+        "what": "Upgrade form action endpoint or header configuration to HTTPS",
+        "where": "Form action / HTTP headers on `http://localhost:5500/`",
+        "expected_impact": "Mitigates OWASP security risk, preventing cleartext credential/data exposure."
+      },
+      "verification_status": "still_present",
+      "ai_generated": false,
+      "rag_grounded": true,
+      "rag_context": "## 1. Broken Links & Unreachable Navigation (HTTP 404 / 500)\n- **Violation**: Hyperlinks (`<a>` tags) leading to missing pages (HTTP 404 Not Found) or internal server failures (HTTP 500).\n- **Root Cause**: Typos in `href` attributes, deleted or moved pages without 301 redirects, or unhandled server exceptions.\n- **Fix**: Update or remove dead links. Implement 301 permanent redirects for moved URLs, and add automated automated link verification in CI/CD.\n\n---\n\n## 1. Missing HTTP Security Headers\n- **Violation**: Web server responses lack critical HTTP security headers: `Content-Security-Policy`, `Strict-Transport-Security`, `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`.\n- **Root Cause**: Default web server configurations (Nginx, Apache, FastAPI, Cloudflare) do not include security headers automatically.\n- **Fix**: Configure application middleware or web server headers:\n  - `Content-Security-Policy`: Define trusted sources for scripts, styles, and frames (e.g., `default-src 'self'`).\n  - `Strict-Transport-Security` (HSTS): Enforce HTTPS connections (e.g., `max-age=31536000; includeSubDomains`).\n  - `X-Content-Type-Options`: Prevent MIME-type sniffing (`nosniff`).\n  - `X-Frame-Options`: Prevent Clickjacking attacks (`DENY` or `SAMEORIGIN`).\n  - `Referrer-Policy`: Protect sensitive URL query parameters (`strict-origin-when-cross-origin`)."
+    },
+    {
+      "id": "BUG-757605",
+      "title": "Image loads correctly: http://localhost:5500/images/hero.png",
+      "category": "functional",
+      "page": "http://localhost:5500/",
+      "severity": "LOW",
+      "severity_rationale": "Broken image degrades visual quality but does not block functionality.",
+      "evidence": [
+        {
+          "type": "functional_test",
+          "detail": "http://localhost:5500/images/hero.png"
+        }
+      ],
+      "source_agents": [
+        "FunctionalAgent"
+      ],
+      "page_url": "http://localhost:5500/",
+      "description": "Image loads correctly: http://localhost:5500/images/hero.png",
+      "root_cause": "[LOW Severity - Functional] Structural issue detected on page 'http://localhost:5500/': Image loads correctly: http://localhost:5500/images/hero.png. Knowledge reference: 1. Image Text Alternatives (WCAG 1.1.1).",
+      "suggested_fix": "Actionable Remediations:\n\u2022 Violation**: `<img>` elements missing an `alt` attribute or possessing an empty `alt` tag on informative visual content.\n\u2022 Root Cause**: Developers often omit `alt` attributes when embedding images or rely on CSS background images for content.\n\u2022 Fix**: Add a descriptive `alt` attribute describing the content and function of the image (e.g., `alt=\"Company Logo\"`). For purely decorative images, explicitly specify `alt=\"\"` and `aria-hidden=\"true\"`.",
+      "fix_recommendation": {
+        "what": "Upgrade form action endpoint or header configuration to HTTPS",
+        "where": "Form action / HTTP headers on `http://localhost:5500/`",
+        "expected_impact": "Mitigates OWASP security risk, preventing cleartext credential/data exposure."
+      },
+      "verification_status": "still_present",
+      "ai_generated": false,
+      "rag_grounded": true,
+      "rag_context": "## 1. Image Text Alternatives (WCAG 1.1.1)\n- **Violation**: `<img>` elements missing an `alt` attribute or possessing an empty `alt` tag on informative visual content.\n- **Root Cause**: Developers often omit `alt` attributes when embedding images or rely on CSS background images for content.\n- **Fix**: Add a descriptive `alt` attribute describing the content and function of the image (e.g., `alt=\"Company Logo\"`). For purely decorative images, explicitly specify `alt=\"\"` and `aria-hidden=\"true\"`.\n\n---\n\n## 3. Mixed Content Security Vulnerability\n- **Violation**: A secure page (`https://`) loads external assets (images, scripts, stylesheets, audio, video) over insecure HTTP (`http://`).\n- **Root Cause**: Absolute legacy HTTP asset URLs hardcoded in HTML markup or script bundles.\n- **Fix**: Change asset URLs from `http://` to relative paths or secure `https://` schemes. Enable `upgrade-insecure-requests` directive in CSP."
+    },
+    {
+      "id": "BUG-A38F4E",
+      "title": "Elements must meet minimum color contrast ratio thresholds (color-contrast)",
+      "category": "accessibility",
+      "page": "http://localhost:5500",
+      "severity": "HIGH",
+      "severity_rationale": "axe-core reports 'serious' impact, affecting 1 element(s); WCAG guidance: https://dequeuniversity.com/rules/axe/4.9/color-contrast?application=axeAPI",
+      "evidence": [
+        {
+          "type": "axe_violation",
+          "detail": "p"
+        }
+      ],
+      "source_agents": [
+        "AccessibilityAgent"
+      ],
+      "page_url": "http://localhost:5500",
+      "description": "Elements must meet minimum color contrast ratio thresholds (color-contrast)",
+      "root_cause": "[HIGH Severity - Accessibility] Structural issue detected on page 'http://localhost:5500': Elements must meet minimum color contrast ratio thresholds (color-contrast). Knowledge reference: 4. Minimum Color Contrast (WCAG 1.4.3).",
+      "suggested_fix": "Actionable Remediations:\n\u2022 Violation**: Text color contrast against its background is lower than 4.5:1 for normal text or 3:1 for large text.\n\u2022 Root Cause**: Using faint gray text (#888888) on light gray or white backgrounds for aesthetic design choices.\n\u2022 Fix**: Darken text colors or lighten background colors to satisfy WCAG AA contrast standard (minimum 4.5:1 ratio).",
+      "fix_recommendation": {
+        "what": "Add descriptive `alt` attribute or `aria-label` to element",
+        "where": "Target element on page `http://localhost:5500` (Elements must meet minimum color contrast ratio thresholds (color-contrast))",
+        "expected_impact": "Resolves WCAG 1.1.1 accessibility violation and improves screen reader compatibility."
+      },
+      "verification_status": "still_present",
+      "ai_generated": false,
+      "rag_grounded": true,
+      "rag_context": "## 4. Minimum Color Contrast (WCAG 1.4.3)\n- **Violation**: Text color contrast against its background is lower than 4.5:1 for normal text or 3:1 for large text.\n- **Root Cause**: Using faint gray text (#888888) on light gray or white backgrounds for aesthetic design choices.\n- **Fix**: Darken text colors or lighten background colors to satisfy WCAG AA contrast standard (minimum 4.5:1 ratio).\n\n---\n\n## 5. Keyboard Focus Visibility (WCAG 2.4.7)\n- **Violation**: Interactive elements missing a visible focus indicator when navigated via Keyboard Tab.\n- **Root Cause**: Applying CSS styles like `outline: none` or `outline: 0` without providing a custom `:focus-visible` outline.\n- **Fix**: Remove `outline: none` or provide custom `:focus-visible` styles with a high-contrast ring (e.g., `outline: 2px solid #2563eb; outline-offset: 2px;`)."
+    },
+    {
+      "id": "BUG-2126BC",
+      "title": "Images must have alternate text (image-alt)",
+      "category": "accessibility",
+      "page": "http://localhost:5500",
+      "severity": "CRITICAL",
+      "severity_rationale": "axe-core reports 'critical' impact, affecting 1 element(s); WCAG guidance: https://dequeuniversity.com/rules/axe/4.9/image-alt?application=axeAPI",
+      "evidence": [
+        {
+          "type": "axe_violation",
+          "detail": "img"
+        }
+      ],
+      "source_agents": [
+        "AccessibilityAgent"
+      ],
+      "page_url": "http://localhost:5500",
+      "description": "Images must have alternate text (image-alt)",
+      "root_cause": "[CRITICAL Severity - Accessibility] Structural issue detected on page 'http://localhost:5500': Images must have alternate text (image-alt). Knowledge reference: 1. Image Text Alternatives (WCAG 1.1.1).",
+      "suggested_fix": "Actionable Remediations:\n\u2022 Violation**: `<img>` elements missing an `alt` attribute or possessing an empty `alt` tag on informative visual content.\n\u2022 Root Cause**: Developers often omit `alt` attributes when embedding images or rely on CSS background images for content.\n\u2022 Fix**: Add a descriptive `alt` attribute describing the content and function of the image (e.g., `alt=\"Company Logo\"`). For purely decorative images, explicitly specify `alt=\"\"` and `aria-hidden=\"true\"`.",
+      "fix_recommendation": {
+        "what": "Add descriptive `alt` attribute or `aria-label` to element",
+        "where": "Target element on page `http://localhost:5500` (Images must have alternate text (image-alt))",
+        "expected_impact": "Resolves WCAG 1.1.1 accessibility violation and improves screen reader compatibility."
+      },
+      "verification_status": "still_present",
+      "ai_generated": false,
+      "rag_grounded": true,
+      "rag_context": "## 1. Image Text Alternatives (WCAG 1.1.1)\n- **Violation**: `<img>` elements missing an `alt` attribute or possessing an empty `alt` tag on informative visual content.\n- **Root Cause**: Developers often omit `alt` attributes when embedding images or rely on CSS background images for content.\n- **Fix**: Add a descriptive `alt` attribute describing the content and function of the image (e.g., `alt=\"Company Logo\"`). For purely decorative images, explicitly specify `alt=\"\"` and `aria-hidden=\"true\"`.\n\n---\n\n## 3. Unlabeled Interactive Buttons & Links (WCAG 4.1.2)\n- **Violation**: `<button>` or `<a>` elements containing only icon graphics (SVG/i tags) without accessible inner text.\n- **Root Cause**: Designing icon-only buttons (e.g., cart, menu, search) without hidden accessibility labels.\n- **Fix**: Include visually hidden text (`<span class=\"sr-only\">Close Menu</span>`) or attach an `aria-label` attribute (e.g., `aria-label=\"Open Shopping Cart\"`)."
+    },
+    {
+      "id": "BUG-04FF79",
+      "title": "Document should have one main landmark (landmark-one-main)",
+      "category": "accessibility",
+      "page": "http://localhost:5500",
+      "severity": "MEDIUM",
+      "severity_rationale": "axe-core reports 'moderate' impact, affecting 1 element(s); WCAG guidance: https://dequeuniversity.com/rules/axe/4.9/landmark-one-main?application=axeAPI",
+      "evidence": [
+        {
+          "type": "axe_violation",
+          "detail": "html"
+        }
+      ],
+      "source_agents": [
+        "AccessibilityAgent"
+      ],
+      "page_url": "http://localhost:5500",
+      "description": "Document should have one main landmark (landmark-one-main)",
+      "root_cause": "[MEDIUM Severity - Accessibility] Structural issue detected on page 'http://localhost:5500': Document should have one main landmark (landmark-one-main). Knowledge reference: WCAG 2.1 Accessibility Best Practices & Fixes.",
+      "suggested_fix": "Actionable Remediations:\n\u2022 # WCAG 2.1 Accessibility Best Practices & Fixes\n\u2022 Violation**: Interactive elements missing a visible focus indicator when navigated via Keyboard Tab.\n\u2022 Root Cause**: Applying CSS styles like `outline: none` or `outline: 0` without providing a custom `:focus-visible` outline.",
+      "fix_recommendation": {
+        "what": "Add descriptive `alt` attribute or `aria-label` to element",
+        "where": "Target element on page `http://localhost:5500` (Document should have one main landmark (landmark-one-main))",
+        "expected_impact": "Resolves WCAG 1.1.1 accessibility violation and improves screen reader compatibility."
+      },
+      "verification_status": "still_present",
+      "ai_generated": false,
+      "rag_grounded": true,
+      "rag_context": "# WCAG 2.1 Accessibility Best Practices & Fixes\n\n---\n\n## 5. Keyboard Focus Visibility (WCAG 2.4.7)\n- **Violation**: Interactive elements missing a visible focus indicator when navigated via Keyboard Tab.\n- **Root Cause**: Applying CSS styles like `outline: none` or `outline: 0` without providing a custom `:focus-visible` outline.\n- **Fix**: Remove `outline: none` or provide custom `:focus-visible` styles with a high-contrast ring (e.g., `outline: 2px solid #2563eb; outline-offset: 2px;`)."
+    },
+    {
+      "id": "BUG-4670C5",
+      "title": "All page content should be contained by landmarks (region)",
+      "category": "accessibility",
+      "page": "http://localhost:5500",
+      "severity": "MEDIUM",
+      "severity_rationale": "axe-core reports 'moderate' impact, affecting 8 element(s); WCAG guidance: https://dequeuniversity.com/rules/axe/4.9/region?application=axeAPI",
+      "evidence": [
+        {
+          "type": "axe_violation",
+          "detail": "h1"
+        }
+      ],
+      "source_agents": [
+        "AccessibilityAgent"
+      ],
+      "page_url": "http://localhost:5500",
+      "description": "All page content should be contained by landmarks (region)",
+      "root_cause": "[MEDIUM Severity - Accessibility] Structural issue detected on page 'http://localhost:5500': All page content should be contained by landmarks (region). Knowledge reference: WCAG 2.1 Accessibility Best Practices & Fixes.",
+      "suggested_fix": "Actionable Remediations:\n\u2022 # WCAG 2.1 Accessibility Best Practices & Fixes\n\u2022 Violation**: `<button>` or `<a>` elements containing only icon graphics (SVG/i tags) without accessible inner text.\n\u2022 Root Cause**: Designing icon-only buttons (e.g., cart, menu, search) without hidden accessibility labels.",
+      "fix_recommendation": {
+        "what": "Add descriptive `alt` attribute or `aria-label` to element",
+        "where": "Target element on page `http://localhost:5500` (All page content should be contained by landmarks (region))",
+        "expected_impact": "Resolves WCAG 1.1.1 accessibility violation and improves screen reader compatibility."
+      },
+      "verification_status": "still_present",
+      "ai_generated": false,
+      "rag_grounded": true,
+      "rag_context": "# WCAG 2.1 Accessibility Best Practices & Fixes\n\n---\n\n## 3. Unlabeled Interactive Buttons & Links (WCAG 4.1.2)\n- **Violation**: `<button>` or `<a>` elements containing only icon graphics (SVG/i tags) without accessible inner text.\n- **Root Cause**: Designing icon-only buttons (e.g., cart, menu, search) without hidden accessibility labels.\n- **Fix**: Include visually hidden text (`<span class=\"sr-only\">Close Menu</span>`) or attach an `aria-label` attribute (e.g., `aria-label=\"Open Shopping Cart\"`)."
+    },
+    {
+      "id": "BUG-4330B3",
+      "title": "Elements must meet minimum color contrast ratio thresholds (color-contrast)",
+      "category": "accessibility",
+      "page": "http://localhost:5500/",
+      "severity": "HIGH",
+      "severity_rationale": "axe-core reports 'serious' impact, affecting 1 element(s); WCAG guidance: https://dequeuniversity.com/rules/axe/4.9/color-contrast?application=axeAPI",
+      "evidence": [
+        {
+          "type": "axe_violation",
+          "detail": "p"
+        }
+      ],
+      "source_agents": [
+        "AccessibilityAgent"
+      ],
+      "page_url": "http://localhost:5500/",
+      "description": "Elements must meet minimum color contrast ratio thresholds (color-contrast)",
+      "root_cause": "[HIGH Severity - Accessibility] Structural issue detected on page 'http://localhost:5500/': Elements must meet minimum color contrast ratio thresholds (color-contrast). Knowledge reference: 4. Minimum Color Contrast (WCAG 1.4.3).",
+      "suggested_fix": "Actionable Remediations:\n\u2022 Violation**: Text color contrast against its background is lower than 4.5:1 for normal text or 3:1 for large text.\n\u2022 Root Cause**: Using faint gray text (#888888) on light gray or white backgrounds for aesthetic design choices.\n\u2022 Fix**: Darken text colors or lighten background colors to satisfy WCAG AA contrast standard (minimum 4.5:1 ratio).",
+      "fix_recommendation": {
+        "what": "Add descriptive `alt` attribute or `aria-label` to element",
+        "where": "Target element on page `http://localhost:5500/` (Elements must meet minimum color contrast ratio thresholds (color-contrast))",
+        "expected_impact": "Resolves WCAG 1.1.1 accessibility violation and improves screen reader compatibility."
+      },
+      "verification_status": "still_present",
+      "ai_generated": false,
+      "rag_grounded": true,
+      "rag_context": "## 4. Minimum Color Contrast (WCAG 1.4.3)\n- **Violation**: Text color contrast against its background is lower than 4.5:1 for normal text or 3:1 for large text.\n- **Root Cause**: Using faint gray text (#888888) on light gray or white backgrounds for aesthetic design choices.\n- **Fix**: Darken text colors or lighten background colors to satisfy WCAG AA contrast standard (minimum 4.5:1 ratio).\n\n---\n\n## 5. Keyboard Focus Visibility (WCAG 2.4.7)\n- **Violation**: Interactive elements missing a visible focus indicator when navigated via Keyboard Tab.\n- **Root Cause**: Applying CSS styles like `outline: none` or `outline: 0` without providing a custom `:focus-visible` outline.\n- **Fix**: Remove `outline: none` or provide custom `:focus-visible` styles with a high-contrast ring (e.g., `outline: 2px solid #2563eb; outline-offset: 2px;`)."
+    },
+    {
+      "id": "BUG-83A9AD",
+      "title": "Images must have alternate text (image-alt)",
+      "category": "accessibility",
+      "page": "http://localhost:5500/",
+      "severity": "CRITICAL",
+      "severity_rationale": "axe-core reports 'critical' impact, affecting 1 element(s); WCAG guidance: https://dequeuniversity.com/rules/axe/4.9/image-alt?application=axeAPI",
+      "evidence": [
+        {
+          "type": "axe_violation",
+          "detail": "img"
+        }
+      ],
+      "source_agents": [
+        "AccessibilityAgent"
+      ],
+      "page_url": "http://localhost:5500/",
+      "description": "Images must have alternate text (image-alt)",
+      "root_cause": "[CRITICAL Severity - Accessibility] Structural issue detected on page 'http://localhost:5500/': Images must have alternate text (image-alt). Knowledge reference: 1. Image Text Alternatives (WCAG 1.1.1).",
+      "suggested_fix": "Actionable Remediations:\n\u2022 Violation**: `<img>` elements missing an `alt` attribute or possessing an empty `alt` tag on informative visual content.\n\u2022 Root Cause**: Developers often omit `alt` attributes when embedding images or rely on CSS background images for content.\n\u2022 Fix**: Add a descriptive `alt` attribute describing the content and function of the image (e.g., `alt=\"Company Logo\"`). For purely decorative images, explicitly specify `alt=\"\"` and `aria-hidden=\"true\"`.",
+      "fix_recommendation": {
+        "what": "Add descriptive `alt` attribute or `aria-label` to element",
+        "where": "Target element on page `http://localhost:5500/` (Images must have alternate text (image-alt))",
+        "expected_impact": "Resolves WCAG 1.1.1 accessibility violation and improves screen reader compatibility."
+      },
+      "verification_status": "still_present",
+      "ai_generated": false,
+      "rag_grounded": true,
+      "rag_context": "## 1. Image Text Alternatives (WCAG 1.1.1)\n- **Violation**: `<img>` elements missing an `alt` attribute or possessing an empty `alt` tag on informative visual content.\n- **Root Cause**: Developers often omit `alt` attributes when embedding images or rely on CSS background images for content.\n- **Fix**: Add a descriptive `alt` attribute describing the content and function of the image (e.g., `alt=\"Company Logo\"`). For purely decorative images, explicitly specify `alt=\"\"` and `aria-hidden=\"true\"`.\n\n---\n\n## 3. Unlabeled Interactive Buttons & Links (WCAG 4.1.2)\n- **Violation**: `<button>` or `<a>` elements containing only icon graphics (SVG/i tags) without accessible inner text.\n- **Root Cause**: Designing icon-only buttons (e.g., cart, menu, search) without hidden accessibility labels.\n- **Fix**: Include visually hidden text (`<span class=\"sr-only\">Close Menu</span>`) or attach an `aria-label` attribute (e.g., `aria-label=\"Open Shopping Cart\"`)."
+    },
+    {
+      "id": "BUG-064D1D",
+      "title": "Document should have one main landmark (landmark-one-main)",
+      "category": "accessibility",
+      "page": "http://localhost:5500/",
+      "severity": "MEDIUM",
+      "severity_rationale": "axe-core reports 'moderate' impact, affecting 1 element(s); WCAG guidance: https://dequeuniversity.com/rules/axe/4.9/landmark-one-main?application=axeAPI",
+      "evidence": [
+        {
+          "type": "axe_violation",
+          "detail": "html"
+        }
+      ],
+      "source_agents": [
+        "AccessibilityAgent"
+      ],
+      "page_url": "http://localhost:5500/",
+      "description": "Document should have one main landmark (landmark-one-main)",
+      "root_cause": "[MEDIUM Severity - Accessibility] Structural issue detected on page 'http://localhost:5500/': Document should have one main landmark (landmark-one-main). Knowledge reference: WCAG 2.1 Accessibility Best Practices & Fixes.",
+      "suggested_fix": "Actionable Remediations:\n\u2022 # WCAG 2.1 Accessibility Best Practices & Fixes\n\u2022 Violation**: Interactive elements missing a visible focus indicator when navigated via Keyboard Tab.\n\u2022 Root Cause**: Applying CSS styles like `outline: none` or `outline: 0` without providing a custom `:focus-visible` outline.",
+      "fix_recommendation": {
+        "what": "Add descriptive `alt` attribute or `aria-label` to element",
+        "where": "Target element on page `http://localhost:5500/` (Document should have one main landmark (landmark-one-main))",
+        "expected_impact": "Resolves WCAG 1.1.1 accessibility violation and improves screen reader compatibility."
+      },
+      "verification_status": "still_present",
+      "ai_generated": false,
+      "rag_grounded": true,
+      "rag_context": "# WCAG 2.1 Accessibility Best Practices & Fixes\n\n---\n\n## 5. Keyboard Focus Visibility (WCAG 2.4.7)\n- **Violation**: Interactive elements missing a visible focus indicator when navigated via Keyboard Tab.\n- **Root Cause**: Applying CSS styles like `outline: none` or `outline: 0` without providing a custom `:focus-visible` outline.\n- **Fix**: Remove `outline: none` or provide custom `:focus-visible` styles with a high-contrast ring (e.g., `outline: 2px solid #2563eb; outline-offset: 2px;`)."
+    },
+    {
+      "id": "BUG-72B60C",
+      "title": "All page content should be contained by landmarks (region)",
+      "category": "accessibility",
+      "page": "http://localhost:5500/",
+      "severity": "MEDIUM",
+      "severity_rationale": "axe-core reports 'moderate' impact, affecting 8 element(s); WCAG guidance: https://dequeuniversity.com/rules/axe/4.9/region?application=axeAPI",
+      "evidence": [
+        {
+          "type": "axe_violation",
+          "detail": "h1"
+        }
+      ],
+      "source_agents": [
+        "AccessibilityAgent"
+      ],
+      "page_url": "http://localhost:5500/",
+      "description": "All page content should be contained by landmarks (region)",
+      "root_cause": "[MEDIUM Severity - Accessibility] Structural issue detected on page 'http://localhost:5500/': All page content should be contained by landmarks (region). Knowledge reference: WCAG 2.1 Accessibility Best Practices & Fixes.",
+      "suggested_fix": "Actionable Remediations:\n\u2022 # WCAG 2.1 Accessibility Best Practices & Fixes\n\u2022 Violation**: `<button>` or `<a>` elements containing only icon graphics (SVG/i tags) without accessible inner text.\n\u2022 Root Cause**: Designing icon-only buttons (e.g., cart, menu, search) without hidden accessibility labels.",
+      "fix_recommendation": {
+        "what": "Add descriptive `alt` attribute or `aria-label` to element",
+        "where": "Target element on page `http://localhost:5500/` (All page content should be contained by landmarks (region))",
+        "expected_impact": "Resolves WCAG 1.1.1 accessibility violation and improves screen reader compatibility."
+      },
+      "verification_status": "still_present",
+      "ai_generated": false,
+      "rag_grounded": true,
+      "rag_context": "# WCAG 2.1 Accessibility Best Practices & Fixes\n\n---\n\n## 3. Unlabeled Interactive Buttons & Links (WCAG 4.1.2)\n- **Violation**: `<button>` or `<a>` elements containing only icon graphics (SVG/i tags) without accessible inner text.\n- **Root Cause**: Designing icon-only buttons (e.g., cart, menu, search) without hidden accessibility labels.\n- **Fix**: Include visually hidden text (`<span class=\"sr-only\">Close Menu</span>`) or attach an `aria-label` attribute (e.g., `aria-label=\"Open Shopping Cart\"`)."
+    },
+    {
+      "id": "BUG-4BE17F",
+      "title": "<html> element must have a lang attribute (html-has-lang)",
+      "category": "accessibility",
+      "page": "http://localhost:5500/about.html",
+      "severity": "HIGH",
+      "severity_rationale": "axe-core reports 'serious' impact, affecting 1 element(s); WCAG guidance: https://dequeuniversity.com/rules/axe/4.9/html-has-lang?application=axeAPI",
+      "evidence": [
+        {
+          "type": "axe_violation",
+          "detail": "html"
+        }
+      ],
+      "source_agents": [
+        "AccessibilityAgent"
+      ],
+      "page_url": "http://localhost:5500/about.html",
+      "description": "<html> element must have a lang attribute (html-has-lang)",
+      "root_cause": "[HIGH Severity - Accessibility] Structural issue detected on page 'http://localhost:5500/about.html': <html> element must have a lang attribute (html-has-lang). Knowledge reference: 2. Accessible Form Controls (WCAG 1.3.1 / 4.1.2).",
+      "suggested_fix": "Actionable Remediations:\n\u2022 Violation**: Input controls (`<input>`, `<select>`, `<textarea>`) lacking an associated `<label>` or `aria-label`.\n\u2022 Root Cause**: Relying solely on `placeholder` text or visual text next to inputs without binding via `<label for=\"id\">`.\n\u2022 Fix**: Wrap inputs in explicit `<label>` tags or use `<label for=\"element_id\">Label Text</label>`. Alternatively, add an `aria-label=\"Search\"` attribute directly to the control.",
+      "fix_recommendation": {
+        "what": "Add descriptive `alt` attribute or `aria-label` to element",
+        "where": "Target element on page `http://localhost:5500/about.html` (<html> element must have a lang attribute (html-has-lang))",
+        "expected_impact": "Resolves WCAG 1.1.1 accessibility violation and improves screen reader compatibility."
+      },
+      "verification_status": "still_present",
+      "ai_generated": false,
+      "rag_grounded": true,
+      "rag_context": "## 2. Accessible Form Controls (WCAG 1.3.1 / 4.1.2)\n- **Violation**: Input controls (`<input>`, `<select>`, `<textarea>`) lacking an associated `<label>` or `aria-label`.\n- **Root Cause**: Relying solely on `placeholder` text or visual text next to inputs without binding via `<label for=\"id\">`.\n- **Fix**: Wrap inputs in explicit `<label>` tags or use `<label for=\"element_id\">Label Text</label>`. Alternatively, add an `aria-label=\"Search\"` attribute directly to the control.\n\n---\n\n## 3. Unlabeled Interactive Buttons & Links (WCAG 4.1.2)\n- **Violation**: `<button>` or `<a>` elements containing only icon graphics (SVG/i tags) without accessible inner text.\n- **Root Cause**: Designing icon-only buttons (e.g., cart, menu, search) without hidden accessibility labels.\n- **Fix**: Include visually hidden text (`<span class=\"sr-only\">Close Menu</span>`) or attach an `aria-label` attribute (e.g., `aria-label=\"Open Shopping Cart\"`)."
+    },
+    {
+      "id": "BUG-1412AE",
+      "title": "Document should have one main landmark (landmark-one-main)",
+      "category": "accessibility",
+      "page": "http://localhost:5500/about.html",
+      "severity": "MEDIUM",
+      "severity_rationale": "axe-core reports 'moderate' impact, affecting 1 element(s); WCAG guidance: https://dequeuniversity.com/rules/axe/4.9/landmark-one-main?application=axeAPI",
+      "evidence": [
+        {
+          "type": "axe_violation",
+          "detail": "html"
+        }
+      ],
+      "source_agents": [
+        "AccessibilityAgent"
+      ],
+      "page_url": "http://localhost:5500/about.html",
+      "description": "Document should have one main landmark (landmark-one-main)",
+      "root_cause": "[MEDIUM Severity - Accessibility] Structural issue detected on page 'http://localhost:5500/about.html': Document should have one main landmark (landmark-one-main). Knowledge reference: WCAG 2.1 Accessibility Best Practices & Fixes.",
+      "suggested_fix": "Actionable Remediations:\n\u2022 # WCAG 2.1 Accessibility Best Practices & Fixes\n\u2022 Violation**: Interactive elements missing a visible focus indicator when navigated via Keyboard Tab.\n\u2022 Root Cause**: Applying CSS styles like `outline: none` or `outline: 0` without providing a custom `:focus-visible` outline.",
+      "fix_recommendation": {
+        "what": "Add descriptive `alt` attribute or `aria-label` to element",
+        "where": "Target element on page `http://localhost:5500/about.html` (Document should have one main landmark (landmark-one-main))",
+        "expected_impact": "Resolves WCAG 1.1.1 accessibility violation and improves screen reader compatibility."
+      },
+      "verification_status": "still_present",
+      "ai_generated": false,
+      "rag_grounded": true,
+      "rag_context": "# WCAG 2.1 Accessibility Best Practices & Fixes\n\n---\n\n## 5. Keyboard Focus Visibility (WCAG 2.4.7)\n- **Violation**: Interactive elements missing a visible focus indicator when navigated via Keyboard Tab.\n- **Root Cause**: Applying CSS styles like `outline: none` or `outline: 0` without providing a custom `:focus-visible` outline.\n- **Fix**: Remove `outline: none` or provide custom `:focus-visible` styles with a high-contrast ring (e.g., `outline: 2px solid #2563eb; outline-offset: 2px;`)."
+    },
+    {
+      "id": "BUG-68D0B9",
+      "title": "All page content should be contained by landmarks (region)",
+      "category": "accessibility",
+      "page": "http://localhost:5500/about.html",
+      "severity": "MEDIUM",
+      "severity_rationale": "axe-core reports 'moderate' impact, affecting 4 element(s); WCAG guidance: https://dequeuniversity.com/rules/axe/4.9/region?application=axeAPI",
+      "evidence": [
+        {
+          "type": "axe_violation",
+          "detail": "h1"
+        }
+      ],
+      "source_agents": [
+        "AccessibilityAgent"
+      ],
+      "page_url": "http://localhost:5500/about.html",
+      "description": "All page content should be contained by landmarks (region)",
+      "root_cause": "[MEDIUM Severity - Accessibility] Structural issue detected on page 'http://localhost:5500/about.html': All page content should be contained by landmarks (region). Knowledge reference: WCAG 2.1 Accessibility Best Practices & Fixes.",
+      "suggested_fix": "Actionable Remediations:\n\u2022 # WCAG 2.1 Accessibility Best Practices & Fixes\n\u2022 Violation**: `<button>` or `<a>` elements containing only icon graphics (SVG/i tags) without accessible inner text.\n\u2022 Root Cause**: Designing icon-only buttons (e.g., cart, menu, search) without hidden accessibility labels.",
+      "fix_recommendation": {
+        "what": "Add descriptive `alt` attribute or `aria-label` to element",
+        "where": "Target element on page `http://localhost:5500/about.html` (All page content should be contained by landmarks (region))",
+        "expected_impact": "Resolves WCAG 1.1.1 accessibility violation and improves screen reader compatibility."
+      },
+      "verification_status": "still_present",
+      "ai_generated": false,
+      "rag_grounded": true,
+      "rag_context": "# WCAG 2.1 Accessibility Best Practices & Fixes\n\n---\n\n## 3. Unlabeled Interactive Buttons & Links (WCAG 4.1.2)\n- **Violation**: `<button>` or `<a>` elements containing only icon graphics (SVG/i tags) without accessible inner text.\n- **Root Cause**: Designing icon-only buttons (e.g., cart, menu, search) without hidden accessibility labels.\n- **Fix**: Include visually hidden text (`<span class=\"sr-only\">Close Menu</span>`) or attach an `aria-label` attribute (e.g., `aria-label=\"Open Shopping Cart\"`)."
+    },
+    {
+      "id": "BUG-41038C",
+      "title": "Visual layout defect (overflow): div.container",
+      "category": "visual",
+      "page": "http://localhost:5500",
+      "severity": "MEDIUM",
+      "severity_rationale": "Element <div.container> extends beyond viewport boundary (element width=1248px, right=1344px, viewport width=1440px)",
+      "evidence": [
+        {
+          "type": "visual_layout",
+          "detail": "Element <div.container> extends beyond viewport boundary (element width=1248px, right=1344px, viewport width=1440px)"
+        }
+      ],
+      "source_agents": [
+        "VisualAgent"
+      ],
+      "page_url": "http://localhost:5500",
+      "description": "Visual layout defect (overflow): div.container",
+      "root_cause": "[MEDIUM Severity - Visual] Structural issue detected on page 'http://localhost:5500': Visual layout defect (overflow): div.container. Knowledge reference: 4. Horizontal Viewport Overflow.",
+      "suggested_fix": "Actionable Remediations:\n\u2022 Violation**: Content width exceeds screen width (`scrollWidth > clientWidth`), introducing unwanted horizontal scrollbars.\n\u2022 Root Cause**: Fixed width elements (`width: 1200px`), unformatted pre tags, or large images exceeding container bounds.\n\u2022 Fix**: Replace fixed pixel widths with responsive percentages or max-width utilities (`max-width: 100%; box-sizing: border-box; overflow-x: hidden;`).",
+      "fix_recommendation": {
+        "what": "Adjust `z-index` or container `padding`/`margin` bounding box",
+        "where": "CSS rules targeting element on page `http://localhost:5500`",
+        "expected_impact": "Fixes component collision and restores clickable interactive area."
+      },
+      "verification_status": "still_present",
+      "ai_generated": false,
+      "rag_grounded": true,
+      "rag_context": "## 4. Horizontal Viewport Overflow\n- **Violation**: Content width exceeds screen width (`scrollWidth > clientWidth`), introducing unwanted horizontal scrollbars.\n- **Root Cause**: Fixed width elements (`width: 1200px`), unformatted pre tags, or large images exceeding container bounds.\n- **Fix**: Replace fixed pixel widths with responsive percentages or max-width utilities (`max-width: 100%; box-sizing: border-box; overflow-x: hidden;`).\n\n---\n\n## 3. Visual Layout Overlap & Component Collision\n- **Violation**: Interactive elements (buttons, inputs, links) obscured or overlapped by floating headers, modals, or fixed position elements.\n- **Root Cause**: Hardcoded `z-index` layering issues, improper `position: fixed` offset calculation, or grid/flexbox container overflow.\n- **Fix**: Adjust `z-index` scale, add proper `margin` or `padding` offsets to scroll containers, and use CSS `pointer-events: none` on overlay backgrounds."
+    },
+    {
+      "id": "BUG-863255",
+      "title": "Visual layout defect (overflow): div.container",
+      "category": "visual",
+      "page": "http://localhost:5500/",
+      "severity": "MEDIUM",
+      "severity_rationale": "Element <div.container> extends beyond viewport boundary (element width=1248px, right=1344px, viewport width=1440px)",
+      "evidence": [
+        {
+          "type": "visual_layout",
+          "detail": "Element <div.container> extends beyond viewport boundary (element width=1248px, right=1344px, viewport width=1440px)"
+        }
+      ],
+      "source_agents": [
+        "VisualAgent"
+      ],
+      "page_url": "http://localhost:5500/",
+      "description": "Visual layout defect (overflow): div.container",
+      "root_cause": "[MEDIUM Severity - Visual] Structural issue detected on page 'http://localhost:5500/': Visual layout defect (overflow): div.container. Knowledge reference: 4. Horizontal Viewport Overflow.",
+      "suggested_fix": "Actionable Remediations:\n\u2022 Violation**: Content width exceeds screen width (`scrollWidth > clientWidth`), introducing unwanted horizontal scrollbars.\n\u2022 Root Cause**: Fixed width elements (`width: 1200px`), unformatted pre tags, or large images exceeding container bounds.\n\u2022 Fix**: Replace fixed pixel widths with responsive percentages or max-width utilities (`max-width: 100%; box-sizing: border-box; overflow-x: hidden;`).",
+      "fix_recommendation": {
+        "what": "Adjust `z-index` or container `padding`/`margin` bounding box",
+        "where": "CSS rules targeting element on page `http://localhost:5500/`",
+        "expected_impact": "Fixes component collision and restores clickable interactive area."
+      },
+      "verification_status": "still_present",
+      "ai_generated": false,
+      "rag_grounded": true,
+      "rag_context": "## 4. Horizontal Viewport Overflow\n- **Violation**: Content width exceeds screen width (`scrollWidth > clientWidth`), introducing unwanted horizontal scrollbars.\n- **Root Cause**: Fixed width elements (`width: 1200px`), unformatted pre tags, or large images exceeding container bounds.\n- **Fix**: Replace fixed pixel widths with responsive percentages or max-width utilities (`max-width: 100%; box-sizing: border-box; overflow-x: hidden;`).\n\n---\n\n## 3. Visual Layout Overlap & Component Collision\n- **Violation**: Interactive elements (buttons, inputs, links) obscured or overlapped by floating headers, modals, or fixed position elements.\n- **Root Cause**: Hardcoded `z-index` layering issues, improper `position: fixed` offset calculation, or grid/flexbox container overflow.\n- **Fix**: Adjust `z-index` scale, add proper `margin` or `padding` offsets to scroll containers, and use CSS `pointer-events: none` on overlay backgrounds."
+    },
+    {
+      "id": "BUG-7000C4",
+      "title": "Security vulnerability (missing_header_content-security-policy): Missing security header: Content-Security-Policy. Prevents XSS and unauthorized script injection.",
+      "category": "security",
+      "page": "http://localhost:5500",
+      "severity": "MEDIUM",
+      "severity_rationale": "Missing security header: Content-Security-Policy. Prevents XSS and unauthorized script injection.",
+      "evidence": [
+        {
+          "type": "security_finding",
+          "detail": "Header Content-Security-Policy not present in response"
+        }
+      ],
+      "source_agents": [
+        "SecurityAgent"
+      ],
+      "page_url": "http://localhost:5500",
+      "description": "Security vulnerability (missing_header_content-security-policy): Missing security header: Content-Security-Policy. Prevents XSS and unauthorized script injection.",
+      "root_cause": "[MEDIUM Severity - Security] Structural issue detected on page 'http://localhost:5500': Security vulnerability (missing_header_content-security-policy): Missing security header: Content-Security-Policy. Prevents XSS and unauthorized script injection.. Knowledge reference: 1. Missing HTTP Security Headers.",
+      "suggested_fix": "Actionable Remediations:\n\u2022 Violation**: Web server responses lack critical HTTP security headers: `Content-Security-Policy`, `Strict-Transport-Security`, `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`.\n\u2022 Root Cause**: Default web server configurations (Nginx, Apache, FastAPI, Cloudflare) do not include security headers automatically.\n\u2022 Fix**: Configure application middleware or web server headers:",
+      "fix_recommendation": {
+        "what": "Upgrade form action endpoint or header configuration to HTTPS",
+        "where": "Form action / HTTP headers on `http://localhost:5500`",
+        "expected_impact": "Mitigates OWASP security risk, preventing cleartext credential/data exposure."
+      },
+      "verification_status": "still_present",
+      "ai_generated": false,
+      "rag_grounded": true,
+      "rag_context": "## 1. Missing HTTP Security Headers\n- **Violation**: Web server responses lack critical HTTP security headers: `Content-Security-Policy`, `Strict-Transport-Security`, `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`.\n- **Root Cause**: Default web server configurations (Nginx, Apache, FastAPI, Cloudflare) do not include security headers automatically.\n- **Fix**: Configure application middleware or web server headers:\n  - `Content-Security-Policy`: Define trusted sources for scripts, styles, and frames (e.g., `default-src 'self'`).\n  - `Strict-Transport-Security` (HSTS): Enforce HTTPS connections (e.g., `max-age=31536000; includeSubDomains`).\n  - `X-Content-Type-Options`: Prevent MIME-type sniffing (`nosniff`).\n  - `X-Frame-Options`: Prevent Clickjacking attacks (`DENY` or `SAMEORIGIN`).\n  - `Referrer-Policy`: Protect sensitive URL query parameters (`strict-origin-when-cross-origin`).\n\n---\n\n## 3. Mixed Content Security Vulnerability\n- **Violation**: A secure page (`https://`) loads external assets (images, scripts, stylesheets, audio, video) over insecure HTTP (`http://`).\n- **Root Cause**: Absolute legacy HTTP asset URLs hardcoded in HTML markup or script bundles.\n- **Fix**: Change asset URLs from `http://` to relative paths or secure `https://` schemes. Enable `upgrade-insecure-requests` directive in CSP."
+    },
+    {
+      "id": "BUG-38FA01",
+      "title": "Security vulnerability (missing_header_x-frame-options): Missing security header: X-Frame-Options. Prevents Clickjacking attacks.",
+      "category": "security",
+      "page": "http://localhost:5500",
+      "severity": "MEDIUM",
+      "severity_rationale": "Missing security header: X-Frame-Options. Prevents Clickjacking attacks.",
+      "evidence": [
+        {
+          "type": "security_finding",
+          "detail": "Header X-Frame-Options not present in response"
+        }
+      ],
+      "source_agents": [
+        "SecurityAgent"
+      ],
+      "page_url": "http://localhost:5500",
+      "description": "Security vulnerability (missing_header_x-frame-options): Missing security header: X-Frame-Options. Prevents Clickjacking attacks.",
+      "root_cause": "[MEDIUM Severity - Security] Structural issue detected on page 'http://localhost:5500': Security vulnerability (missing_header_x-frame-options): Missing security header: X-Frame-Options. Prevents Clickjacking attacks.. Knowledge reference: 1. Missing HTTP Security Headers.",
+      "suggested_fix": "Actionable Remediations:\n\u2022 Violation**: Web server responses lack critical HTTP security headers: `Content-Security-Policy`, `Strict-Transport-Security`, `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`.\n\u2022 Root Cause**: Default web server configurations (Nginx, Apache, FastAPI, Cloudflare) do not include security headers automatically.\n\u2022 Fix**: Configure application middleware or web server headers:",
+      "fix_recommendation": {
+        "what": "Upgrade form action endpoint or header configuration to HTTPS",
+        "where": "Form action / HTTP headers on `http://localhost:5500`",
+        "expected_impact": "Mitigates OWASP security risk, preventing cleartext credential/data exposure."
+      },
+      "verification_status": "still_present",
+      "ai_generated": false,
+      "rag_grounded": true,
+      "rag_context": "## 1. Missing HTTP Security Headers\n- **Violation**: Web server responses lack critical HTTP security headers: `Content-Security-Policy`, `Strict-Transport-Security`, `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`.\n- **Root Cause**: Default web server configurations (Nginx, Apache, FastAPI, Cloudflare) do not include security headers automatically.\n- **Fix**: Configure application middleware or web server headers:\n  - `Content-Security-Policy`: Define trusted sources for scripts, styles, and frames (e.g., `default-src 'self'`).\n  - `Strict-Transport-Security` (HSTS): Enforce HTTPS connections (e.g., `max-age=31536000; includeSubDomains`).\n  - `X-Content-Type-Options`: Prevent MIME-type sniffing (`nosniff`).\n  - `X-Frame-Options`: Prevent Clickjacking attacks (`DENY` or `SAMEORIGIN`).\n  - `Referrer-Policy`: Protect sensitive URL query parameters (`strict-origin-when-cross-origin`).\n\n---\n\n## 3. Mixed Content Security Vulnerability\n- **Violation**: A secure page (`https://`) loads external assets (images, scripts, stylesheets, audio, video) over insecure HTTP (`http://`).\n- **Root Cause**: Absolute legacy HTTP asset URLs hardcoded in HTML markup or script bundles.\n- **Fix**: Change asset URLs from `http://` to relative paths or secure `https://` schemes. Enable `upgrade-insecure-requests` directive in CSP."
+    },
+    {
+      "id": "BUG-A9CF6A",
+      "title": "Security vulnerability (missing_header_x-content-type-options): Missing security header: X-Content-Type-Options. Prevents MIME-sniffing vulnerabilities.",
+      "category": "security",
+      "page": "http://localhost:5500",
+      "severity": "LOW",
+      "severity_rationale": "Missing security header: X-Content-Type-Options. Prevents MIME-sniffing vulnerabilities.",
+      "evidence": [
+        {
+          "type": "security_finding",
+          "detail": "Header X-Content-Type-Options not present in response"
+        }
+      ],
+      "source_agents": [
+        "SecurityAgent"
+      ],
+      "page_url": "http://localhost:5500",
+      "description": "Security vulnerability (missing_header_x-content-type-options): Missing security header: X-Content-Type-Options. Prevents MIME-sniffing vulnerabilities.",
+      "root_cause": "[LOW Severity - Security] Structural issue detected on page 'http://localhost:5500': Security vulnerability (missing_header_x-content-type-options): Missing security header: X-Content-Type-Options. Prevents MIME-sniffing vulnerabilities.. Knowledge reference: 1. Missing HTTP Security Headers.",
+      "suggested_fix": "Actionable Remediations:\n\u2022 Violation**: Web server responses lack critical HTTP security headers: `Content-Security-Policy`, `Strict-Transport-Security`, `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`.\n\u2022 Root Cause**: Default web server configurations (Nginx, Apache, FastAPI, Cloudflare) do not include security headers automatically.\n\u2022 Fix**: Configure application middleware or web server headers:",
+      "fix_recommendation": {
+        "what": "Upgrade form action endpoint or header configuration to HTTPS",
+        "where": "Form action / HTTP headers on `http://localhost:5500`",
+        "expected_impact": "Mitigates OWASP security risk, preventing cleartext credential/data exposure."
+      },
+      "verification_status": "still_present",
+      "ai_generated": false,
+      "rag_grounded": true,
+      "rag_context": "## 1. Missing HTTP Security Headers\n- **Violation**: Web server responses lack critical HTTP security headers: `Content-Security-Policy`, `Strict-Transport-Security`, `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`.\n- **Root Cause**: Default web server configurations (Nginx, Apache, FastAPI, Cloudflare) do not include security headers automatically.\n- **Fix**: Configure application middleware or web server headers:\n  - `Content-Security-Policy`: Define trusted sources for scripts, styles, and frames (e.g., `default-src 'self'`).\n  - `Strict-Transport-Security` (HSTS): Enforce HTTPS connections (e.g., `max-age=31536000; includeSubDomains`).\n  - `X-Content-Type-Options`: Prevent MIME-type sniffing (`nosniff`).\n  - `X-Frame-Options`: Prevent Clickjacking attacks (`DENY` or `SAMEORIGIN`).\n  - `Referrer-Policy`: Protect sensitive URL query parameters (`strict-origin-when-cross-origin`).\n\n---\n\n## 3. Mixed Content Security Vulnerability\n- **Violation**: A secure page (`https://`) loads external assets (images, scripts, stylesheets, audio, video) over insecure HTTP (`http://`).\n- **Root Cause**: Absolute legacy HTTP asset URLs hardcoded in HTML markup or script bundles.\n- **Fix**: Change asset URLs from `http://` to relative paths or secure `https://` schemes. Enable `upgrade-insecure-requests` directive in CSP."
+    },
+    {
+      "id": "BUG-678C68",
+      "title": "Security vulnerability (missing_header_referrer-policy): Missing security header: Referrer-Policy. Controls referrer information leakage.",
+      "category": "security",
+      "page": "http://localhost:5500",
+      "severity": "LOW",
+      "severity_rationale": "Missing security header: Referrer-Policy. Controls referrer information leakage.",
+      "evidence": [
+        {
+          "type": "security_finding",
+          "detail": "Header Referrer-Policy not present in response"
+        }
+      ],
+      "source_agents": [
+        "SecurityAgent"
+      ],
+      "page_url": "http://localhost:5500",
+      "description": "Security vulnerability (missing_header_referrer-policy): Missing security header: Referrer-Policy. Controls referrer information leakage.",
+      "root_cause": "[LOW Severity - Security] Structural issue detected on page 'http://localhost:5500': Security vulnerability (missing_header_referrer-policy): Missing security header: Referrer-Policy. Controls referrer information leakage.. Knowledge reference: 1. Missing HTTP Security Headers.",
+      "suggested_fix": "Actionable Remediations:\n\u2022 Violation**: Web server responses lack critical HTTP security headers: `Content-Security-Policy`, `Strict-Transport-Security`, `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`.\n\u2022 Root Cause**: Default web server configurations (Nginx, Apache, FastAPI, Cloudflare) do not include security headers automatically.\n\u2022 Fix**: Configure application middleware or web server headers:",
+      "fix_recommendation": {
+        "what": "Upgrade form action endpoint or header configuration to HTTPS",
+        "where": "Form action / HTTP headers on `http://localhost:5500`",
+        "expected_impact": "Mitigates OWASP security risk, preventing cleartext credential/data exposure."
+      },
+      "verification_status": "still_present",
+      "ai_generated": false,
+      "rag_grounded": true,
+      "rag_context": "## 1. Missing HTTP Security Headers\n- **Violation**: Web server responses lack critical HTTP security headers: `Content-Security-Policy`, `Strict-Transport-Security`, `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`.\n- **Root Cause**: Default web server configurations (Nginx, Apache, FastAPI, Cloudflare) do not include security headers automatically.\n- **Fix**: Configure application middleware or web server headers:\n  - `Content-Security-Policy`: Define trusted sources for scripts, styles, and frames (e.g., `default-src 'self'`).\n  - `Strict-Transport-Security` (HSTS): Enforce HTTPS connections (e.g., `max-age=31536000; includeSubDomains`).\n  - `X-Content-Type-Options`: Prevent MIME-type sniffing (`nosniff`).\n  - `X-Frame-Options`: Prevent Clickjacking attacks (`DENY` or `SAMEORIGIN`).\n  - `Referrer-Policy`: Protect sensitive URL query parameters (`strict-origin-when-cross-origin`).\n\n---\n\n## 3. Mixed Content Security Vulnerability\n- **Violation**: A secure page (`https://`) loads external assets (images, scripts, stylesheets, audio, video) over insecure HTTP (`http://`).\n- **Root Cause**: Absolute legacy HTTP asset URLs hardcoded in HTML markup or script bundles.\n- **Fix**: Change asset URLs from `http://` to relative paths or secure `https://` schemes. Enable `upgrade-insecure-requests` directive in CSP."
+    },
+    {
+      "id": "BUG-39B79C",
+      "title": "Security vulnerability (insecure_form_action): Form action submits over unencrypted HTTP: http://localhost:5500/",
+      "category": "security",
+      "page": "http://localhost:5500",
+      "severity": "HIGH",
+      "severity_rationale": "Form action submits over unencrypted HTTP: http://localhost:5500/",
+      "evidence": [
+        {
+          "type": "security_finding",
+          "detail": "http://localhost:5500/"
+        }
+      ],
+      "source_agents": [
+        "SecurityAgent"
+      ],
+      "page_url": "http://localhost:5500",
+      "description": "Security vulnerability (insecure_form_action): Form action submits over unencrypted HTTP: http://localhost:5500/",
+      "root_cause": "[HIGH Severity - Security] Structural issue detected on page 'http://localhost:5500': Security vulnerability (insecure_form_action): Form action submits over unencrypted HTTP: http://localhost:5500/. Knowledge reference: 2. Insecure Form Submissions over HTTP.",
+      "suggested_fix": "Actionable Remediations:\n\u2022 Violation**: HTML forms defined on HTTPS pages with an `action` attribute submitting over unencrypted `http://` protocols or missing HTTPS.\n\u2022 Root Cause**: Hardcoded legacy HTTP endpoints in form action attributes or relative protocol mismatches.\n\u2022 Fix**: Ensure all form actions point to secure HTTPS URLs (`action=\"https://example.com/api/submit\"` or relative path `/api/submit`) and redirect all HTTP traffic to HTTPS at the web server level.",
+      "fix_recommendation": {
+        "what": "Upgrade form action endpoint or header configuration to HTTPS",
+        "where": "Form action / HTTP headers on `http://localhost:5500`",
+        "expected_impact": "Mitigates OWASP security risk, preventing cleartext credential/data exposure."
+      },
+      "verification_status": "still_present",
+      "ai_generated": false,
+      "rag_grounded": true,
+      "rag_context": "## 2. Insecure Form Submissions over HTTP\n- **Violation**: HTML forms defined on HTTPS pages with an `action` attribute submitting over unencrypted `http://` protocols or missing HTTPS.\n- **Root Cause**: Hardcoded legacy HTTP endpoints in form action attributes or relative protocol mismatches.\n- **Fix**: Ensure all form actions point to secure HTTPS URLs (`action=\"https://example.com/api/submit\"` or relative path `/api/submit`) and redirect all HTTP traffic to HTTPS at the web server level.\n\n---\n\n## 3. Mixed Content Security Vulnerability\n- **Violation**: A secure page (`https://`) loads external assets (images, scripts, stylesheets, audio, video) over insecure HTTP (`http://`).\n- **Root Cause**: Absolute legacy HTTP asset URLs hardcoded in HTML markup or script bundles.\n- **Fix**: Change asset URLs from `http://` to relative paths or secure `https://` schemes. Enable `upgrade-insecure-requests` directive in CSP."
+    },
+    {
+      "id": "BUG-C5EFA6",
+      "title": "Security vulnerability (missing_header_content-security-policy): Missing security header: Content-Security-Policy. Prevents XSS and unauthorized script injection.",
+      "category": "security",
+      "page": "http://localhost:5500/",
+      "severity": "MEDIUM",
+      "severity_rationale": "Missing security header: Content-Security-Policy. Prevents XSS and unauthorized script injection.",
+      "evidence": [
+        {
+          "type": "security_finding",
+          "detail": "Header Content-Security-Policy not present in response"
+        }
+      ],
+      "source_agents": [
+        "SecurityAgent"
+      ],
+      "page_url": "http://localhost:5500/",
+      "description": "Security vulnerability (missing_header_content-security-policy): Missing security header: Content-Security-Policy. Prevents XSS and unauthorized script injection.",
+      "root_cause": "[MEDIUM Severity - Security] Structural issue detected on page 'http://localhost:5500/': Security vulnerability (missing_header_content-security-policy): Missing security header: Content-Security-Policy. Prevents XSS and unauthorized script injection.. Knowledge reference: 1. Missing HTTP Security Headers.",
+      "suggested_fix": "Actionable Remediations:\n\u2022 Violation**: Web server responses lack critical HTTP security headers: `Content-Security-Policy`, `Strict-Transport-Security`, `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`.\n\u2022 Root Cause**: Default web server configurations (Nginx, Apache, FastAPI, Cloudflare) do not include security headers automatically.\n\u2022 Fix**: Configure application middleware or web server headers:",
+      "fix_recommendation": {
+        "what": "Upgrade form action endpoint or header configuration to HTTPS",
+        "where": "Form action / HTTP headers on `http://localhost:5500/`",
+        "expected_impact": "Mitigates OWASP security risk, preventing cleartext credential/data exposure."
+      },
+      "verification_status": "still_present",
+      "ai_generated": false,
+      "rag_grounded": true,
+      "rag_context": "## 1. Missing HTTP Security Headers\n- **Violation**: Web server responses lack critical HTTP security headers: `Content-Security-Policy`, `Strict-Transport-Security`, `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`.\n- **Root Cause**: Default web server configurations (Nginx, Apache, FastAPI, Cloudflare) do not include security headers automatically.\n- **Fix**: Configure application middleware or web server headers:\n  - `Content-Security-Policy`: Define trusted sources for scripts, styles, and frames (e.g., `default-src 'self'`).\n  - `Strict-Transport-Security` (HSTS): Enforce HTTPS connections (e.g., `max-age=31536000; includeSubDomains`).\n  - `X-Content-Type-Options`: Prevent MIME-type sniffing (`nosniff`).\n  - `X-Frame-Options`: Prevent Clickjacking attacks (`DENY` or `SAMEORIGIN`).\n  - `Referrer-Policy`: Protect sensitive URL query parameters (`strict-origin-when-cross-origin`).\n\n---\n\n## 3. Mixed Content Security Vulnerability\n- **Violation**: A secure page (`https://`) loads external assets (images, scripts, stylesheets, audio, video) over insecure HTTP (`http://`).\n- **Root Cause**: Absolute legacy HTTP asset URLs hardcoded in HTML markup or script bundles.\n- **Fix**: Change asset URLs from `http://` to relative paths or secure `https://` schemes. Enable `upgrade-insecure-requests` directive in CSP."
+    },
+    {
+      "id": "BUG-97152D",
+      "title": "Security vulnerability (missing_header_x-frame-options): Missing security header: X-Frame-Options. Prevents Clickjacking attacks.",
+      "category": "security",
+      "page": "http://localhost:5500/",
+      "severity": "MEDIUM",
+      "severity_rationale": "Missing security header: X-Frame-Options. Prevents Clickjacking attacks.",
+      "evidence": [
+        {
+          "type": "security_finding",
+          "detail": "Header X-Frame-Options not present in response"
+        }
+      ],
+      "source_agents": [
+        "SecurityAgent"
+      ],
+      "page_url": "http://localhost:5500/",
+      "description": "Security vulnerability (missing_header_x-frame-options): Missing security header: X-Frame-Options. Prevents Clickjacking attacks.",
+      "root_cause": "[MEDIUM Severity - Security] Structural issue detected on page 'http://localhost:5500/': Security vulnerability (missing_header_x-frame-options): Missing security header: X-Frame-Options. Prevents Clickjacking attacks.. Knowledge reference: 1. Missing HTTP Security Headers.",
+      "suggested_fix": "Actionable Remediations:\n\u2022 Violation**: Web server responses lack critical HTTP security headers: `Content-Security-Policy`, `Strict-Transport-Security`, `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`.\n\u2022 Root Cause**: Default web server configurations (Nginx, Apache, FastAPI, Cloudflare) do not include security headers automatically.\n\u2022 Fix**: Configure application middleware or web server headers:",
+      "fix_recommendation": {
+        "what": "Upgrade form action endpoint or header configuration to HTTPS",
+        "where": "Form action / HTTP headers on `http://localhost:5500/`",
+        "expected_impact": "Mitigates OWASP security risk, preventing cleartext credential/data exposure."
+      },
+      "verification_status": "still_present",
+      "ai_generated": false,
+      "rag_grounded": true,
+      "rag_context": "## 1. Missing HTTP Security Headers\n- **Violation**: Web server responses lack critical HTTP security headers: `Content-Security-Policy`, `Strict-Transport-Security`, `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`.\n- **Root Cause**: Default web server configurations (Nginx, Apache, FastAPI, Cloudflare) do not include security headers automatically.\n- **Fix**: Configure application middleware or web server headers:\n  - `Content-Security-Policy`: Define trusted sources for scripts, styles, and frames (e.g., `default-src 'self'`).\n  - `Strict-Transport-Security` (HSTS): Enforce HTTPS connections (e.g., `max-age=31536000; includeSubDomains`).\n  - `X-Content-Type-Options`: Prevent MIME-type sniffing (`nosniff`).\n  - `X-Frame-Options`: Prevent Clickjacking attacks (`DENY` or `SAMEORIGIN`).\n  - `Referrer-Policy`: Protect sensitive URL query parameters (`strict-origin-when-cross-origin`).\n\n---\n\n## 3. Mixed Content Security Vulnerability\n- **Violation**: A secure page (`https://`) loads external assets (images, scripts, stylesheets, audio, video) over insecure HTTP (`http://`).\n- **Root Cause**: Absolute legacy HTTP asset URLs hardcoded in HTML markup or script bundles.\n- **Fix**: Change asset URLs from `http://` to relative paths or secure `https://` schemes. Enable `upgrade-insecure-requests` directive in CSP."
+    },
+    {
+      "id": "BUG-90CADE",
+      "title": "Security vulnerability (missing_header_x-content-type-options): Missing security header: X-Content-Type-Options. Prevents MIME-sniffing vulnerabilities.",
+      "category": "security",
+      "page": "http://localhost:5500/",
+      "severity": "LOW",
+      "severity_rationale": "Missing security header: X-Content-Type-Options. Prevents MIME-sniffing vulnerabilities.",
+      "evidence": [
+        {
+          "type": "security_finding",
+          "detail": "Header X-Content-Type-Options not present in response"
+        }
+      ],
+      "source_agents": [
+        "SecurityAgent"
+      ],
+      "page_url": "http://localhost:5500/",
+      "description": "Security vulnerability (missing_header_x-content-type-options): Missing security header: X-Content-Type-Options. Prevents MIME-sniffing vulnerabilities.",
+      "root_cause": "[LOW Severity - Security] Structural issue detected on page 'http://localhost:5500/': Security vulnerability (missing_header_x-content-type-options): Missing security header: X-Content-Type-Options. Prevents MIME-sniffing vulnerabilities.. Knowledge reference: 1. Missing HTTP Security Headers.",
+      "suggested_fix": "Actionable Remediations:\n\u2022 Violation**: Web server responses lack critical HTTP security headers: `Content-Security-Policy`, `Strict-Transport-Security`, `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`.\n\u2022 Root Cause**: Default web server configurations (Nginx, Apache, FastAPI, Cloudflare) do not include security headers automatically.\n\u2022 Fix**: Configure application middleware or web server headers:",
+      "fix_recommendation": {
+        "what": "Upgrade form action endpoint or header configuration to HTTPS",
+        "where": "Form action / HTTP headers on `http://localhost:5500/`",
+        "expected_impact": "Mitigates OWASP security risk, preventing cleartext credential/data exposure."
+      },
+      "verification_status": "still_present",
+      "ai_generated": false,
+      "rag_grounded": true,
+      "rag_context": "## 1. Missing HTTP Security Headers\n- **Violation**: Web server responses lack critical HTTP security headers: `Content-Security-Policy`, `Strict-Transport-Security`, `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`.\n- **Root Cause**: Default web server configurations (Nginx, Apache, FastAPI, Cloudflare) do not include security headers automatically.\n- **Fix**: Configure application middleware or web server headers:\n  - `Content-Security-Policy`: Define trusted sources for scripts, styles, and frames (e.g., `default-src 'self'`).\n  - `Strict-Transport-Security` (HSTS): Enforce HTTPS connections (e.g., `max-age=31536000; includeSubDomains`).\n  - `X-Content-Type-Options`: Prevent MIME-type sniffing (`nosniff`).\n  - `X-Frame-Options`: Prevent Clickjacking attacks (`DENY` or `SAMEORIGIN`).\n  - `Referrer-Policy`: Protect sensitive URL query parameters (`strict-origin-when-cross-origin`).\n\n---\n\n## 3. Mixed Content Security Vulnerability\n- **Violation**: A secure page (`https://`) loads external assets (images, scripts, stylesheets, audio, video) over insecure HTTP (`http://`).\n- **Root Cause**: Absolute legacy HTTP asset URLs hardcoded in HTML markup or script bundles.\n- **Fix**: Change asset URLs from `http://` to relative paths or secure `https://` schemes. Enable `upgrade-insecure-requests` directive in CSP."
+    },
+    {
+      "id": "BUG-F4B28B",
+      "title": "Security vulnerability (missing_header_referrer-policy): Missing security header: Referrer-Policy. Controls referrer information leakage.",
+      "category": "security",
+      "page": "http://localhost:5500/",
+      "severity": "LOW",
+      "severity_rationale": "Missing security header: Referrer-Policy. Controls referrer information leakage.",
+      "evidence": [
+        {
+          "type": "security_finding",
+          "detail": "Header Referrer-Policy not present in response"
+        }
+      ],
+      "source_agents": [
+        "SecurityAgent"
+      ],
+      "page_url": "http://localhost:5500/",
+      "description": "Security vulnerability (missing_header_referrer-policy): Missing security header: Referrer-Policy. Controls referrer information leakage.",
+      "root_cause": "[LOW Severity - Security] Structural issue detected on page 'http://localhost:5500/': Security vulnerability (missing_header_referrer-policy): Missing security header: Referrer-Policy. Controls referrer information leakage.. Knowledge reference: 1. Missing HTTP Security Headers.",
+      "suggested_fix": "Actionable Remediations:\n\u2022 Violation**: Web server responses lack critical HTTP security headers: `Content-Security-Policy`, `Strict-Transport-Security`, `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`.\n\u2022 Root Cause**: Default web server configurations (Nginx, Apache, FastAPI, Cloudflare) do not include security headers automatically.\n\u2022 Fix**: Configure application middleware or web server headers:",
+      "fix_recommendation": {
+        "what": "Upgrade form action endpoint or header configuration to HTTPS",
+        "where": "Form action / HTTP headers on `http://localhost:5500/`",
+        "expected_impact": "Mitigates OWASP security risk, preventing cleartext credential/data exposure."
+      },
+      "verification_status": "still_present",
+      "ai_generated": false,
+      "rag_grounded": true,
+      "rag_context": "## 1. Missing HTTP Security Headers\n- **Violation**: Web server responses lack critical HTTP security headers: `Content-Security-Policy`, `Strict-Transport-Security`, `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`.\n- **Root Cause**: Default web server configurations (Nginx, Apache, FastAPI, Cloudflare) do not include security headers automatically.\n- **Fix**: Configure application middleware or web server headers:\n  - `Content-Security-Policy`: Define trusted sources for scripts, styles, and frames (e.g., `default-src 'self'`).\n  - `Strict-Transport-Security` (HSTS): Enforce HTTPS connections (e.g., `max-age=31536000; includeSubDomains`).\n  - `X-Content-Type-Options`: Prevent MIME-type sniffing (`nosniff`).\n  - `X-Frame-Options`: Prevent Clickjacking attacks (`DENY` or `SAMEORIGIN`).\n  - `Referrer-Policy`: Protect sensitive URL query parameters (`strict-origin-when-cross-origin`).\n\n---\n\n## 3. Mixed Content Security Vulnerability\n- **Violation**: A secure page (`https://`) loads external assets (images, scripts, stylesheets, audio, video) over insecure HTTP (`http://`).\n- **Root Cause**: Absolute legacy HTTP asset URLs hardcoded in HTML markup or script bundles.\n- **Fix**: Change asset URLs from `http://` to relative paths or secure `https://` schemes. Enable `upgrade-insecure-requests` directive in CSP."
+    },
+    {
+      "id": "BUG-A9E2E6",
+      "title": "Security vulnerability (insecure_form_action): Form action submits over unencrypted HTTP: http://localhost:5500/",
+      "category": "security",
+      "page": "http://localhost:5500/",
+      "severity": "HIGH",
+      "severity_rationale": "Form action submits over unencrypted HTTP: http://localhost:5500/",
+      "evidence": [
+        {
+          "type": "security_finding",
+          "detail": "http://localhost:5500/"
+        }
+      ],
+      "source_agents": [
+        "SecurityAgent"
+      ],
+      "page_url": "http://localhost:5500/",
+      "description": "Security vulnerability (insecure_form_action): Form action submits over unencrypted HTTP: http://localhost:5500/",
+      "root_cause": "[HIGH Severity - Security] Structural issue detected on page 'http://localhost:5500/': Security vulnerability (insecure_form_action): Form action submits over unencrypted HTTP: http://localhost:5500/. Knowledge reference: 2. Insecure Form Submissions over HTTP.",
+      "suggested_fix": "Actionable Remediations:\n\u2022 Violation**: HTML forms defined on HTTPS pages with an `action` attribute submitting over unencrypted `http://` protocols or missing HTTPS.\n\u2022 Root Cause**: Hardcoded legacy HTTP endpoints in form action attributes or relative protocol mismatches.\n\u2022 Fix**: Ensure all form actions point to secure HTTPS URLs (`action=\"https://example.com/api/submit\"` or relative path `/api/submit`) and redirect all HTTP traffic to HTTPS at the web server level.",
+      "fix_recommendation": {
+        "what": "Upgrade form action endpoint or header configuration to HTTPS",
+        "where": "Form action / HTTP headers on `http://localhost:5500/`",
+        "expected_impact": "Mitigates OWASP security risk, preventing cleartext credential/data exposure."
+      },
+      "verification_status": "still_present",
+      "ai_generated": false,
+      "rag_grounded": true,
+      "rag_context": "## 2. Insecure Form Submissions over HTTP\n- **Violation**: HTML forms defined on HTTPS pages with an `action` attribute submitting over unencrypted `http://` protocols or missing HTTPS.\n- **Root Cause**: Hardcoded legacy HTTP endpoints in form action attributes or relative protocol mismatches.\n- **Fix**: Ensure all form actions point to secure HTTPS URLs (`action=\"https://example.com/api/submit\"` or relative path `/api/submit`) and redirect all HTTP traffic to HTTPS at the web server level.\n\n---\n\n## 3. Mixed Content Security Vulnerability\n- **Violation**: A secure page (`https://`) loads external assets (images, scripts, stylesheets, audio, video) over insecure HTTP (`http://`).\n- **Root Cause**: Absolute legacy HTTP asset URLs hardcoded in HTML markup or script bundles.\n- **Fix**: Change asset URLs from `http://` to relative paths or secure `https://` schemes. Enable `upgrade-insecure-requests` directive in CSP."
+    },
+    {
+      "id": "BUG-A780D0",
+      "title": "Security vulnerability (missing_header_content-security-policy): Missing security header: Content-Security-Policy. Prevents XSS and unauthorized script injection.",
+      "category": "security",
+      "page": "http://localhost:5500/about.html",
+      "severity": "MEDIUM",
+      "severity_rationale": "Missing security header: Content-Security-Policy. Prevents XSS and unauthorized script injection.",
+      "evidence": [
+        {
+          "type": "security_finding",
+          "detail": "Header Content-Security-Policy not present in response"
+        }
+      ],
+      "source_agents": [
+        "SecurityAgent"
+      ],
+      "page_url": "http://localhost:5500/about.html",
+      "description": "Security vulnerability (missing_header_content-security-policy): Missing security header: Content-Security-Policy. Prevents XSS and unauthorized script injection.",
+      "root_cause": "[MEDIUM Severity - Security] Structural issue detected on page 'http://localhost:5500/about.html': Security vulnerability (missing_header_content-security-policy): Missing security header: Content-Security-Policy. Prevents XSS and unauthorized script injection.. Knowledge reference: 1. Missing HTTP Security Headers.",
+      "suggested_fix": "Actionable Remediations:\n\u2022 Violation**: Web server responses lack critical HTTP security headers: `Content-Security-Policy`, `Strict-Transport-Security`, `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`.\n\u2022 Root Cause**: Default web server configurations (Nginx, Apache, FastAPI, Cloudflare) do not include security headers automatically.\n\u2022 Fix**: Configure application middleware or web server headers:",
+      "fix_recommendation": {
+        "what": "Upgrade form action endpoint or header configuration to HTTPS",
+        "where": "Form action / HTTP headers on `http://localhost:5500/about.html`",
+        "expected_impact": "Mitigates OWASP security risk, preventing cleartext credential/data exposure."
+      },
+      "verification_status": "still_present",
+      "ai_generated": false,
+      "rag_grounded": true,
+      "rag_context": "## 1. Missing HTTP Security Headers\n- **Violation**: Web server responses lack critical HTTP security headers: `Content-Security-Policy`, `Strict-Transport-Security`, `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`.\n- **Root Cause**: Default web server configurations (Nginx, Apache, FastAPI, Cloudflare) do not include security headers automatically.\n- **Fix**: Configure application middleware or web server headers:\n  - `Content-Security-Policy`: Define trusted sources for scripts, styles, and frames (e.g., `default-src 'self'`).\n  - `Strict-Transport-Security` (HSTS): Enforce HTTPS connections (e.g., `max-age=31536000; includeSubDomains`).\n  - `X-Content-Type-Options`: Prevent MIME-type sniffing (`nosniff`).\n  - `X-Frame-Options`: Prevent Clickjacking attacks (`DENY` or `SAMEORIGIN`).\n  - `Referrer-Policy`: Protect sensitive URL query parameters (`strict-origin-when-cross-origin`).\n\n---\n\n## 3. Mixed Content Security Vulnerability\n- **Violation**: A secure page (`https://`) loads external assets (images, scripts, stylesheets, audio, video) over insecure HTTP (`http://`).\n- **Root Cause**: Absolute legacy HTTP asset URLs hardcoded in HTML markup or script bundles.\n- **Fix**: Change asset URLs from `http://` to relative paths or secure `https://` schemes. Enable `upgrade-insecure-requests` directive in CSP."
+    },
+    {
+      "id": "BUG-0BEE7C",
+      "title": "Security vulnerability (missing_header_x-frame-options): Missing security header: X-Frame-Options. Prevents Clickjacking attacks.",
+      "category": "security",
+      "page": "http://localhost:5500/about.html",
+      "severity": "MEDIUM",
+      "severity_rationale": "Missing security header: X-Frame-Options. Prevents Clickjacking attacks.",
+      "evidence": [
+        {
+          "type": "security_finding",
+          "detail": "Header X-Frame-Options not present in response"
+        }
+      ],
+      "source_agents": [
+        "SecurityAgent"
+      ],
+      "page_url": "http://localhost:5500/about.html",
+      "description": "Security vulnerability (missing_header_x-frame-options): Missing security header: X-Frame-Options. Prevents Clickjacking attacks.",
+      "root_cause": "[MEDIUM Severity - Security] Structural issue detected on page 'http://localhost:5500/about.html': Security vulnerability (missing_header_x-frame-options): Missing security header: X-Frame-Options. Prevents Clickjacking attacks.. Knowledge reference: 1. Missing HTTP Security Headers.",
+      "suggested_fix": "Actionable Remediations:\n\u2022 Violation**: Web server responses lack critical HTTP security headers: `Content-Security-Policy`, `Strict-Transport-Security`, `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`.\n\u2022 Root Cause**: Default web server configurations (Nginx, Apache, FastAPI, Cloudflare) do not include security headers automatically.\n\u2022 Fix**: Configure application middleware or web server headers:",
+      "fix_recommendation": {
+        "what": "Upgrade form action endpoint or header configuration to HTTPS",
+        "where": "Form action / HTTP headers on `http://localhost:5500/about.html`",
+        "expected_impact": "Mitigates OWASP security risk, preventing cleartext credential/data exposure."
+      },
+      "verification_status": "still_present",
+      "ai_generated": false,
+      "rag_grounded": true,
+      "rag_context": "## 1. Missing HTTP Security Headers\n- **Violation**: Web server responses lack critical HTTP security headers: `Content-Security-Policy`, `Strict-Transport-Security`, `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`.\n- **Root Cause**: Default web server configurations (Nginx, Apache, FastAPI, Cloudflare) do not include security headers automatically.\n- **Fix**: Configure application middleware or web server headers:\n  - `Content-Security-Policy`: Define trusted sources for scripts, styles, and frames (e.g., `default-src 'self'`).\n  - `Strict-Transport-Security` (HSTS): Enforce HTTPS connections (e.g., `max-age=31536000; includeSubDomains`).\n  - `X-Content-Type-Options`: Prevent MIME-type sniffing (`nosniff`).\n  - `X-Frame-Options`: Prevent Clickjacking attacks (`DENY` or `SAMEORIGIN`).\n  - `Referrer-Policy`: Protect sensitive URL query parameters (`strict-origin-when-cross-origin`).\n\n---\n\n## 3. Mixed Content Security Vulnerability\n- **Violation**: A secure page (`https://`) loads external assets (images, scripts, stylesheets, audio, video) over insecure HTTP (`http://`).\n- **Root Cause**: Absolute legacy HTTP asset URLs hardcoded in HTML markup or script bundles.\n- **Fix**: Change asset URLs from `http://` to relative paths or secure `https://` schemes. Enable `upgrade-insecure-requests` directive in CSP."
+    },
+    {
+      "id": "BUG-A1F2B6",
+      "title": "Security vulnerability (missing_header_x-content-type-options): Missing security header: X-Content-Type-Options. Prevents MIME-sniffing vulnerabilities.",
+      "category": "security",
+      "page": "http://localhost:5500/about.html",
+      "severity": "LOW",
+      "severity_rationale": "Missing security header: X-Content-Type-Options. Prevents MIME-sniffing vulnerabilities.",
+      "evidence": [
+        {
+          "type": "security_finding",
+          "detail": "Header X-Content-Type-Options not present in response"
+        }
+      ],
+      "source_agents": [
+        "SecurityAgent"
+      ],
+      "page_url": "http://localhost:5500/about.html",
+      "description": "Security vulnerability (missing_header_x-content-type-options): Missing security header: X-Content-Type-Options. Prevents MIME-sniffing vulnerabilities.",
+      "root_cause": "[LOW Severity - Security] Structural issue detected on page 'http://localhost:5500/about.html': Security vulnerability (missing_header_x-content-type-options): Missing security header: X-Content-Type-Options. Prevents MIME-sniffing vulnerabilities.. Knowledge reference: 1. Missing HTTP Security Headers.",
+      "suggested_fix": "Actionable Remediations:\n\u2022 Violation**: Web server responses lack critical HTTP security headers: `Content-Security-Policy`, `Strict-Transport-Security`, `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`.\n\u2022 Root Cause**: Default web server configurations (Nginx, Apache, FastAPI, Cloudflare) do not include security headers automatically.\n\u2022 Fix**: Configure application middleware or web server headers:",
+      "fix_recommendation": {
+        "what": "Upgrade form action endpoint or header configuration to HTTPS",
+        "where": "Form action / HTTP headers on `http://localhost:5500/about.html`",
+        "expected_impact": "Mitigates OWASP security risk, preventing cleartext credential/data exposure."
+      },
+      "verification_status": "still_present",
+      "ai_generated": false,
+      "rag_grounded": true,
+      "rag_context": "## 1. Missing HTTP Security Headers\n- **Violation**: Web server responses lack critical HTTP security headers: `Content-Security-Policy`, `Strict-Transport-Security`, `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`.\n- **Root Cause**: Default web server configurations (Nginx, Apache, FastAPI, Cloudflare) do not include security headers automatically.\n- **Fix**: Configure application middleware or web server headers:\n  - `Content-Security-Policy`: Define trusted sources for scripts, styles, and frames (e.g., `default-src 'self'`).\n  - `Strict-Transport-Security` (HSTS): Enforce HTTPS connections (e.g., `max-age=31536000; includeSubDomains`).\n  - `X-Content-Type-Options`: Prevent MIME-type sniffing (`nosniff`).\n  - `X-Frame-Options`: Prevent Clickjacking attacks (`DENY` or `SAMEORIGIN`).\n  - `Referrer-Policy`: Protect sensitive URL query parameters (`strict-origin-when-cross-origin`).\n\n---\n\n## 3. Mixed Content Security Vulnerability\n- **Violation**: A secure page (`https://`) loads external assets (images, scripts, stylesheets, audio, video) over insecure HTTP (`http://`).\n- **Root Cause**: Absolute legacy HTTP asset URLs hardcoded in HTML markup or script bundles.\n- **Fix**: Change asset URLs from `http://` to relative paths or secure `https://` schemes. Enable `upgrade-insecure-requests` directive in CSP."
+    },
+    {
+      "id": "BUG-37E235",
+      "title": "Security vulnerability (missing_header_referrer-policy): Missing security header: Referrer-Policy. Controls referrer information leakage.",
+      "category": "security",
+      "page": "http://localhost:5500/about.html",
+      "severity": "LOW",
+      "severity_rationale": "Missing security header: Referrer-Policy. Controls referrer information leakage.",
+      "evidence": [
+        {
+          "type": "security_finding",
+          "detail": "Header Referrer-Policy not present in response"
+        }
+      ],
+      "source_agents": [
+        "SecurityAgent"
+      ],
+      "page_url": "http://localhost:5500/about.html",
+      "description": "Security vulnerability (missing_header_referrer-policy): Missing security header: Referrer-Policy. Controls referrer information leakage.",
+      "root_cause": "[LOW Severity - Security] Structural issue detected on page 'http://localhost:5500/about.html': Security vulnerability (missing_header_referrer-policy): Missing security header: Referrer-Policy. Controls referrer information leakage.. Knowledge reference: 1. Missing HTTP Security Headers.",
+      "suggested_fix": "Actionable Remediations:\n\u2022 Violation**: Web server responses lack critical HTTP security headers: `Content-Security-Policy`, `Strict-Transport-Security`, `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`.\n\u2022 Root Cause**: Default web server configurations (Nginx, Apache, FastAPI, Cloudflare) do not include security headers automatically.\n\u2022 Fix**: Configure application middleware or web server headers:",
+      "fix_recommendation": {
+        "what": "Upgrade form action endpoint or header configuration to HTTPS",
+        "where": "Form action / HTTP headers on `http://localhost:5500/about.html`",
+        "expected_impact": "Mitigates OWASP security risk, preventing cleartext credential/data exposure."
+      },
+      "verification_status": "still_present",
+      "ai_generated": false,
+      "rag_grounded": true,
+      "rag_context": "## 1. Missing HTTP Security Headers\n- **Violation**: Web server responses lack critical HTTP security headers: `Content-Security-Policy`, `Strict-Transport-Security`, `X-Content-Type-Options`, `X-Frame-Options`, `Referrer-Policy`.\n- **Root Cause**: Default web server configurations (Nginx, Apache, FastAPI, Cloudflare) do not include security headers automatically.\n- **Fix**: Configure application middleware or web server headers:\n  - `Content-Security-Policy`: Define trusted sources for scripts, styles, and frames (e.g., `default-src 'self'`).\n  - `Strict-Transport-Security` (HSTS): Enforce HTTPS connections (e.g., `max-age=31536000; includeSubDomains`).\n  - `X-Content-Type-Options`: Prevent MIME-type sniffing (`nosniff`).\n  - `X-Frame-Options`: Prevent Clickjacking attacks (`DENY` or `SAMEORIGIN`).\n  - `Referrer-Policy`: Protect sensitive URL query parameters (`strict-origin-when-cross-origin`).\n\n---\n\n## 3. Mixed Content Security Vulnerability\n- **Violation**: A secure page (`https://`) loads external assets (images, scripts, stylesheets, audio, video) over insecure HTTP (`http://`).\n- **Root Cause**: Absolute legacy HTTP asset URLs hardcoded in HTML markup or script bundles.\n- **Fix**: Change asset URLs from `http://` to relative paths or secure `https://` schemes. Enable `upgrade-insecure-requests` directive in CSP."
+    },
+    {
+      "id": "BUG-54BBD9",
+      "title": "JavaScript console error: Failed to load resource: the server responded with a status of 404 (File not found)",
+      "category": "functional",
+      "page": "http://localhost:5500",
+      "severity": "MEDIUM",
+      "severity_rationale": "Uncaught JS error may break interactivity for some users.",
+      "evidence": [
+        {
+          "type": "console_error",
+          "detail": "Failed to load resource: the server responded with a status of 404 (File not found)"
+        }
+      ],
+      "source_agents": [
+        "CrawlerAgent"
+      ],
+      "page_url": "http://localhost:5500",
+      "description": "JavaScript console error: Failed to load resource: the server responded with a status of 404 (File not found)",
+      "root_cause": "[MEDIUM Severity - Functional] Structural issue detected on page 'http://localhost:5500': JavaScript console error: Failed to load resource: the server responded with a status of 404 (File not found). Knowledge reference: 2. Unhandled JavaScript Console & Network Exceptions.",
+      "suggested_fix": "Actionable Remediations:\n\u2022 Violation**: Unhandled runtime exceptions (`TypeError: Cannot read property of undefined`, `ReferenceError`) logged in browser console.\n\u2022 Root Cause**: Missing null/undefined checks before property access, unhandled API fetch rejections, or dynamic bundle loading errors.\n\u2022 Fix**: Implement optional chaining (`object?.property`), fallback values, and wrap async fetch calls in `try / catch` blocks.",
+      "fix_recommendation": {
+        "what": "Fix broken link target URL or restore missing destination route",
+        "where": "Anchor tag `<a href>` pointing from page `http://localhost:5500`",
+        "expected_impact": "Eliminates 404 navigation error and improves user experience."
+      },
+      "verification_status": "still_present",
+      "ai_generated": false,
+      "rag_grounded": true,
+      "rag_context": "## 2. Unhandled JavaScript Console & Network Exceptions\n- **Violation**: Unhandled runtime exceptions (`TypeError: Cannot read property of undefined`, `ReferenceError`) logged in browser console.\n- **Root Cause**: Missing null/undefined checks before property access, unhandled API fetch rejections, or dynamic bundle loading errors.\n- **Fix**: Implement optional chaining (`object?.property`), fallback values, and wrap async fetch calls in `try / catch` blocks.\n\n---\n\n## 5. Slow Time To First Byte (TTFB) & Resource Load Bottlenecks\n- **Violation**: TTFB exceeding 800ms or DOMContentLoaded duration exceeding 3.0 seconds.\n- **Root Cause**: Uncached backend database queries, large uncompressed image payloads, or blocking third-party synchronous JavaScript.\n- **Fix**: Enable server-side caching (Redis/CDN), compress assets (WebP images, gzip/brotli text), and load scripts asynchronously (`<script async src=\"...\">`)."
+    }
+  ],
+  "quality_score": {
+    "overall": 59,
+    "functional": 43,
+    "accessibility": 22,
+    "visual": 90,
+    "performance": 100,
+    "security": 38,
+    "pages_scanned": 3,
+    "tests_generated": 14,
+    "tests_passed": 6,
+    "bugs_found": 36
+  },
+  "agent_log": [
+    {
+      "agent": "Supervisor",
+      "task": "Received scan request",
+      "status": "running",
+      "timestamp": "2026-08-27T03:45:22.156392+00:00",
+      "detail": "http://localhost:5500"
+    },
+    {
+      "agent": "Supervisor",
+      "task": "LangGraph plan: Crawl -> Functional -> Accessibility -> Concurrent Specialized Analysis (Visual/Perf/Sec) -> Bug Intelligence -> Score",
+      "status": "success",
+      "timestamp": "2026-08-27T03:45:22.156392+00:00",
+      "detail": ""
+    },
+    {
+      "agent": "CrawlerAgent",
+      "task": "Launching Playwright browser",
+      "status": "running",
+      "timestamp": "2026-08-27T03:45:22.158738+00:00",
+      "detail": ""
+    },
+    {
+      "agent": "CrawlerAgent",
+      "task": "Inspected page http://localhost:5500",
+      "status": "success",
+      "timestamp": "2026-08-27T03:45:24.690696+00:00",
+      "detail": "status=200, forms=1, links=4, load_time=609.0ms"
+    },
+    {
+      "agent": "CrawlerAgent",
+      "task": "Inspected page http://localhost:5500/",
+      "status": "success",
+      "timestamp": "2026-08-27T03:45:25.470817+00:00",
+      "detail": "status=200, forms=1, links=4, load_time=531.0ms"
+    },
+    {
+      "agent": "CrawlerAgent",
+      "task": "Inspected page http://localhost:5500/about.html",
+      "status": "success",
+      "timestamp": "2026-08-27T03:45:28.759204+00:00",
+      "detail": "status=404, forms=0, links=0, load_time=3047.0ms"
+    },
+    {
+      "agent": "CrawlerAgent",
+      "task": "Crawl complete",
+      "status": "success",
+      "timestamp": "2026-08-27T03:45:28.979511+00:00",
+      "detail": "3 pages discovered (max_pages=3, max_depth=1)"
+    },
+    {
+      "agent": "FunctionalAgent",
+      "task": "Generating tests from discovered page structure",
+      "status": "running",
+      "timestamp": "2026-08-27T03:45:28.982770+00:00",
+      "detail": ""
+    },
+    {
+      "agent": "FunctionalAgent",
+      "task": "Generated 14 test cases across 3 pages",
+      "status": "success",
+      "timestamp": "2026-08-27T03:45:28.983361+00:00",
+      "detail": ""
+    },
+    {
+      "agent": "FunctionalAgent",
+      "task": "Functional testing complete",
+      "status": "success",
+      "timestamp": "2026-08-27T03:45:34.941215+00:00",
+      "detail": "6 passed, 8 failed, 0 skipped"
+    },
+    {
+      "agent": "AccessibilityAgent",
+      "task": "Running axe-core audits",
+      "status": "running",
+      "timestamp": "2026-08-27T03:45:34.942113+00:00",
+      "detail": ""
+    },
+    {
+      "agent": "AccessibilityAgent",
+      "task": "Accessibility audit complete",
+      "status": "success",
+      "timestamp": "2026-08-27T03:45:36.944314+00:00",
+      "detail": "11 violations found ({'serious': 3, 'critical': 2, 'moderate': 6})"
+    },
+    {
+      "agent": "Supervisor",
+      "task": "Executing specialized analysis agents concurrently (Visual, Performance, Security)",
+      "status": "running",
+      "timestamp": "2026-08-27T03:45:36.945339+00:00",
+      "detail": ""
+    },
+    {
+      "agent": "VisualAgent",
+      "task": "Running visual and layout inspection",
+      "status": "running",
+      "timestamp": "2026-08-27T03:45:36.945339+00:00",
+      "detail": ""
+    },
+    {
+      "agent": "PerformanceAgent",
+      "task": "Measuring page navigation & resource timing",
+      "status": "running",
+      "timestamp": "2026-08-27T03:45:36.945339+00:00",
+      "detail": ""
+    },
+    {
+      "agent": "SecurityAgent",
+      "task": "Performing OWASP-style security posture checks",
+      "status": "running",
+      "timestamp": "2026-08-27T03:45:36.945339+00:00",
+      "detail": ""
+    },
+    {
+      "agent": "PerformanceAgent",
+      "task": "Performance audit complete",
+      "status": "success",
+      "timestamp": "2026-08-27T03:45:39.229217+00:00",
+      "detail": "3 pages analyzed (avg TTFB=1ms)"
+    },
+    {
+      "agent": "VisualAgent",
+      "task": "Visual inspection complete",
+      "status": "success",
+      "timestamp": "2026-08-27T03:45:39.261381+00:00",
+      "detail": "2 layout issue(s) detected across 3 page(s)"
+    },
+    {
+      "agent": "SecurityAgent",
+      "task": "Security posture check complete",
+      "status": "success",
+      "timestamp": "2026-08-27T03:45:39.416000+00:00",
+      "detail": "14 security finding(s) detected across 3 page(s)"
+    },
+    {
+      "agent": "BugIntelligenceAgent",
+      "task": "Merging findings from all agents",
+      "status": "running",
+      "timestamp": "2026-08-27T03:45:39.417736+00:00",
+      "detail": ""
+    },
+    {
+      "agent": "BugIntelligenceAgent",
+      "task": "Bug aggregation complete",
+      "status": "success",
+      "timestamp": "2026-08-27T03:45:39.418330+00:00",
+      "detail": "36 bugs ({'HIGH': 11, 'LOW': 8, 'CRITICAL': 2, 'MEDIUM': 15})"
+    },
+    {
+      "agent": "RootCauseAgent",
+      "task": "Analyzing 36 bugs with RAG knowledge retrieval",
+      "status": "running",
+      "timestamp": "2026-08-27T03:45:39.419450+00:00",
+      "detail": ""
+    },
+    {
+      "agent": "RootCauseAgent",
+      "task": "ANTHROPIC_API_KEY not set - using RAG-grounded rule-based rationale",
+      "status": "success",
+      "timestamp": "2026-08-27T03:46:03.145242+00:00",
+      "detail": ""
+    },
+    {
+      "agent": "FixAgent",
+      "task": "Generating structured fix recommendations for top bugs",
+      "status": "running",
+      "timestamp": "2026-08-27T03:46:03.152785+00:00",
+      "detail": ""
+    },
+    {
+      "agent": "FixAgent",
+      "task": "Structured fix recommendations generated for 15 top bugs",
+      "status": "success",
+      "timestamp": "2026-08-27T03:46:03.153340+00:00",
+      "detail": ""
+    },
+    {
+      "agent": "VerificationAgent",
+      "task": "Running targeted verification re-checks on top bugs",
+      "status": "running",
+      "timestamp": "2026-08-27T03:46:03.159624+00:00",
+      "detail": ""
+    },
+    {
+      "agent": "VerificationAgent",
+      "task": "Verification complete - 15 bugs re-checked (15 still present, 0 not reproducible)",
+      "status": "success",
+      "timestamp": "2026-08-27T03:46:03.160645+00:00",
+      "detail": ""
+    },
+    {
+      "agent": "Supervisor",
+      "task": "Computing overall quality score",
+      "status": "running",
+      "timestamp": "2026-08-27T03:46:03.161868+00:00",
+      "detail": ""
+    },
+    {
+      "agent": "Supervisor",
+      "task": "Quality score computed",
+      "status": "success",
+      "timestamp": "2026-08-27T03:46:03.161868+00:00",
+      "detail": "{'overall': 59, 'functional': 43, 'accessibility': 22, 'visual': 90, 'performance': 100, 'security': 38, 'pages_scanned': 3, 'tests_generated': 14, 'tests_passed': 6, 'bugs_found': 36}"
+    },
+    {
+      "agent": "Supervisor",
+      "task": "Scan complete",
+      "status": "success",
+      "timestamp": "2026-08-27T03:46:03.162514+00:00",
+      "detail": "3 pages, 36 bugs, score=59"
+    }
+  ],
+  "started_at": "2026-08-27T03:45:22.139409+00:00",
+  "finished_at": "2026-08-27T03:46:03.162514+00:00",
+  "rag_enabled": true,
+  "llm_configured": false
+}

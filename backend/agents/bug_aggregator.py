@@ -191,6 +191,19 @@ def aggregate_bugs(state: ScanState) -> ScanState:
             }
         )
 
+    # Add standard fields to all aggregated bugs
+    for b in bugs:
+        if "page_url" not in b:
+            b["page_url"] = b.get("page", "")
+        if "description" not in b:
+            b["description"] = b.get("title", "")
+        b["root_cause"] = b.get("root_cause")
+        b["suggested_fix"] = b.get("suggested_fix")
+        b["fix_recommendation"] = b.get("fix_recommendation")
+        b["verification_status"] = b.get("verification_status", "still_present")
+        b["ai_generated"] = b.get("ai_generated", False)
+        b["rag_grounded"] = b.get("rag_grounded", False)
+
     state.bugs = bugs
     counts = {}
     for b in bugs:

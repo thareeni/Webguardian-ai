@@ -112,6 +112,8 @@ async def node_specialized_analysis(state: ScanState) -> ScanState:
 
 
 from .root_cause_agent import run_root_cause_agent
+from .fix_agent import run_fix_agent
+from .verification_agent import run_verification_agent
 
 
 async def node_root_cause(state: ScanState) -> ScanState:
@@ -121,6 +123,26 @@ async def node_root_cause(state: ScanState) -> ScanState:
         state = await run_root_cause_agent(state)
     except Exception as e:
         state.log("Supervisor", "Root Cause Agent failed", "warning", str(e))
+    return state
+
+
+async def node_fix(state: ScanState) -> ScanState:
+    if state.scan_status == "failed":
+        return state
+    try:
+        state = await run_fix_agent(state)
+    except Exception as e:
+        state.log("Supervisor", "Fix Agent failed", "warning", str(e))
+    return state
+
+
+async def node_verification(state: ScanState) -> ScanState:
+    if state.scan_status == "failed":
+        return state
+    try:
+        state = await run_verification_agent(state)
+    except Exception as e:
+        state.log("Supervisor", "Verification Agent failed", "warning", str(e))
     return state
 
 
@@ -170,6 +192,8 @@ workflow.add_node("accessibility", node_accessibility)
 workflow.add_node("specialized_analysis", node_specialized_analysis)
 workflow.add_node("bug_aggregator", node_bug_aggregator)
 workflow.add_node("root_cause", node_root_cause)
+workflow.add_node("fix", node_fix)
+workflow.add_node("verification", node_verification)
 workflow.add_node("quality_score", node_quality_score)
 
 workflow.set_entry_point("validate_url")
@@ -186,7 +210,9 @@ workflow.add_edge("functional", "accessibility")
 workflow.add_edge("accessibility", "specialized_analysis")
 workflow.add_edge("specialized_analysis", "bug_aggregator")
 workflow.add_edge("bug_aggregator", "root_cause")
-workflow.add_edge("root_cause", "quality_score")
+workflow.add_edge("root_cause", "fix")
+workflow.add_edge("fix", "verification")
+workflow.add_edge("verification", "quality_score")
 workflow.add_edge("quality_score", END)
 
 app_graph = workflow.compile()

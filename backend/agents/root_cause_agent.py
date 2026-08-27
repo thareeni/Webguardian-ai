@@ -38,10 +38,10 @@ def _rule_based_fallback(bug: Dict[str, Any], rag_context: str) -> tuple[str, st
     return root_cause, suggested_fix
 
 
-async def _analyze_bugs_with_claude(api_key: str, prioritized_bugs: List[Dict[str, Any]]) -> Dict[str, Dict[str, str]]:
+async def _analyze_bugs_with_claude(api_key: str, prioritized_bugs: List[Dict[str, Any]]) -> Dict[str, Dict[str, Any]]:
     """
-    Call Claude API to generate AI root cause & suggested fix for a batch of bugs.
-    Returns dict: bug_id -> {"root_cause": ..., "suggested_fix": ...}
+    Call Claude API to generate AI root cause, suggested fix, and structured fix_recommendation for a batch of bugs.
+    Returns dict: bug_id -> {"root_cause": ..., "suggested_fix": ..., "fix_recommendation": {"what": ..., "where": ..., "expected_impact": ...}}
     """
     import anthropic
 
@@ -62,18 +62,21 @@ async def _analyze_bugs_with_claude(api_key: str, prioritized_bugs: List[Dict[st
     system_prompt = (
         "You are an expert QA and Web Security AI Analyst. "
         "Analyze the provided list of web QA bugs along with their RAG-retrieved context snippets. "
-        "For each bug, produce a concise, professional root cause explanation (1-2 sentences) "
-        "and a specific actionable suggested fix (1-2 sentences). "
-        "Return ONLY a valid JSON object mapping bug_id to an object with keys 'root_cause' and 'suggested_fix'."
-        "\nExample format:\n"
-        '{\n  "BUG-001": {\n    "root_cause": "...",\n    "suggested_fix": "..."\n  }\n}'
+        "For each bug, produce:\n"
+        "1. 'root_cause': A concise root cause explanation (1-2 sentences).\n"
+        "2. 'suggested_fix': A specific actionable fix summary (1-2 sentences).\n"
+        "3. 'fix_recommendation': An object with keys:\n"
+        "   - 'what': What exact code or setting to change\n"
+        "   - 'where': Exact element location, selector, or file route\n"
+        "   - 'expected_impact': Predicted resolution outcome & quality benefit\n"
+        "Return ONLY a valid JSON object mapping bug_id to an object with these keys."
     )
 
     user_prompt = f"Analyze these {len(prompt_bugs)} web bugs:\n" + json.dumps(prompt_bugs, indent=2)
 
     response = await client.messages.create(
         model="claude-3-5-sonnet-20241022",
-        max_tokens=2048,
+        max_tokens=3072,
         system=system_prompt,
         messages=[{"role": "user", "content": user_prompt}],
     )
@@ -137,10 +140,12 @@ async def run_root_cause_agent(state: ScanState) -> ScanState:
                     target["root_cause"] = ai_res["root_cause"]
                 if "suggested_fix" in ai_res:
                     target["suggested_fix"] = ai_res["suggested_fix"]
+                if "fix_recommendation" in ai_res and isinstance(ai_res["fix_recommendation"], dict):
+                    target["fix_recommendation"] = ai_res["fix_recommendation"]
                 target["ai_generated"] = True
                 success_count += 1
 
-        state.log("RootCauseAgent", f"Claude AI root cause analysis complete for {success_count} top bugs", "success")
+        state.log("RootCauseAgent", f"Claude AI root cause & fix analysis complete for {success_count} top bugs", "success")
     except Exception as e:
         state.log("RootCauseAgent", f"Claude API call failed/timed out - fell back to RAG rule-based rationale: {e}", "warning")
 
