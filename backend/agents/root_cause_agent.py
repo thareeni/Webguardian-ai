@@ -96,11 +96,14 @@ async def run_root_cause_agent(state: ScanState) -> ScanState:
 
     state.log("RootCauseAgent", f"Analyzing {len(state.bugs)} bugs with RAG knowledge retrieval", "running")
 
-    # Step 1: Retrieve RAG context and populate rule-based defaults for all bugs
-    for bug in state.bugs:
+    # Step 1: Retrieve RAG context and populate rule-based defaults for all bugs concurrently
+    async def _fetch_rag(bug):
         desc = bug.get("description", "")
         cat = bug.get("category", "")
-        ctx = retrieve_rag_context(desc, category=cat, top_k=2)
+        return bug, await asyncio.to_thread(retrieve_rag_context, desc, cat, 2)
+
+    rag_results = await asyncio.gather(*[_fetch_rag(b) for b in state.bugs])
+    for bug, ctx in rag_results:
         bug["rag_context"] = ctx
         bug["rag_grounded"] = True
 

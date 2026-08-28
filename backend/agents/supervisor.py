@@ -20,6 +20,9 @@ from .visual_agent import run_visual_audit
 from .performance_agent import run_performance_audit
 from .security_agent import run_security_audit
 from .bug_aggregator import aggregate_bugs, compute_quality_score
+from .root_cause_agent import run_root_cause_agent
+from .fix_agent import run_fix_agent
+from .verification_agent import run_verification_agent
 
 
 def validate_url(url: str) -> str | None:
@@ -109,11 +112,6 @@ async def node_specialized_analysis(state: ScanState) -> ScanState:
         if isinstance(res, Exception):
             state.log("Supervisor", "Specialized analysis agent encountered an issue", "warning", str(res))
     return state
-
-
-from .root_cause_agent import run_root_cause_agent
-from .fix_agent import run_fix_agent
-from .verification_agent import run_verification_agent
 
 
 async def node_root_cause(state: ScanState) -> ScanState:

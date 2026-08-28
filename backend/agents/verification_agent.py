@@ -86,12 +86,14 @@ async def run_verification_agent(state: ScanState) -> ScanState:
     still_present_count = 0
     not_reproducible_count = 0
 
-    for bug in prioritized_bugs:
+    async def _check_bug(bug):
         try:
-            status = await asyncio.wait_for(_verify_single_bug(bug), timeout=PER_CHECK_TIMEOUT)
+            return bug, await asyncio.wait_for(_verify_single_bug(bug), timeout=PER_CHECK_TIMEOUT)
         except Exception:
-            status = "still_present"
+            return bug, "still_present"
 
+    results = await asyncio.gather(*[_check_bug(b) for b in prioritized_bugs])
+    for bug, status in results:
         bug["verification_status"] = status
         verified_count += 1
         if status == "still_present":

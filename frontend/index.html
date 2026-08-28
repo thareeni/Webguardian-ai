@@ -181,7 +181,7 @@
 </main>
 
 <script>
-const API = "http://localhost:8000";
+const API = (window.location.protocol.startsWith("http") && window.location.port === "8000") ? window.location.origin : (window.location.origin.includes(":8000") ? window.location.origin : "http://localhost:8000");
 let pollTimer = null;
 let currentScanId = null;
 let previousScanData = null;

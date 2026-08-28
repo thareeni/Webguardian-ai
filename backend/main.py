@@ -17,6 +17,7 @@ import os
 
 from fastapi import FastAPI, HTTPException, BackgroundTasks
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
@@ -36,10 +37,24 @@ import json
 
 STORAGE_DIR = os.path.join(os.path.dirname(__file__), "..", "storage")
 REPORTS_DIR = os.path.join(os.path.dirname(__file__), "..", "reports")
+FRONTEND_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "frontend"))
+
 os.makedirs(os.path.join(STORAGE_DIR, "screenshots"), exist_ok=True)
 os.makedirs(REPORTS_DIR, exist_ok=True)
 app.mount("/static", StaticFiles(directory=STORAGE_DIR), name="static")
 app.mount("/reports", StaticFiles(directory=REPORTS_DIR), name="reports")
+
+if os.path.exists(FRONTEND_DIR):
+    app.mount("/frontend", StaticFiles(directory=FRONTEND_DIR), name="frontend")
+
+
+@app.get("/", response_class=FileResponse)
+async def serve_root():
+    index_path = os.path.join(FRONTEND_DIR, "index.html")
+    if os.path.exists(index_path):
+        return FileResponse(index_path)
+    raise HTTPException(status_code=404, detail="Frontend index.html not found")
+
 
 # In-memory scan store: scan_id -> ScanState
 SCANS: dict[str, ScanState] = {}
@@ -267,19 +282,6 @@ async def health():
 
 @app.post("/api/scan", response_model=ScanResponse)
 async def start_scan(req: ScanRequest, background_tasks: BackgroundTasks):
-    # If target is local demo-site and backup exists, restore demo-site to original broken state for fresh scan
-    if is_local_target(req.url):
-        workspace_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-        demo_dir = os.path.join(workspace_root, "demo-site")
-        backup_dir = os.path.join(workspace_root, "demo-site_backup")
-        if os.path.exists(backup_dir):
-            import shutil
-            try:
-                shutil.rmtree(demo_dir)
-                shutil.copytree(backup_dir, demo_dir)
-            except Exception as e:
-                print(f"Warning: Could not reset demo-site: {e}")
-
     state = ScanState(
         website_url=req.url,
         max_pages=req.max_pages,

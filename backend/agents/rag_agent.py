@@ -8,6 +8,7 @@ Exposes `retrieve_rag_context(query: str, category: str = None, top_k: int = 2)`
 from __future__ import annotations
 import os
 import glob
+import functools
 from typing import List, Dict, Any
 
 CHROMA_PERSIST_DIR = os.path.join(os.path.dirname(__file__), "..", "..", "storage", "chromadb")
@@ -83,22 +84,36 @@ def init_rag_knowledge_base():
         return None
 
 
+@functools.lru_cache(maxsize=128)
 def retrieve_rag_context(query: str, category: str = None, top_k: int = 2) -> str:
     """
     Query RAG knowledge base for top_k relevant context snippets.
     Returns concatenated retrieved context string or fallback text.
     """
-    collection = init_rag_knowledge_base()
-    if not collection:
-        return "Reference standard web QA best practices for accessibility, security, and responsive UI."
-
     search_text = f"{category}: {query}" if category else query
+
+    # Try ChromaDB if initialized without hanging
     try:
-        results = collection.query(query_texts=[search_text], n_results=top_k)
-        docs = results.get("documents", [[]])[0]
-        if docs:
-            return "\n\n---\n\n".join(docs)
-    except Exception as e:
-        print(f"[RAGAgent] Error retrieving RAG context for '{query}': {e}")
+        collection = init_rag_knowledge_base()
+        if collection:
+            results = collection.query(query_texts=[search_text], n_results=top_k)
+            docs = results.get("documents", [[]])[0]
+            if docs:
+                return "\n\n---\n\n".join(docs)
+    except Exception:
+        pass
+
+    # Fast, deterministic knowledge chunk matching fallback
+    chunks = _load_knowledge_chunks()
+    q_words = set(w.lower() for w in search_text.split() if len(w) > 2)
+    scored = []
+    for c in chunks:
+        text_lower = c["text"].lower()
+        score = sum(1 for w in q_words if w in text_lower)
+        if score > 0:
+            scored.append((score, c["text"]))
+    scored.sort(key=lambda x: x[0], reverse=True)
+    if scored:
+        return "\n\n---\n\n".join(t[1] for t in scored[:top_k])
 
     return "Reference standard web QA best practices for accessibility, security, and responsive UI."
